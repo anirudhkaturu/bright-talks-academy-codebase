@@ -1,25 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile</title>
+    <meta charset="UTF-8">
+    <title>Profile | The Bright Talks Academy</title>
 </head>
+
 <body>
 
-  <div class="profile-card">
-    <h1>My Profile</h1>
+    <!-- Header -->
+    <header>
+        <center>
+            <h1>👤 My Profile</h1>
+            <p><em>Your personal information</em></p>
+        </center>
+        <hr>
+    </header>
 
-    <p>
-      <span class="label">Name:</span>
-      <%= user.name %>
-    </p>
+    <!-- Navigation -->
+    <nav>
+        <center>
+            <table cellpadding="10">
+                <tr>
+                    <td><a href="/">🏠 Home</a></td>
+                    <td><a href="/about">📘 About</a></td>
+                    <td><a href="/portfolio">💼 Portfolio</a></td>
+                    <td><a href="/blogs">📝 Blogs</a></td>
+                    <td><a href="/contact">📞 Contact</a></td>
+                    <td><a href="/profile">👤 Profile</a></td>
+                    <td><a href="/login">🔐 Login</a></td>
+                </tr>
+            </table>
+        </center>
+        <hr>
+    </nav>
 
-    <p>
-      <span class="label">Email:</span>
-      <%= user.email %>
-    </p>
-  </div>
+    <!-- Main Content -->
+    <main>
+        <center>
+            <h2>📄 Account Details</h2>
+
+            <table border="1" cellpadding="10">
+                <tr>
+                    <th>📌 Field</th>
+                    <th>📄 Information</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><%= user.name %></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><%= user.email %></td>
+                </tr>
+            </table>
+
+            <br>
+
+            <p>
+                ✏️ Want to update your information?  
+                <a href="/profile/edit">Edit Profile</a>
+            </p>
+
+            <p>
+                🚪 <a href="/logout">Logout</a>
+            </p>
+        </center>
+    </main>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <center>
+            <p>
+                © <%= new Date().getFullYear() %> The Bright Talks Academy
+            </p>
+            <p>
+                <a href="/tandc">Terms & Conditions</a>
+            </p>
+        </center>
+    </footer>
 
 </body>
 </html>
