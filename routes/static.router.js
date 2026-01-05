@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getHome, getAbout, getContact, getPortfolio, getTAndC, getLogin, getSignup, getBlogs, getBlogTemplate, getProfile } from "../controllers/static.controller.js";   
+import { getHome, getAbout, getContact, getPortfolio, getTAndC, getLogin, getSignup, getBlogs, getBlogById, getProfile } from "../controllers/static.controller.js";   
 // authentication middleware
 import requireAuth from "../middlewares/auth.middleware.js";
 
@@ -15,7 +15,8 @@ router.get("/signup", getSignup);
 
 // protected routes
 router.get("/blogs", requireAuth, getBlogs);
+router.get("/blogs/:id", requireAuth, getBlogById);
 router.get("/profile", requireAuth, getProfile);
-router.get("/blog", requireAuth, getBlogTemplate);
+// router.get("/blog", requireAuth, getBlogTemplate);
 
 export default router;

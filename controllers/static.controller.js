@@ -1,3 +1,5 @@
+import Blog from "../models/Blog.js";
+
 function getHome(req, res) {
     return res.render("index");
 }
@@ -26,16 +28,23 @@ function getSignup(req, res) {
     return res.render("signup");
 }
 
-function getBlogs(req, res) {
-    return res.render("blogs");
+async function getBlogs(req, res) {
+    const blogs = await Blog.find().sort({ createdAt: -1 });
+    return res.render("blogs", { blogs: blogs });
+}
+
+async function getBlogById(req, res) {
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+    if (!blog) {
+        return res.json({"message": "Blog Not Found"});
+    }
+
+    return res.render("blogTemplate", { blog: blog });
 }
 
 function getProfile(req, res) {
     return res.render("profile", { user: req.user}); // pass the user to the render 
-}
-
-function getBlogTemplate(req, res) {
-    return res.render("blogTemplate");
 }
 
 export {
@@ -47,6 +56,6 @@ export {
     getLogin,
     getSignup,
     getBlogs,
-    getBlogTemplate,
+    getBlogById,
     getProfile
 }
