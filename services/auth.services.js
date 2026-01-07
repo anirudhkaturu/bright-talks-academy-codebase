@@ -8,7 +8,8 @@ function setUser(user) {
     const payload = {
         id: user._id,
         email: user.email,
-        name: user.name
+        name: user.name,
+        access: user.access,
     }
     return jwt.sign(payload, JWT_SECRET);
 }
