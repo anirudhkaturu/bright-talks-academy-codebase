@@ -14,7 +14,6 @@ async function postLogin(req, res) {
     if (user.password !== password) {
         return res.redirect("/home");
     }
-
     const token = setUser(user);
     res.cookie("uid", token);
     return res.redirect("/profile");

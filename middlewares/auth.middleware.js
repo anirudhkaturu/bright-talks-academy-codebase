@@ -1,20 +1,25 @@
 import { getUser } from "../services/auth.services.js"
 
-function requireAuth(req, res, next) {
-    const token = req.cookies?.uid;
+function restrictLogin(...access) {
+    return (req, res, next) => {
+        const token = req.cookies?.uid;
+        if (!token) {
+          return res.json({"message": "no token"});
+        }
 
-    if (!token) {
-        return res.redirect("/login");
+        const user = getUser(token);
+        if (!user) {
+          return res.json({ message: "no user" });
+        }
+
+        if (access.length > 0 && !access.includes(user.access)) {
+          return res.json({ message: "not authorized" });
+        }
+
+        // adding the user object to the request
+        req.user = user;
+        next();
     }
-
-    const user = getUser(token);
-    if (!user) {
-        return res.redirect("/login");
-    }
-
-    // adding the user object to the request
-    req.user = user;
-    next();
 }
 
-export default requireAuth;
+export default restrictLogin;
