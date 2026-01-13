@@ -1,4 +1,5 @@
 import Blog from "../models/Blog.js";
+import { marked } from "marked";
 
 function getHome(req, res) {
     return res.render("index");
@@ -40,7 +41,8 @@ async function getBlogById(req, res) {
         return res.json({"message": "Blog Not Found"});
     }
 
-    return res.render("blogTemplate", { blog: blog });
+    const html = marked.parse(blog.content);
+    return res.render("blogTemplate", { title: blog.title, content: html });
 }
 
 function getProfile(req, res) {

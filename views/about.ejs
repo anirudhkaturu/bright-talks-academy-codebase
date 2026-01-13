@@ -1,97 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>About | The Bright Talks Academy</title>
-</head>
 
-<body>
+    <style>
+      :root {
+        --primary: #2a6df4;
+        --text: #222;
+        --muted: #666;
+        --border: #e5e7eb;
+        --bg: #fafafa;
+      }
 
-    <!-- Header -->
-    <header>
-        <center>
-            <h1>📘 About The Bright Talks Academy</h1>
-            <p><em>Building Confidence. Creating Leaders.</em></p>
-        </center>
-        <hr>
-    </header>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
 
-    <!-- Navigation -->
-    <nav>
-        <center>
-            <table cellpadding="10">
-                <tr>
-                    <td><a href="/">🏠 Home</a></td>
-                    <td><a href="/about">📘 About</a></td>
-                    <td><a href="/portfolio">💼 Portfolio</a></td>
-                    <td><a href="/blogs">📝 Blogs</a></td>
-                    <td><a href="/contact">📞 Contact</a></td>
-                    <td><a href="/profile">👤 Profile</a></td>
-                    <td><a href="/login">🔐 Login</a></td>
-                </tr>
-            </table>
-        </center>
-        <hr>
-    </nav>
+      body {
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
 
-    <!-- Main Content -->
-    <main>
-        <center>
-            <h2>Who We Are 🌟</h2>
-            <p>
-                The Bright Talks Academy is a professional learning platform
-                focused on communication excellence, leadership development,
-                and personal growth.
-            </p>
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
 
-            <br>
+      a:hover {
+        text-decoration: underline;
+      }
 
-            <h3>🎯 Our Mission</h3>
-            <p>
-                To empower students and professionals with confidence,
-                clarity, and the skills needed to succeed in today’s world.
-            </p>
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 24px;
+      }
 
-            <br>
+      header {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+      }
 
-            <h3>🚀 Our Vision</h3>
-            <p>
-                To become a trusted global academy that transforms
-                individuals into impactful communicators and leaders.
-            </p>
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 4px;
+      }
 
-            <br>
+      header p {
+        color: var(--muted);
+      }
 
-            <h3>💡 Why Choose Us?</h3>
-            <ul>
-                <li>✔ Expert Mentors</li>
-                <li>✔ Practical Learning Approach</li>
-                <li>✔ Career-Oriented Programs</li>
-                <li>✔ Supportive Learning Community</li>
-            </ul>
+      nav {
+        margin-top: 16px;
+      }
 
-            <br>
+      nav ul {
+        display: flex;
+        gap: 16px;
+        list-style: none;
+        flex-wrap: wrap;
+      }
 
-            <p>
-                📞 Want to know more?  
-                <a href="/contact">Contact us</a> today!
-            </p>
-        </center>
-    </main>
+      main h2 {
+        margin-bottom: 8px;
+      }
 
-    <hr>
+      main h3 {
+        margin-top: 24px;
+        margin-bottom: 8px;
+      }
 
-    <!-- Footer -->
-    <footer>
-        <center>
-            <p>
-                © <%= new Date().getFullYear() %> The Bright Talks Academy
-            </p>
-            <p>
-                <a href="/tandc">Terms & Conditions</a>
-            </p>
-        </center>
-    </footer>
+      main p {
+        color: var(--muted);
+        margin-bottom: 16px;
+        max-width: 720px;
+      }
 
-</body>
+      ul {
+        margin-left: 20px;
+        margin-bottom: 24px;
+      }
+
+      ul li {
+        margin-bottom: 8px;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 48px;
+        padding-top: 16px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>About The Bright Talks Academy</h1>
+        <p>Building Confidence. Creating Leaders.</p>
+
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <main>
+        <h2>Who We Are</h2>
+        <p>
+          The Bright Talks Academy is a professional learning platform focused on
+          communication excellence, leadership development, and personal growth.
+        </p>
+
+        <h3>Our Mission</h3>
+        <p>
+          To empower students and professionals with confidence, clarity, and
+          the skills needed to succeed in today’s world.
+        </p>
+
+        <h3>Our Vision</h3>
+        <p>
+          To become a trusted global academy that transforms individuals into
+          impactful communicators and leaders.
+        </p>
+
+        <h3>Why Choose Us?</h3>
+        <ul>
+          <li>Expert mentors with real-world experience</li>
+          <li>Practical, hands-on learning approach</li>
+          <li>Career-oriented programs</li>
+          <li>Supportive learning community</li>
+        </ul>
+
+        <p>
+          Want to know more?
+          <a href="/contact">Contact us</a> today.
+        </p>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
+        <p>
+          <a href="/tandc">Terms & Conditions</a>
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>

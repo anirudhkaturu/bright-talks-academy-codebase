@@ -1,14 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import methodOverride from "method-override";
 
 // database connection 
 import connectDb from "./configdb.js";
+
+// authorization middleware
+import restrictLogin from "./middlewares/auth.middleware.js"
 
 // static router import
 import staticRouter from "./routes/static.router.js";
 // authentication router import
 import authRouter from "./routes/auth.router.js";
+// admin router import
+import adminRouter from "./routes/admin.router.js";
 
 
 dotenv.config();
@@ -23,11 +29,14 @@ app.set("views", "./views");
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // routers setup
 app.use("/", staticRouter);
 // authentication routes
 app.use("/auth", authRouter);
+// admin routes
+app.use("/admin", restrictLogin("admin"), adminRouter);
 
 connectDb(process.env.MONGO_DB).then(() => {
     console.log("Successfully Connected to MongoDB");

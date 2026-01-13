@@ -1,85 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Profile | The Bright Talks Academy</title>
-</head>
 
-<body>
+    <style>
+      :root {
+        --primary: #2a6df4;
+        --danger: #dc2626;
+        --text: #222;
+        --muted: #666;
+        --border: #e5e7eb;
+        --bg: #fafafa;
+      }
 
-    <!-- Header -->
-    <header>
-        <center>
-            <h1>👤 My Profile</h1>
-            <p><em>Your personal information</em></p>
-        </center>
-        <hr>
-    </header>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
 
-    <!-- Navigation -->
-    <nav>
-        <center>
-            <table cellpadding="10">
-                <tr>
-                    <td><a href="/">🏠 Home</a></td>
-                    <td><a href="/about">📘 About</a></td>
-                    <td><a href="/portfolio">💼 Portfolio</a></td>
-                    <td><a href="/blogs">📝 Blogs</a></td>
-                    <td><a href="/contact">📞 Contact</a></td>
-                    <td><a href="/profile">👤 Profile</a></td>
-                    <td><a href="/login">🔐 Login</a></td>
-                </tr>
-            </table>
-        </center>
-        <hr>
-    </nav>
+      body {
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
 
-    <!-- Main Content -->
-    <main>
-        <center>
-            <h2>📄 Account Details</h2>
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
 
-            <table border="1" cellpadding="10">
-                <tr>
-                    <th>📌 Field</th>
-                    <th>📄 Information</th>
-                </tr>
-                <tr>
-                    <td>Name</td>
-                    <td><%= user.name %></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><%= user.email %></td>
-                </tr>
-            </table>
+      a:hover {
+        text-decoration: underline;
+      }
 
-            <br>
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 24px;
+      }
 
-            <p>
-                ✏️ Want to update your information?  
-                <a href="/profile/edit">Edit Profile</a>
-            </p>
+      header {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+      }
 
-            <p>
-                🚪 <a href="/logout">Logout</a>
-            </p>
-        </center>
-    </main>
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 4px;
+      }
 
-    <hr>
+      header p {
+        color: var(--muted);
+      }
 
-    <!-- Footer -->
-    <footer>
-        <center>
-            <p>
-                © <%= new Date().getFullYear() %> The Bright Talks Academy
-            </p>
-            <p>
-                <a href="/tandc">Terms & Conditions</a>
-            </p>
-        </center>
-    </footer>
+      nav {
+        margin-top: 16px;
+      }
 
-</body>
-</html>
+      nav ul {
+        display: flex;
+        gap: 16px;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      main h2 {
+        margin-bottom: 16px;
+      }
+
+      table {
+        width: 100%;
+        max-width: 600px;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+        background: #fff;
+        border: 1px solid var(--border);
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: #f3f4f6;
+        font-weight: 600;
+        width: 30%;
+      }
+
+      .actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-danger {
+        background: #fff;
+        color: var(--danger);
+        border-color: var(--danger);
+      }
+
+      .btn-danger:hover {
+        background: var(--danger);
+        color: #fff;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 48px;
+        padding-top: 16px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>My Profile</h1>
+        <p>Your personal information</p>
+
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <main>
+        <h2>Account Details</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <td><%= user.name %></td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td><%= user.email %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="actions">
+          <a href="/profile/edit" class="btn btn-primary">Edit Profile</a>
+
+          <% if (user.access == "admin") { %>
+            <a href="/admin" class="btn btn-primary">Go to Admin Page</a>
+          <% } %>
+
+          <form action="/auth/logout" method="POST">
+            <button type="submit" class="btn btn-danger">Logout</button>
+          </form>
+      </div>
+
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
