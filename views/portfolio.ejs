@@ -1,106 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Portfolio | The Bright Talks Academy</title>
-</head>
 
-<body>
+    <style>
+      :root {
+        --primary: #2a6df4;
+        --text: #222;
+        --muted: #666;
+        --border: #e5e7eb;
+        --bg: #fafafa;
+      }
 
-    <!-- Header -->
-    <header>
-        <center>
-            <h1>💼 Our Portfolio</h1>
-            <p><em>Showcasing Our Work & Achievements</em></p>
-        </center>
-        <hr>
-    </header>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
 
-    <!-- Navigation -->
-    <nav>
-        <center>
-            <table cellpadding="10">
-                <tr>
-                    <td><a href="/">🏠 Home</a></td>
-                    <td><a href="/about">📘 About</a></td>
-                    <td><a href="/portfolio">💼 Portfolio</a></td>
-                    <td><a href="/blogs">📝 Blogs</a></td>
-                    <td><a href="/contact">📞 Contact</a></td>
-                    <td><a href="/profile">👤 Profile</a></td>
-                    <td><a href="/login">🔐 Login</a></td>
-                </tr>
-            </table>
-        </center>
-        <hr>
-    </nav>
+      body {
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
 
-    <!-- Main Content -->
-    <main>
-        <center>
-            <h2>📂 What We’ve Accomplished</h2>
-            <p>
-                Over the years, The Bright Talks Academy has successfully
-                trained students, professionals, and organizations.
-            </p>
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
 
-            <br>
+      a:hover {
+        text-decoration: underline;
+      }
 
-            <h3>🏆 Key Highlights</h3>
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 24px;
+      }
 
-            <table border="1" cellpadding="10">
-                <tr>
-                    <th>📌 Program</th>
-                    <th>👥 Audience</th>
-                    <th>🎉 Outcome</th>
-                </tr>
-                <tr>
-                    <td>Public Speaking Bootcamp</td>
-                    <td>Students</td>
-                    <td>Confidence & Stage Presence</td>
-                </tr>
-                <tr>
-                    <td>Corporate Communication</td>
-                    <td>Professionals</td>
-                    <td>Effective Workplace Communication</td>
-                </tr>
-                <tr>
-                    <td>Interview Mastery</td>
-                    <td>Job Seekers</td>
-                    <td>Successful Placements</td>
-                </tr>
-            </table>
+      header {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+      }
 
-            <br>
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 4px;
+      }
 
-            <h3>📈 Our Impact</h3>
-            <ul>
-                <li>✔ 1000+ Learners Trained</li>
-                <li>✔ 50+ Workshops Conducted</li>
-                <li>✔ 95% Positive Feedback</li>
-            </ul>
+      header p {
+        color: var(--muted);
+      }
 
-            <br>
+      nav {
+        margin-top: 16px;
+      }
 
-            <p>
-                🌟 Interested in collaborating?  
-                <a href="/contact">Get in touch</a> with us!
-            </p>
-        </center>
-    </main>
+      nav ul {
+        display: flex;
+        gap: 16px;
+        list-style: none;
+        flex-wrap: wrap;
+      }
 
-    <hr>
+      main h2 {
+        margin-bottom: 8px;
+      }
 
-    <!-- Footer -->
-    <footer>
-        <center>
-            <p>
-                © <%= new Date().getFullYear() %> The Bright Talks Academy
-            </p>
-            <p>
-                <a href="/tandc">Terms & Conditions</a>
-            </p>
-        </center>
-    </footer>
+      main h3 {
+        margin-top: 24px;
+        margin-bottom: 8px;
+      }
 
-</body>
+      main p {
+        color: var(--muted);
+        margin-bottom: 16px;
+        max-width: 720px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0 24px;
+        background: #fff;
+        border: 1px solid var(--border);
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: #f3f4f6;
+        font-weight: 600;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-bottom: 24px;
+      }
+
+      ul li {
+        margin-bottom: 8px;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 48px;
+        padding-top: 16px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>Our Portfolio</h1>
+        <p>Showcasing our work and achievements</p>
+
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <main>
+        <h2>What We’ve Accomplished</h2>
+        <p>
+          Over the years, The Bright Talks Academy has successfully trained
+          students, professionals, and organizations through structured
+          communication programs.
+        </p>
+
+        <h3>Key Highlights</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Program</th>
+              <th>Audience</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Public Speaking Bootcamp</td>
+              <td>Students</td>
+              <td>Confidence & Stage Presence</td>
+            </tr>
+            <tr>
+              <td>Corporate Communication</td>
+              <td>Professionals</td>
+              <td>Effective Workplace Communication</td>
+            </tr>
+            <tr>
+              <td>Interview Mastery</td>
+              <td>Job Seekers</td>
+              <td>Successful Placements</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Our Impact</h3>
+        <ul>
+          <li>1,000+ learners trained</li>
+          <li>50+ workshops conducted</li>
+          <li>95% positive feedback</li>
+        </ul>
+
+        <p>
+          Interested in collaborating?
+          <a href="/contact">Get in touch</a> with us.
+        </p>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
+        <p>
+          <a href="/tandc">Terms & Conditions</a>
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>

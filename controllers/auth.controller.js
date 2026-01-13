@@ -28,7 +28,13 @@ async function postSignup(req, res) { // have to implement character and length 
     return res.json(result);
 }
 
+async function postLogout(req, res) {
+    res.clearCookie("uid");
+    return res.redirect("/");
+} 
+
 export {
     postLogin, 
-    postSignup
+    postSignup,
+    postLogout
 }

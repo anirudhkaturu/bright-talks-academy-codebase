@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Blog | The Bright Talks Academy</title>
+
+  <!-- SimpleMDE CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css"
+  />
+
+  <style>
+    :root {
+      --primary: #2a6df4;
+      --text: #222;
+      --muted: #666;
+      --border: #e5e7eb;
+      --bg: #fafafa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 16px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #1f4fd0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Create New Blog</h1>
+
+    <form method="POST" action="/admin/add">
+      <div>
+        <label for="title">Blog Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Enter blog title"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="content">Blog Content</label>
+        <textarea
+          id="content"
+          name="content"
+          placeholder="Write your blog in Markdown..."
+        ></textarea>
+      </div>
+
+      <button type="submit">Publish Blog</button>
+    </form>
+  </div>
+
+  <!-- SimpleMDE JS -->
+  <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
+  <script>
+    const simplemde = new SimpleMDE({
+      element: document.getElementById("content"),
+      spellChecker: false,
+      placeholder: "Write your blog in Markdown...",
+      status: ["lines", "words"],
+    });
+  </script>
+</body>
+</html>

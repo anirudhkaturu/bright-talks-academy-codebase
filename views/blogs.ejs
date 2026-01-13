@@ -1,23 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Blogs</title>
-</head>
-<body>
-    <h1>All Blogs</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs | The Bright Talks Academy</title>
 
-    <% if (blogs && blogs.length > 0) { %>
-        <ul>
+    <style>
+      :root {
+        --primary: #2a6df4;
+        --text: #222;
+        --muted: #666;
+        --border: #e5e7eb;
+        --bg: #fafafa;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      header {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 4px;
+      }
+
+      header p {
+        color: var(--muted);
+      }
+
+      nav {
+        margin-top: 16px;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 16px;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      main h2 {
+        margin-bottom: 16px;
+      }
+
+      ul.blog-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      ul.blog-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      ul.blog-list li a {
+        font-size: 1.05rem;
+        font-weight: 500;
+      }
+
+      .empty {
+        color: var(--muted);
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 48px;
+        padding-top: 16px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>Blogs</h1>
+        <p>Insights, tips, and learning resources</p>
+
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <main>
+        <h2>All Blogs</h2>
+
+        <% if (blogs && blogs.length > 0) { %>
+          <ul class="blog-list">
             <% blogs.forEach(blog => { %>
-                <li>
-                    <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-                </li>
+              <li>
+                <a href="/blogs/<%= blog._id %>">
+                  <%= blog.title %>
+                </a>
+              </li>
             <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No blogs found.</p>
-    <% } %>
-</body>
+          </ul>
+        <% } else { %>
+          <p class="empty">No blogs found.</p>
+        <% } %>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
+        <p>
+          <a href="/tandc">Terms & Conditions</a>
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>
