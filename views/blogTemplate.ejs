@@ -3,15 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title %> | My Blog</title>
+  <title><%= title %> | The Bright Talks Academy</title>
+
+  <style>
+    :root {
+      --primary: #2a6df4;
+      --text: #222;
+      --muted: #666;
+      --border: #e5e7eb;
+      --bg: #fafafa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 24px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a.back-link:hover {
+      color: #1f53c1;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    article {
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    article p {
+      margin-bottom: 16px;
+    }
+
+    article img {
+      max-width: 100%;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    article pre, article code {
+      background: #f3f4f6;
+      padding: 8px 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a href="/blogs">← Back to all blogs</a>
+  <div class="container">
+    <a href="/blogs" class="back-link">← Back to all blogs</a>
 
-  <h1><%= title %></h1>
+    <h1><%= title %></h1>
 
-  <article>
-    <%- content %>
-  </article>
+    <article>
+      <%- content %>
+    </article>
+  </div>
 </body>
 </html>

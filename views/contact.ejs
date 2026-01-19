@@ -1,184 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Contact | The Bright Talks Academy</title>
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | The Bright Talks Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 
-    <style>
-      :root {
-        --primary: #2a6df4;
-        --text: #222;
-        --muted: #666;
-        --border: #e5e7eb;
-        --bg: #fafafa;
-      }
+<body>
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      }
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">
+    <img src="/imgs/bright-talks-logo.png" alt="Bright Talks Academy">
+  </div>
 
-      body {
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/blogs">Blogs</a></li>
+      <li><a href="/contact" class="active">Contact</a></li>
+    </ul>
+  </nav>
 
-      a {
-        color: var(--primary);
-        text-decoration: none;
-      }
+  <a href="/login" class="btn-call">Login</a>
+</header>
 
-      a:hover {
-        text-decoration: underline;
-      }
+<!-- HERO -->
+<section class="hero hero-small">
+  <div>
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Reach out for any queries, enrollment, or guidance.</p>
+  </div>
+</section>
 
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 24px;
-      }
+<!-- CONTACT METHODS -->
+<section class="portfolio">
+  <h2>Get in Touch</h2>
+  <p>Have questions or want to enroll? Reach out to us through any of the following methods:</p>
 
-      header {
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 16px;
-        margin-bottom: 24px;
-      }
-
-      header h1 {
-        font-size: 2rem;
-        margin-bottom: 4px;
-      }
-
-      header p {
-        color: var(--muted);
-      }
-
-      nav {
-        margin-top: 16px;
-      }
-
-      nav ul {
-        display: flex;
-        gap: 16px;
-        list-style: none;
-        flex-wrap: wrap;
-      }
-
-      main h2 {
-        margin-bottom: 8px;
-      }
-
-      main p {
-        color: var(--muted);
-        margin-bottom: 16px;
-        max-width: 720px;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 16px 0 24px;
-        background: #fff;
-        border: 1px solid var(--border);
-      }
-
-      th,
-      td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid var(--border);
-      }
-
-      th {
-        background: #f3f4f6;
-        font-weight: 600;
-      }
-
-      .note {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      footer {
-        border-top: 1px solid var(--border);
-        margin-top: 48px;
-        padding-top: 16px;
-        font-size: 0.9rem;
-        color: var(--muted);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <!-- Header -->
-      <header>
-        <h1>Contact Us</h1>
-        <p>We’d love to hear from you</p>
-
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/portfolio">Portfolio</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/login">Login</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <!-- Main -->
-      <main>
-        <h2>Get in Touch</h2>
-        <p>
-          Have questions or want to enroll? Reach out to us using the details
-          below.
-        </p>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Method</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Email</td>
-              <td>contact@brighttalksacademy.com</td>
-            </tr>
-            <tr>
-              <td>Phone</td>
-              <td>+91 98765 43210</td>
-            </tr>
-            <tr>
-              <td>Location</td>
-              <td>India</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="note">
-          We usually respond within 24 hours.
-        </p>
-      </main>
-
-      <!-- Footer -->
-      <footer>
-        <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
-        <p>
-          <a href="/tandc">Terms & Conditions</a>
-        </p>
-      </footer>
+  <div class="portfolio-grid">
+    <div class="program">
+      <h3>Email</h3>
+      <p>contact@brighttalksacademy.com</p>
     </div>
-  </body>
+
+    <div class="program">
+      <h3>Phone</h3>
+      <p>+91 98765 43210</p>
+    </div>
+
+    <div class="program">
+      <h3>Location</h3>
+      <p>India</p>
+    </div>
+  </div>
+
+  <p class="note">We usually respond within 24 hours.</p>
+</section>
+
+<!-- CONTACT FORM (Optional) -->
+<section class="experience">
+  <h2>Send Us a Message</h2>
+  <form action="/contact/submit" method="POST" style="max-width:600px;">
+    <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;">
+    <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;">
+    <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;"></textarea>
+    <button type="submit" class="cta">Send Message</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="/imgs/bright-talks-logo.png" height="50">
+  <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
+  <p><a href="/tandc" style="color:#fff;">Terms & Conditions</a></p>
+</footer>
+
+</body>
 </html>
