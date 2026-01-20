@@ -6,36 +6,46 @@
   <title>Login | The Bright Talks Academy</title>
 
   <style>
+    /* ------------------------------
+       ROOT VARIABLES (Unified)
+    --------------------------------*/
     :root {
-      --primary: #2a6df4;
-      --text: #222;
-      --muted: #666;
-      --bg: #f9fafb;
-      --card-bg: #fff;
-      --border: #e5e7eb;
+      --primary: #0a2f5c;
+      --accent: #fbbf24;
+      --dark: #1f2937;
+      --muted: #6b7280;
+      --light: #f9fafb;
+      --white: #ffffff;
+      --border: #d1d5db;
     }
 
+    /* ------------------------------
+       RESET
+    --------------------------------*/
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--light);
+      color: var(--dark);
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    /* ------------------------------
+       LOGIN CONTAINER
+    --------------------------------*/
     .login-container {
       display: flex;
       width: 900px;
       max-width: 95%;
-      background: var(--card-bg);
+      background: var(--white);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 15px 40px rgba(0,0,0,0.1);
@@ -46,9 +56,10 @@
       padding: 60px 40px;
     }
 
+    /* LEFT SIDE - Branding */
     .login-left {
       background: var(--primary);
-      color: #fff;
+      color: var(--white);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -65,9 +76,11 @@
       line-height: 1.6;
     }
 
+    /* RIGHT SIDE - Form */
     .login-right h2 {
       font-size: 2rem;
       margin-bottom: 24px;
+      color: var(--primary);
     }
 
     .login-form {
@@ -87,27 +100,29 @@
       border-radius: 8px;
       font-size: 1rem;
       outline: none;
-      transition: border 0.2s;
+      transition: border 0.2s, box-shadow 0.2s;
     }
 
     .login-form input:focus {
       border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(10,47,92,0.1);
     }
 
     .login-form button {
       padding: 14px;
-      background: var(--primary);
-      color: #fff;
+      background: var(--accent);
+      color: #000;
       font-size: 1rem;
       font-weight: 600;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: transform 0.2s, background 0.2s;
     }
 
     .login-form button:hover {
-      background: #1f53c1;
+      background: #fada5e;
+      transform: translateY(-2px);
     }
 
     .login-form .forgot {
@@ -118,8 +133,35 @@
 
     .login-form .forgot a {
       color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
+    .login-form .forgot a:hover {
+      color: var(--accent);
+    }
+
+    .signup-prompt {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .signup-prompt a {
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .signup-prompt a:hover {
+      color: var(--accent);
+    }
+
+    /* ------------------------------
+       RESPONSIVE
+    --------------------------------*/
     @media (max-width: 768px) {
       .login-container {
         flex-direction: column;
@@ -128,6 +170,7 @@
         padding: 40px 24px;
       }
     }
+
   </style>
 </head>
 
@@ -158,7 +201,7 @@
         </div>
       </form>
 
-      <p style="margin-top: 20px; text-align: center; font-size: 0.9rem; color: var(--muted);">
+      <p class="signup-prompt">
         Don't have an account? <a href="/signup">Register here</a>
       </p>
     </div>
