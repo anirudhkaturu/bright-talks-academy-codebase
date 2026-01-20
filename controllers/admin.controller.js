@@ -19,7 +19,7 @@ async function postAddBlog(req, res) {
   }
 
   const newBlog = await Blog.create({ title, content });
-  return res.json(newBlog);
+  return res.redirect("/admin");
 }
 
 // GET method to edit blog

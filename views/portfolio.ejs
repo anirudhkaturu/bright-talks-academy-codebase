@@ -10,81 +10,84 @@
 <body>
 
 <!-- HEADER -->
-<header class="site-header">
-  <div class="logo">
-    <img src="/imgs/bright-talks-logo.png" alt="Bright Talks Academy">
-  </div>
-
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/portfolio" class="active">Portfolio</a></li>
-      <li><a href="/blogs">Blogs</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <a href="/login" class="btn-call">Login</a>
-</header>
+<%- include('partials/header') %>
 
 <!-- HERO -->
 <section class="hero hero-small">
-  <div>
+  <div class="hero-content">
     <h1>Our Portfolio</h1>
-    <p>Showcasing our work, achievements, and student transformations</p>
+    <p>Showcasing our work, student transformations, and corporate collaborations</p>
   </div>
 </section>
 
-<!-- PORTFOLIO GRID -->
+<!-- STUDENT SUCCESS STORIES -->
 <section class="portfolio">
-  <h2>Student Success Stories</h2>
-  <p>
-    Over the years, The Bright Talks Academy has trained students, professionals, 
-    and organizations through structured communication programs.
-  </p>
+  <div class="container-narrow">
+    <h2>Student Success Stories</h2>
+    <p>
+      Over the years, The Bright Talks Academy has trained students, professionals, 
+      and organizations through structured communication programs that deliver measurable results.
+    </p>
 
-  <div class="portfolio-grid">
-    <div class="program">
-      <h3>Public Speaking Bootcamp</h3>
-      <p><strong>Audience:</strong> Students</p>
-      <p><strong>Outcome:</strong> Confidence & Stage Presence</p>
-    </div>
+    <div class="portfolio-grid">
+      <div class="program-card">
+        <h3>Public Speaking Bootcamp</h3>
+        <p><strong>Audience:</strong> Students</p>
+        <p><strong>Outcome:</strong> Confidence, Stage Presence & Expressive Skills</p>
+        <p><strong>Highlight:</strong> 95% of participants reported overcoming stage fear.</p>
+      </div>
 
-    <div class="program">
-      <h3>Corporate Communication</h3>
-      <p><strong>Audience:</strong> Professionals</p>
-      <p><strong>Outcome:</strong> Effective Workplace Communication</p>
-    </div>
+      <div class="program-card">
+        <h3>Corporate Communication</h3>
+        <p><strong>Audience:</strong> Professionals</p>
+        <p><strong>Outcome:</strong> Effective Workplace Communication</p>
+        <p><strong>Highlight:</strong> Teams improved clarity in meetings and presentations.</p>
+      </div>
 
-    <div class="program">
-      <h3>Interview Mastery</h3>
-      <p><strong>Audience:</strong> Job Seekers</p>
-      <p><strong>Outcome:</strong> Successful Placements</p>
+      <div class="program-card">
+        <h3>Interview Mastery</h3>
+        <p><strong>Audience:</strong> Job Seekers</p>
+        <p><strong>Outcome:</strong> Successful Placements & Confidence</p>
+        <p><strong>Highlight:</strong> Students secured roles in top organizations with confidence.</p>
+      </div>
+
+      <div class="program-card">
+        <h3>Leadership & Personality Development</h3>
+        <p><strong>Audience:</strong> Aspiring Leaders</p>
+        <p><strong>Outcome:</strong> Stronger Leadership Presence</p>
+        <p><strong>Highlight:</strong> Graduates report higher team influence and professional visibility.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- IMPACT -->
-<section class="experience">
-  <h2>Our Impact</h2>
-  <ul>
-    <li>1,000+ learners trained</li>
-    <li>50+ workshops conducted</li>
-    <li>95% positive feedback</li>
-  </ul>
-  <p>
-    Interested in collaborating? <a href="/contact">Get in touch</a> with us.
-  </p>
+<section class="experience impact">
+  <div class="container-narrow">
+    <h2>Our Impact</h2>
+    <ul>
+      <li>1,500+ learners trained across 3 years</li>
+      <li>75+ workshops conducted nationally and online</li>
+      <li>98% positive feedback from participants</li>
+      <li>Hundreds of successful career transformations</li>
+    </ul>
+    <p>
+      Interested in collaborating? <a href="/contact">Get in touch</a> with us and create impact together.
+    </p>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="portfolio-cta">
+  <div class="container-narrow">
+    <h2>Transform Your Communication Skills</h2>
+    <p>Whether you are a student, professional, or organization, our programs are tailored to help you excel in public speaking, presentations, and leadership communication.</p>
+    <a href="/contact" class="cta">Book a Consultation</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <img src="/imgs/bright-talks-logo.png" height="50">
-
-  <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
-  <p><a href="/tandc" style="color:#fff;">Terms & Conditions</a></p>
-</footer>
+<%- include('partials/footer') %>
 
 </body>
 </html>

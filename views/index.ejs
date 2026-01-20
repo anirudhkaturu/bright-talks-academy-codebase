@@ -5,39 +5,303 @@
   <title>The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ------------------------------
+       ROOT VARIABLES
+    --------------------------------*/
+    :root {
+      --primary: #0a2f5c;
+      --accent: #fbbf24;
+      --dark: #1f2937;
+      --muted: #6b7280;
+      --light: #f9fafb;
+      --white: #ffffff;
+    }
+
+    /* ------------------------------
+       RESET
+    --------------------------------*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* ------------------------------
+       GLOBAL
+    --------------------------------*/
+    section {
+      padding: 90px 60px;
+    }
+
+    h1, h2, h3 {
+      color: var(--primary);
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      margin-bottom: 25px;
+    }
+
+    p {
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    /* ------------------------------
+       HERO SECTION
+    --------------------------------*/
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 90px 60px;
+      background: var(--light);
+    }
+
+    .hero .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .hero .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .hero .cta:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero .hero-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .hero .hero-image img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    /* ------------------------------
+       PROGRAMS
+    --------------------------------*/
+    .programs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .programs .program {
+      background: var(--light);
+      padding: 25px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .programs .program:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .programs h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .programs p {
+      color: var(--muted);
+    }
+
+    /* ------------------------------
+       EXPERIENCE
+    --------------------------------*/
+    .experience ul {
+      list-style: disc;
+      padding-left: 25px;
+      margin-top: 25px;
+    }
+
+    .experience li {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* ------------------------------
+       TESTIMONIALS
+    --------------------------------*/
+    .testimonials .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .testimonials .testimonial-card {
+      background: var(--light);
+      padding: 25px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonials .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .testimonials .testimonial-card .message {
+      font-style: italic;
+      margin-bottom: 15px;
+      color: var(--muted);
+    }
+
+    .testimonials .testimonial-card .speaker {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ------------------------------
+       FOOTER
+    --------------------------------*/
+    .site-footer {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 50px 20px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .site-footer img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .site-footer .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .site-footer .footer-nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .site-footer .footer-nav a:hover {
+      color: var(--accent);
+    }
+
+    .site-footer .footer-contact {
+      color: #e5e7eb;
+      margin-top: 5px;
+    }
+
+    .site-footer .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 15px;
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      margin: 0 auto;
+    }
+
+    /* ------------------------------
+       RESPONSIVE
+    --------------------------------*/
+    @media (max-width: 900px) {
+      section {
+        padding: 70px 30px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero .hero-image {
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .programs {
+        gap: 20px;
+      }
+
+      .testimonials .testimonial-grid {
+        gap: 20px;
+      }
+
+      .site-footer {
+        padding: 35px 15px 20px;
+      }
+
+      .site-footer .footer-nav {
+        gap: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="logo">
-    <img src="/imgs/bright-talks-logo.png" alt="Bright Talks Academy">
-  </div>
-
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/portfolio">Portfolio</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/tandc">Terms & Conditions</a></li>
-    </ul>
-  </nav>
-
-  <a href="/book" class="btn-call">Book a Call</a>
-</header>
+<!-- HEADER -->
+<%- include('partials/header') %>
 
 <!-- HERO -->
 <section class="hero">
-  <div>
+  <div class="hero-text">
     <h1>Transform Hesitation into Confident Communication</h1>
     <p>
       Unlock your potential with THE BRIGHT TALKS ACADEMY. Through expert coaching,
-      engaging practice, and personalised feedback, we help you speak with clarity,
+      interactive workshops, and personalised feedback, we help you speak with clarity,
       confidence, and impact.
     </p>
-    <a href="/contact" class="cta">Learn more</a>
+    <a href="/contact" class="cta">Learn More</a>
   </div>
-  <img src="/imgs/public-speaking.webp" alt="Public Speaking">
+  <div class="hero-image">
+    <img src="/imgs/public-speaking.webp" alt="Public Speaking">
+  </div>
 </section>
 
 <!-- PROGRAMS -->
@@ -46,18 +310,14 @@
 
   <% 
     const programs = [
-      {
-        title: 'Advanced Public Speaking',
-        description: 'Overcome stage fear and master impactful delivery.'
-      },
-      {
-        title: 'Personality Development',
-        description: 'Build confidence, body language, and professional presence.'
-      },
-      {
-        title: 'Corporate Communication',
-        description: 'Speak confidently in meetings, interviews, and leadership roles.'
-      }
+      { title: 'Advanced Public Speaking', description: 'Overcome stage fear, structure powerful speeches, and master audience engagement through interactive workshops.' },
+      { title: 'Personality Development', description: 'Build confidence, improve body language, and develop a professional presence to stand out in academic and corporate settings.' },
+      { title: 'Corporate Communication', description: 'Enhance your workplace communication skills including meetings, presentations, email etiquette, and leadership interactions.' },
+      { title: 'Interview & Resume Training', description: 'Prepare for interviews with mock sessions, resume building, and soft skill enhancement to land your dream opportunities.' },
+      { title: 'Storytelling & Persuasion', description: 'Learn the art of compelling storytelling, persuasive communication, and impactful messaging to influence and inspire your audience.' },
+      { title: 'Leadership Communication', description: 'Develop your leadership voice, inspire teams, and communicate effectively in management roles. Handle difficult conversations and influence with confidence.' },
+      { title: 'Presentation Mastery', description: 'Learn to design and deliver impactful presentations that capture attention. Focus on visual storytelling, audience engagement, pacing, and persuasive techniques.' },
+      { title: 'Confidence & Personal Branding', description: 'Enhance your personal image and communication style to leave a lasting impression. Master self-presentation, networking skills, and strategies for professional growth.' }
     ];
   %>
 
@@ -80,7 +340,10 @@
       'Public Speaking Trainer – Helping learners overcome stage fear',
       'Corporate Communication Coach – Enhancing workplace communication',
       'Personality Development Mentor – Building confidence and presence',
-      'Body Language Skills Trainer – Strengthening non-verbal communication'
+      'Body Language Skills Trainer – Strengthening non-verbal communication',
+      'Interview & Resume Guidance – Preparing students and professionals for career success',
+      'Leadership Communication Coach – Guiding managers and team leads',
+      'Storytelling & Persuasion Mentor – Crafting compelling narratives for influence'
     ];
   %>
 
@@ -95,36 +358,27 @@
 <section class="testimonials">
   <h2>What Our Speakers Say</h2>
 
-  <% 
-    const testimonials = [
-      {
-        name: 'Shanthi Kiran, Guntur',
-        message: 'The training truly transformed my communication skills.'
-      },
-      {
-        name: 'Hadassa',
-        message: 'Now I speak confidently in meetings and interviews.'
-      },
-      {
-        name: 'Tagore Subhash',
-        message: 'Highly recommended for students and professionals.'
-      }
-    ];
-  %>
+  <div class="testimonial-grid">
+    <% 
+      const testimonials = [
+        { name: 'Shanthi Kiran, Guntur', message: 'The training truly transformed my communication skills.' },
+        { name: 'Hadassa', message: 'Now I speak confidently in meetings and interviews.' },
+        { name: 'Tagore Subhash', message: 'Highly recommended for students and professionals.' },
+        { name: 'Rohit Sharma', message: 'The personalized feedback helped me improve my presentation style immensely.' },
+        { name: 'Priya Nair', message: 'I gained the confidence to lead discussions at work after attending the sessions.' }
+      ];
+    %>
 
-  <% testimonials.forEach(t => { %>
-    <div class="testimonial">
-      “<%= t.message %>”
-      <strong>– <%= t.name %></strong>
-    </div>
-  <% }) %>
+    <% testimonials.forEach(t => { %>
+      <div class="testimonial-card">
+        <p class="message">“<%= t.message %>”</p>
+        <p class="speaker">– <strong><%= t.name %></strong></p>
+      </div>
+    <% }) %>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>thebrighttalksacademy@gmail.com</p>
-  <p>© 2026 The Bright Talks Academy | Developed by Sinfoxmedia</p>
-</footer>
+<%- include('partials/footer') %>
 
 </body>
 </html>

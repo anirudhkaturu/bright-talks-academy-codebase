@@ -8,6 +8,7 @@ import connectDb from "./configdb.js";
 
 // authorization middleware
 import restrictLogin from "./middlewares/auth.middleware.js"
+import checkAuth from "./middlewares/checkAuth.middleware.js";
 
 // static router import
 import staticRouter from "./routes/static.router.js";
@@ -29,6 +30,7 @@ app.set("views", "./views");
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(checkAuth);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
