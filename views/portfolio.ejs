@@ -5,11 +5,139 @@
   <title>Portfolio | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* ------------------------------
+       PORTFOLIO PAGE STYLES
+    --------------------------------*/
+    .hero-small {
+      background: var(--light);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero-small h1 {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .hero-small p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .container-narrow {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .program-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      padding: 25px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .program-card h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .program-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .experience.impact {
+      background: var(--light);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .experience.impact h2 {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .experience.impact ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px 40px;
+      margin-bottom: 20px;
+      padding: 0;
+    }
+    .experience.impact ul li {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 15px 20px;
+      color: var(--muted);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      min-width: 220px;
+      font-weight: 500;
+    }
+    .experience.impact a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .portfolio-cta {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      border-radius: 12px;
+      margin: 60px 20px 40px;
+    }
+    .portfolio-cta h2 {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
+    .portfolio-cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 25px;
+      line-height: 1.6;
+      color: #f3f4f6;
+    }
+    .portfolio-cta .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .portfolio-cta .cta:hover {
+      transform: translateY(-2px);
+    }
+    @media (max-width: 900px) {
+      .hero-small h1 { font-size: 2.4rem; }
+      .hero-small p { font-size: 1.1rem; }
+    }
+    @media (max-width: 600px) {
+      .portfolio-grid { gap: 20px; }
+      .experience.impact ul { flex-direction: column; gap: 15px; }
+      .portfolio-cta h2 { font-size: 2rem; }
+      .portfolio-cta p { font-size: 1rem; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <%- include('partials/header') %>
 
 <!-- HERO -->
@@ -25,37 +153,50 @@
   <div class="container-narrow">
     <h2>Student Success Stories</h2>
     <p>
-      Over the years, The Bright Talks Academy has trained students, professionals, 
-      and organizations through structured communication programs that deliver measurable results.
+      Over the years, The Bright Talks Academy has trained thousands of students and professionals through structured communication programs, helping them overcome stage fear, deliver impactful presentations, and build confidence.
     </p>
 
     <div class="portfolio-grid">
       <div class="program-card">
         <h3>Public Speaking Bootcamp</h3>
-        <p><strong>Audience:</strong> Students</p>
-        <p><strong>Outcome:</strong> Confidence, Stage Presence & Expressive Skills</p>
-        <p><strong>Highlight:</strong> 95% of participants reported overcoming stage fear.</p>
+        <p><strong>Audience:</strong> College & University Students</p>
+        <p><strong>Outcome:</strong> Improved stage presence, confidence, and storytelling skills</p>
+        <p><strong>Highlight:</strong> 95% of participants reported overcoming stage fear and delivering confident speeches.</p>
       </div>
 
       <div class="program-card">
-        <h3>Corporate Communication</h3>
-        <p><strong>Audience:</strong> Professionals</p>
-        <p><strong>Outcome:</strong> Effective Workplace Communication</p>
-        <p><strong>Highlight:</strong> Teams improved clarity in meetings and presentations.</p>
+        <h3>Corporate Communication Program</h3>
+        <p><strong>Audience:</strong> Professionals & Teams</p>
+        <p><strong>Outcome:</strong> Clearer presentations, effective meetings, and better team communication</p>
+        <p><strong>Highlight:</strong> Several teams achieved measurable improvements in workplace collaboration.</p>
       </div>
 
       <div class="program-card">
-        <h3>Interview Mastery</h3>
-        <p><strong>Audience:</strong> Job Seekers</p>
-        <p><strong>Outcome:</strong> Successful Placements & Confidence</p>
-        <p><strong>Highlight:</strong> Students secured roles in top organizations with confidence.</p>
+        <h3>Interview Mastery Workshops</h3>
+        <p><strong>Audience:</strong> Job Seekers & Graduates</p>
+        <p><strong>Outcome:</strong> Successful interviews, improved confidence, and polished resumes</p>
+        <p><strong>Highlight:</strong> Students secured roles in top companies and competitive programs.</p>
       </div>
 
       <div class="program-card">
         <h3>Leadership & Personality Development</h3>
-        <p><strong>Audience:</strong> Aspiring Leaders</p>
-        <p><strong>Outcome:</strong> Stronger Leadership Presence</p>
-        <p><strong>Highlight:</strong> Graduates report higher team influence and professional visibility.</p>
+        <p><strong>Audience:</strong> Aspiring Leaders & Managers</p>
+        <p><strong>Outcome:</strong> Strong leadership presence, professional communication skills, and better influence</p>
+        <p><strong>Highlight:</strong> Graduates report increased team impact and recognition in their organizations.</p>
+      </div>
+
+      <div class="program-card">
+        <h3>Storytelling & Persuasive Speaking</h3>
+        <p><strong>Audience:</strong> Entrepreneurs & Speakers</p>
+        <p><strong>Outcome:</strong> Compelling presentations, persuasive messaging, and increased audience engagement</p>
+        <p><strong>Highlight:</strong> Startups and presenters achieved stronger audience response and clarity.</p>
+      </div>
+
+      <div class="program-card">
+        <h3>Presentation Mastery for Professionals</h3>
+        <p><strong>Audience:</strong> Corporate Teams</p>
+        <p><strong>Outcome:</strong> Effective slide decks, engaging delivery, and confident public speaking</p>
+        <p><strong>Highlight:</strong> Multiple corporate teams received top feedback in internal presentations.</p>
       </div>
     </div>
   </div>
@@ -70,6 +211,7 @@
       <li>75+ workshops conducted nationally and online</li>
       <li>98% positive feedback from participants</li>
       <li>Hundreds of successful career transformations</li>
+      <li>Corporate collaborations with leading organizations</li>
     </ul>
     <p>
       Interested in collaborating? <a href="/contact">Get in touch</a> with us and create impact together.
@@ -81,12 +223,13 @@
 <section class="portfolio-cta">
   <div class="container-narrow">
     <h2>Transform Your Communication Skills</h2>
-    <p>Whether you are a student, professional, or organization, our programs are tailored to help you excel in public speaking, presentations, and leadership communication.</p>
+    <p>
+      Whether you are a student, professional, or organization, our programs are designed to help you excel in public speaking, presentations, and leadership communication. Join our community and become a confident, persuasive communicator.
+    </p>
     <a href="/contact" class="cta">Book a Consultation</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <%- include('partials/footer') %>
 
 </body>

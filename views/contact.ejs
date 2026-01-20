@@ -5,6 +5,269 @@
   <title>Contact | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* ------------------------------
+   CONTACT PAGE STYLES
+--------------------------------*/
+
+/* HERO */
+.hero-small {
+  background: var(--light);
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero-small h1 {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.hero-small p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* CONTAINER NARROW */
+.container-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* PORTFOLIO/CONTACT GRID */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.program {
+  background: var(--white);
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.program p {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.program:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* NOTE BELOW GRID */
+.note {
+  text-align: center;
+  max-width: 700px;
+  margin: 20px auto 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* CONTACT FORM */
+.experience {
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center;    /* center everything horizontally */
+  padding: 40px 20px;
+  background: var(--light);
+}
+
+.experience h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.experience form {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.experience form input,
+.experience form textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  width: 100%;
+}
+
+.experience form input:focus,
+.experience form textarea:focus {
+  border-color: var(--primary);
+}
+
+/* SUBMIT BUTTON */
+.experience form .cta {
+  background: var(--accent);
+  color: #000;
+  padding: 14px 28px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  align-self: flex-start;
+}
+
+.experience form .cta:hover {
+  transform: translateY(-2px);
+}
+
+/* CONTACT INFO + MAP SECTION */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 60px 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.contact-left {
+  background: #2a2a2a;
+  color: #fff;
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.contact-left h2 {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: #fff; /* pure white for the heading */
+  font-weight: 700; /* makes it bold */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-item .icon {
+  background: var(--accent); /* use brand accent color */
+  color: #fff; /* icon stays white */
+  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-item .info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  color: #fff; /* brighter than before */
+  font-weight: 600; /* slightly bold for emphasis */
+}
+
+
+.contact-item .info p {
+  font-size: 1rem;
+  color: #e0e0e0; /* lighter gray for readability */
+  margin: 0;
+  line-height: 1.4;
+}
+
+.contact-right {
+  flex: 1;
+  min-height: 400px;
+  display: flex;
+}
+
+.contact-right iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0 0 12px 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-small h1 { font-size: 2.4rem; }
+  .hero-small p { font-size: 1.1rem; }
+
+  .contact-section {
+    flex-direction: column;
+  }
+
+  .contact-left, .contact-right {
+    flex: unset;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .contact-left h2 {
+    text-align: center;
+  }
+
+  .contact-item {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-item .icon {
+    margin-bottom: 10px;
+  }
+
+  .experience {
+    padding: 20px;
+  }
+
+  .experience form .cta {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+  </style>
 </head>
 
 <body>
@@ -54,6 +317,41 @@
     <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;"></textarea>
     <button type="submit" class="cta">Send Message</button>
   </form>
+</section>
+
+<!-- CONTACT INFO + MAP SECTION -->
+<section class="contact-section">
+  <div class="contact-left">
+    <h2>Get In Touch</h2>
+    
+    <div class="contact-item">
+      <div class="icon">🏢</div>
+      <div class="info">
+        <h3>Meet Us</h3>
+        <p>4/1, Arundelpet, Guntur, Andhra Pradesh 522002</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon">📞</div>
+      <div class="info">
+        <h3>Call Us</h3>
+        <p>+91 98855 14310</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon">✉️</div>
+      <div class="info">
+        <h3>Email Us</h3>
+        <p>brighttalksacademy@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15317.635061175297!2d80.42154632595673!3d16.302045099328403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a7544448020f1%3A0x1a050546bb4470e9!2s1%2C%20Arundelpet%2C%20Guntur%2C%20Andhra%20Pradesh%20522002!5e0!3m2!1sen!2sin!4v1768888244531!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
 </section>
 
 <!-- FOOTER -->
