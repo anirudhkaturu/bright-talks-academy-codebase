@@ -13,15 +13,17 @@
 
   <style>
     :root {
-      --primary: #2a6df4;
+      --primary: #0a2f5c;
+      --accent: #fbbf24;
       --danger: #dc2626;
       --text: #222;
-      --muted: #666;
+      --muted: #6b7280;
       --border: #e5e7eb;
       --bg: #f9fafb;
       --card-bg: #fff;
     }
 
+    /* RESET */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -32,40 +34,64 @@
     body {
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       min-height: 100vh;
-      padding: 40px 24px;
     }
 
+    /* CONTAINER */
     .container {
       max-width: 900px;
-      margin: 0 auto;
-      background: var(--card-bg);
+      margin: 40px auto;
       padding: 32px;
-      border-radius: 12px;
+      background: var(--card-bg);
+      border-radius: 14px;
       border: 1px solid var(--border);
       box-shadow: 0 15px 40px rgba(0,0,0,0.05);
     }
 
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 28px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* HEADINGS */
     h1 {
-      font-size: 2rem;
-      margin-bottom: 16px;
+      font-size: 2.1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
     }
 
     p {
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
+    /* FORM */
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
     label {
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 6px;
+      display: block;
     }
 
     input[type="text"],
@@ -75,82 +101,114 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       font-size: 1rem;
-      resize: vertical;
       outline: none;
-      transition: border 0.2s;
+      transition: border 0.2s, box-shadow 0.2s;
     }
 
-    input[type="text"]:focus,
+    input:focus,
     textarea:focus {
       border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(10, 47, 92, 0.2);
     }
 
+    /* SIMPLEMDE */
+    .CodeMirror,
+    .editor-toolbar {
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+    }
+
+    /* BUTTONS */
     .actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      align-items: center;
+      margin-top: 10px;
     }
 
     .btn {
       padding: 12px 20px;
       border-radius: 8px;
-      border: none;
+      font-size: 0.95rem;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 1rem;
       text-decoration: none;
-      display: inline-block;
-      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
     }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
+      border-color: var(--primary);
     }
 
     .btn-primary:hover {
-      background: #1f53c1;
+      background: #fff;
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e5e7eb;
     }
 
     .btn-danger {
-      background: #fff;
-      color: var(--danger);
-      border: 1px solid var(--danger);
+      background: var(--accent);
+      color: var(--text);
+      border: 2px solid var(--accent);
     }
 
     .btn-danger:hover {
       background: var(--danger);
       color: #fff;
+      border-color: var(--danger);
+      transform: translateY(-1px);
     }
 
-    a.btn-secondary {
-      background: #f3f4f6;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    a.btn-secondary:hover {
-      background: #e5e7eb;
-    }
-
+    /* DELETE SECTION */
     .delete-form {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px dashed var(--border);
     }
 
+    /* RESPONSIVE */
     @media (max-width: 768px) {
+      .container {
+        padding: 24px;
+        margin: 20px;
+      }
+
       .actions {
         flex-direction: column;
-        gap: 12px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Edit Blog</h1>
-    <p>Update the content of your blog or delete it completely.</p>
 
-    <!-- Delete Button -->
+  <div class="container">
+    <a href="/admin" class="back-link">← Back to Dashboard</a>
+
+    <h1>Edit Blog</h1>
+    <p>Update the content of your blog or permanently delete it.</p>
+
+    <!-- DELETE -->
     <form
       method="POST"
       action="/admin/delete/<%= blog._id %>?_method=DELETE"
@@ -160,7 +218,7 @@
       <button type="submit" class="btn btn-danger">🗑 Delete Blog</button>
     </form>
 
-    <!-- Edit Form -->
+    <!-- EDIT -->
     <form method="POST" action="/admin/edit/<%= blog._id %>?_method=PUT">
       <div>
         <label for="title">Blog Title</label>
@@ -195,5 +253,6 @@
       status: ["lines", "words"],
     });
   </script>
+
 </body>
 </html>

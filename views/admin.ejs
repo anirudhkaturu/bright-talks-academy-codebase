@@ -4,125 +4,173 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard | The Bright Talks Academy</title>
+  <link rel="stylesheet" href="/css/style.css">
 
   <style>
     :root {
-      --primary: #2a6df4;
-      --danger: #dc2626;
-      --text: #222;
-      --muted: #666;
-      --border: #e5e7eb;
-      --bg: #f9fafb;
-      --card-bg: #fff;
-    }
+  --primary: #0a2f5c;
+  --accent: #fbbf24;
+  --danger: #dc2626;
+  --text: #222;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f9fafb;
+  --card-bg: #fff;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
+/* ------------------------------
+   RESET & GLOBAL
+--------------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 24px;
-    }
+/* ------------------------------
+   CONTAINER
+--------------------------------*/
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 24px;
+}
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 8px;
-    }
+/* ------------------------------
+   HEADINGS
+--------------------------------*/
+h1 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
 
-    p {
-      margin-bottom: 24px;
-      color: var(--muted);
-    }
+p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
 
-    .btn {
-      padding: 10px 18px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.2s;
-    }
+/* ------------------------------
+   BUTTONS
+--------------------------------*/
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: 2px solid var(--primary);
+}
 
-    .btn-primary:hover {
-      background: #1f53c1;
-    }
+.btn-primary:hover {
+  background: #fff;
+  color: #0a2f5c;
+}
 
-    .btn-danger {
-      background: #fff;
-      color: var(--danger);
-      border: 1px solid var(--danger);
-    }
+.btn-danger {
+  background: var(--accent);
+  color: var(--text);
+  border: 2px solid var(--accent);
+}
 
-    .btn-danger:hover {
-      background: var(--danger);
-      color: #fff;
-    }
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+}
 
-    .table-wrapper {
-      background: var(--card-bg);
-      border-radius: 10px;
-      overflow-x: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
+/* ------------------------------
+   TABLE CARD
+--------------------------------*/
+.table-wrapper {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 16px;
+  margin-top: 24px;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
 
-    th, td {
-      padding: 14px 18px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
 
-    th {
-      background: #f3f4f6;
-      font-weight: 600;
-    }
+th {
+  background: var(--bg);
+  font-weight: 600;
+  color: var(--primary);
+}
 
-    tr:hover {
-      background: #f1f5f9;
-    }
+tr:hover {
+  background: #f3f4f6;
+}
 
-    .actions {
-      display: flex;
-      gap: 8px;
-    }
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+}
 
-    @media (max-width: 768px) {
-      .actions {
-        flex-direction: column;
-        gap: 6px;
-      }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+    gap: 6px;
+  }
 
-      th, td {
-        padding: 10px 12px;
-      }
-    }
+  th, td {
+    padding: 10px 12px;
+  }
+}
+
+/* ------------------------------
+   EMPTY STATE
+--------------------------------*/
+.table-wrapper p {
+  padding: 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ------------------------------
+   ADD BLOG BUTTON
+--------------------------------*/
+a.btn-add {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
   </style>
 </head>
 <body>
+
+  <%- include('partials/header') %>
   <div class="container">
     <h1>Admin Dashboard</h1>
     <p>Manage blogs efficiently: add, edit, or delete posts.</p>
@@ -159,5 +207,6 @@
       <% } %>
     </div>
   </div>
+  <%- include('partials/footer') %>
 </body>
 </html>
