@@ -9,98 +9,114 @@
 
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="logo">
-    <img src="/imgs/bright-talks-logo.png" alt="Bright Talks Academy">
-  </div>
-
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about" class="active">About</a></li>
-      <li><a href="/portfolio">Portfolio</a></li>
-      <li><a href="/blogs">Blogs</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <a href="/login" class="btn-call">Login</a>
-</header>
+<%- include('partials/header') %>
 
 <!-- HERO -->
-<section class="hero hero-small">
-  <div>
-    <h1>About The Bright Talks Academy</h1>
+<section class="about-hero">
+  <div class="hero-content">
+    <h1>We Create Confident Speakers</h1>
     <p>
-      Building confidence, clarity, and leadership through powerful communication.
+      At The Bright Talks Academy, we help individuals transform fear into
+      confidence and ideas into powerful communication.
+    </p>
+    <a href="/contact" class="cta">Book a Free Call</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="about-story">
+  <div class="container-narrow">
+    <h2>Our Story</h2>
+    <p>
+      Communication changes lives — yet most people are never taught how to
+      express themselves confidently. The Bright Talks Academy was created to
+      bridge this gap.
+    </p>
+    <p>
+      We work with students, professionals, and aspiring leaders who want to
+      speak clearly, present confidently, and communicate with impact in
+      real-world situations.
     </p>
   </div>
 </section>
 
-<!-- WHO WE ARE -->
-<section class="about">
-  <h2>Who We Are</h2>
-  <p>
-    The Bright Talks Academy is a professional learning platform dedicated to
-    communication excellence, leadership development, and personal growth.
-    We help students and professionals express their ideas confidently and
-    create a lasting impact.
-  </p>
+<!-- STATS -->
+<section class="about-stats">
+  <div class="stat">
+    <h3>100+</h3>
+    <p>Speakers Trained</p>
+  </div>
+  <div class="stat">
+    <h3>10+</h3>
+    <p>Skill-Based Programs</p>
+  </div>
+  <div class="stat">
+    <h3>1-on-1</h3>
+    <p>Personal Coaching</p>
+  </div>
 </section>
 
-<!-- MISSION & VISION -->
-<section>
-  <div class="programs">
-    <div class="program">
-      <h3>Our Mission</h3>
+<!-- PHILOSOPHY -->
+<section class="about-philosophy">
+  <h2>How We Teach</h2>
+  <div class="philosophy-grid">
+    <div class="card">
+      <h3>Practice First</h3>
       <p>
-        To empower individuals with confidence, clarity, and effective
-        communication skills needed to succeed in academics, careers,
-        and leadership roles.
+        We focus on real speaking practice instead of theory-heavy lessons.
+        Learners improve by doing, not memorizing.
       </p>
     </div>
-
-    <div class="program">
-      <h3>Our Vision</h3>
+    <div class="card">
+      <h3>Personal Feedback</h3>
       <p>
-        To become a trusted academy that transforms individuals into
-        confident communicators and inspiring leaders across the globe.
+        Every student receives structured feedback to improve clarity,
+        confidence, and expression.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Real-World Skills</h3>
+      <p>
+        From interviews to presentations, our training prepares learners
+        for real communication challenges.
       </p>
     </div>
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section class="experience">
-  <h2>Why Choose The Bright Talks Academy?</h2>
+<!-- PROGRAMS -->
+<section class="about-programs">
+  <h2>What We Offer</h2>
+  <div class="program-grid">
+    <div class="program-card">Public Speaking & Stage Presence</div>
+    <div class="program-card">Corporate & Professional Communication</div>
+    <div class="program-card">Confidence & Personality Development</div>
+    <div class="program-card">Leadership & Expressive Communication</div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="about-why">
+  <h2>Why Choose Bright Talks Academy</h2>
   <ul>
-    <li>Expert mentors with real-world communication experience</li>
-    <li>Practical, activity-based learning approach</li>
-    <li>Career-focused public speaking and leadership programs</li>
-    <li>Supportive and motivating learning environment</li>
+    <li>✔ Confidence-focused learning approach</li>
+    <li>✔ Safe, supportive speaking environment</li>
+    <li>✔ Personalized improvement plans</li>
+    <li>✔ Designed for students & professionals</li>
   </ul>
 </section>
 
 <!-- CTA -->
-<section class="testimonials">
-  <h2>Start Your Communication Journey</h2>
+<section class="about-cta">
+  <h2>Ready to Speak with Confidence?</h2>
   <p>
-    Ready to build confidence and speak with impact?
-    Let’s begin your journey today.
+    Join The Bright Talks Academy and take the first step toward confident,
+    impactful communication.
   </p>
-  <a href="/contact" class="cta">Contact Us</a>
+  <a href="/contact" class="cta">Start Your Journey</a>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <img src="/imgs/bright-talks-logo.png" height="50">
-
-  <p>© <%= new Date().getFullYear() %> The Bright Talks Academy</p>
-  <p>
-    <a href="/tandc" style="color:#fff;">Terms & Conditions</a>
-  </p>
-</footer>
+<%- include('partials/footer') %>
 
 </body>
 </html>

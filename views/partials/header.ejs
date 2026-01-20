@@ -1,3 +1,4 @@
+<!-- HEADER -->
 <header class="site-header">
   <div class="logo">
     <img src="/imgs/bright-talks-logo.png" alt="Bright Talks Academy">
@@ -8,10 +9,21 @@
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/blogs">Blogs</a></li>
       <li><a href="/contact">Contact</a></li>
       <li><a href="/tandc">Terms & Conditions</a></li>
     </ul>
   </nav>
 
-  <a href="/book" class="btn-call">Book a Call</a>
+  <!-- AUTH / PROFILE BUTTONS -->
+  <div class="auth-buttons">
+    <% if (user) { %>
+      <a href="/profile" class="btn-profile">
+        My Profile
+      </a>
+    <% } else { %>
+      <a href="/login" class="btn-login">Login</a>
+      <a href="/signup" class="btn-signup">Sign Up</a>
+    <% } %>
+  </div>
 </header>
