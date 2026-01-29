@@ -2,223 +2,708 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Courses | The Bright Talks Academy</title>
+  <title>Our Courses | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------------
-       HERO SECTION
-    --------------------------------*/
-    .hero {
-      background: var(--primary);
-      color: var(--white);
-      padding: 100px 40px;
-      text-align: center;
-      border-radius: 12px;
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --text: #0f172a;
+      --text-light: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --success: #10b981;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair+Display', Georgia, serif;
+    }
+
+    /* ------------------------------ RESET & BASE --------------------------------*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ------------------------------ HERO SECTION --------------------------------*/
+    .courses-hero {
       position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 8rem 2rem 10rem;
       overflow: hidden;
-      margin: 20px auto 40px auto;
-      max-width: 1200px;
+      text-align: center;
     }
 
-    .hero h1 {
-      color: #fbbf24;
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .hero::before,
-    .hero::after {
+    .courses-hero::before {
       content: '';
       position: absolute;
-      border-radius: 50%;
-      background: var(--accent);
-      z-index: 0;
+      top: -50%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .hero::before {
-      width: 200px;
-      height: 200px;
-      top: -50px;
-      left: -50px;
-      opacity: 0.3;
+    .courses-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-6 60c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm29 22c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
     }
 
-    .hero::after {
-      width: 300px;
-      height: 300px;
-      bottom: -100px;
-      right: -100px;
-      opacity: 0.2;
-    }
-
-    .hero h1, .hero p {
+    .courses-hero-content {
       position: relative;
       z-index: 1;
-    }
-
-    /* ------------------------------
-       COURSE GRID
-    --------------------------------*/
-    .portfolio {
-      padding: 60px 40px;
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
-    .portfolio h2 {
-      color: var(--primary);
-      font-size: 2.6rem;
-      margin-bottom: 50px;
-      text-align: center;
-      position: relative;
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
     }
 
-    .portfolio h2::after {
+    .section-label::before {
       content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
+      width: 24px;
+      height: 2px;
       background: var(--accent);
-      margin: 10px auto 0 auto;
-      border-radius: 2px;
     }
 
-    .portfolio-grid {
+    .courses-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .courses-hero h1 span {
+      color: var(--accent);
+    }
+
+    .courses-hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Wave separator */
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--bg);
+      clip-path: polygon(0 100%, 100% 100%, 100% 30%, 0 100%);
+    }
+
+    /* ------------------------------ TRUST BADGES --------------------------------*/
+    .trust-badges {
+      max-width: 1000px;
+      margin: -3rem auto 4rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .badges-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
     }
 
-    .program {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 25px 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .badge-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .badge-content h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .badge-content p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ------------------------------ COURSES SECTION --------------------------------*/
+    .courses-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ------------------------------ COURSES GRID --------------------------------*/
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .course-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .course-image {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .program::before {
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .course-card:hover .course-image img {
+      transform: scale(1.05);
+    }
+
+    .course-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      padding: 0.375rem 0.875rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-price {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-content {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .course-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .course-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .course-duration {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .enroll-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .enroll-btn:hover {
+      gap: 0.75rem;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    /* ------------------------------ EMPTY STATE --------------------------------*/
+    .empty-state {
+      text-align: center;
+      padding: 6rem 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .empty-icon {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 3rem;
+      box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .empty-state h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .empty-state p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ------------------------------ CTA SECTION --------------------------------*/
+    .courses-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 5rem 2rem;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .courses-cta::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 6px;
-      width: 50px;
-      background: var(--accent);
-      border-radius: 3px;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
     }
 
-    .program:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .program h3 {
+    .cta-content h2 {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-content p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-gradient);
       color: var(--primary);
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-    }
-
-    .program p {
-      color: var(--dark);
-      font-size: 1rem;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .program .cta {
-      text-decoration: none;
-      background: var(--accent);
-      color: var(--dark);
-      padding: 10px 22px;
-      border-radius: 8px;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-md);
       font-weight: 600;
-      text-align: center;
-      transition: background 0.3s ease, color 0.3s ease;
-      align-self: flex-start;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.3);
     }
 
-    .program .cta:hover {
-      background: var(--primary);
-      color: var(--white);
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.4);
     }
 
-    .empty {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-top: 40px;
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 1024px) {
+      .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+
+      .badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    /* ------------------------------
-       RESPONSIVE
-    --------------------------------*/
-    @media (max-width: 900px) {
-      .hero { padding: 80px 30px; }
-      .portfolio { padding: 50px 20px; }
+    @media (max-width: 768px) {
+      .courses-hero {
+        padding: 6rem 1.5rem 8rem;
+      }
+
+      .courses-section {
+        padding: 1rem 1rem 4rem;
+      }
+
+      .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .badges-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+
+      .badge-item {
+        padding: 0.5rem;
+      }
     }
 
-    @media (max-width: 600px) {
-      .hero { padding: 60px 15px; }
-      .portfolio-grid { gap: 20px; }
-      .program { padding: 20px 15px; }
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .course-card {
+      opacity: 0;
+      animation: slideUp 0.6s ease forwards;
+    }
+
+    <% if (courses && courses.length > 0) { %>
+    <% courses.forEach((course, index) => { %>
+    .course-card:nth-child(<%= index + 1 %>) {
+      animation-delay: <%= index * 100 %>ms;
+    }
+    <% }) %>
+    <% } %>
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <%- include('partials/header') %>
 
 <!-- HERO -->
-<section class="hero">
-  <div>
-    <h1>Our Courses</h1>
-    <p>Explore our programs designed to build skills, confidence, and real-world knowledge.</p>
+<section class="courses-hero">
+  <div class="courses-hero-content">
+    <div class="section-label">Our Programs</div>
+    <h1>Transform Your Skills with <span>Expert Training</span></h1>
+    <p>Discover our comprehensive courses designed to build confidence, enhance communication, and unlock your full potential.</p>
   </div>
+  <div class="hero-wave"></div>
 </section>
 
-<!-- COURSE CARDS -->
-<section class="portfolio">
-  <h2>All Courses</h2>
+<!-- TRUST BADGES -->
+<div class="trust-badges reveal">
+  <div class="badges-grid">
+    <div class="badge-item">
+      <div class="badge-icon">🎓</div>
+      <div class="badge-content">
+        <h4>10+</h4>
+        <p>Expert Courses</p>
+      </div>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">👨‍🏫</div>
+      <div class="badge-content">
+        <h4>1:1</h4>
+        <p>Mentorship</p>
+      </div>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">⭐</div>
+      <div class="badge-content">
+        <h4>98%</h4>
+        <p>Success Rate</p>
+      </div>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">🏆</div>
+      <div class="badge-content">
+        <h4>100+</h4>
+        <p>Students Trained</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES SECTION -->
+<section class="courses-section">
+  <div class="section-header reveal">
+    <h2>Featured Courses</h2>
+    <p>Choose from our range of professional training programs tailored to your needs.</p>
+  </div>
 
   <% if (courses && courses.length > 0) { %>
-    <div class="portfolio-grid">
+    <div class="courses-grid">
       <% courses.forEach(course => { %>
-        <div class="program">
-          <h3><%= course.title %></h3>
+        <article class="course-card">
+          <div class="course-image">
+            <% if (course.image) { %>
+              <img src="<%= course.image %>" alt="<%= course.title %>">
+            <% } else { %>
+              <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+                <span style="font-size: 3rem;">🎓</span>
+              </div>
+            <% } %>
+            <span class="course-badge">Featured</span>
+            <% if (course.price) { %>
+              <div class="course-price">₹<%= course.price %></div>
+            <% } %>
+          </div>
 
-          <% if(course.description) { %>
-            <p><%= course.description.substring(0, 120) %>...</p>
-          <% } %>
+          <div class="course-content">
+            <div class="course-meta">
+              <span class="meta-item">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="color: var(--accent);">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                <%= course.duration || '4 Weeks' %>
+              </span>
+              <% if (course.level) { %>
+                <span class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="color: var(--accent);">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <%= course.level %>
+                </span>
+              <% } %>
+            </div>
 
-          <a href="/courses/<%= course._id %>" class="cta">View Course</a>
-        </div>
+            <h3><%= course.title %></h3>
+
+            <% if (course.description) { %>
+              <p><%= course.description.substring(0, 120) %><%= course.description.length > 120 ? '...' : '' %></p>
+            <% } else { %>
+              <p>Master essential skills with our comprehensive training program designed for real-world success.</p>
+            <% } %>
+
+            <div class="course-footer">
+              <span class="course-duration">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>
+                Next batch soon
+              </span>
+
+              <a href="/courses/<%= course._id %>" class="enroll-btn">
+                View Details
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
       <% }) %>
     </div>
   <% } else { %>
-    <p class="empty">No courses available yet.</p>
+    <div class="empty-state reveal">
+      <div class="empty-icon">🎓</div>
+      <h3>No Courses Available</h3>
+      <p>New courses are being added. Check back soon for exciting programs!</p>
+      <a href="/contact" class="enroll-btn" style="margin-top: 1rem;">
+        Enquire Now
+      </a>
+    </div>
   <% } %>
 </section>
 
-<!-- FOOTER -->
+<!-- CTA SECTION -->
+<section class="courses-cta reveal">
+  <div class="cta-content">
+    <h2>Not Sure Which Course is Right for You?</h2>
+    <p>Schedule a free consultation with our experts to discuss your goals and find the perfect program.</p>
+    <a href="/contact" class="cta-btn">
+      Book Free Consultation
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+</section>
+
 <%- include('partials/footer') %>
+
+<script>
+  // Scroll reveal animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

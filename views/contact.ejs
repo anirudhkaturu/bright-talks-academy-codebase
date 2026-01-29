@@ -2,358 +2,697 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact | The Bright Talks Academy</title>
+  <title>Contact Us | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------------
-   CONTACT PAGE STYLES
---------------------------------*/
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --text: #0f172a;
+      --text-light: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --success: #10b981;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-/* HERO */
-.hero-small {
-  background: var(--light);
-  text-align: center;
-  padding: 80px 20px;
-}
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
 
-.hero-small h1 {
-  font-size: 3rem;
-  color: var(--primary);
-  margin-bottom: 12px;
-}
+    /* ------------------------------ RESET & BASE --------------------------------*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.hero-small p {
-  font-size: 1.2rem;
-  color: var(--muted);
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* CONTAINER NARROW */
-.container-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-/* PORTFOLIO/CONTACT GRID */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
-}
+    /* ------------------------------ HERO SECTION --------------------------------*/
+    .contact-hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 8rem 2rem 12rem;
+      overflow: hidden;
+      text-align: center;
+    }
 
-.program {
-  background: var(--white);
-  padding: 25px 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-.program h3 {
-  font-size: 1.4rem;
-  color: var(--primary);
-  margin-bottom: 10px;
-}
+    .contact-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-.program p {
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
+    .contact-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-.program:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
 
-/* NOTE BELOW GRID */
-.note {
-  text-align: center;
-  max-width: 700px;
-  margin: 20px auto 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
 
-/* CONTACT FORM */
-.experience {
-  display: flex;
-  flex-direction: column; /* stack children vertically */
-  align-items: center;    /* center everything horizontally */
-  padding: 40px 20px;
-  background: var(--light);
-}
+    .contact-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
 
-.experience h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: var(--primary);
-  font-size: 2rem;
-}
+    .contact-hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-.experience form {
-  background: var(--white);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  max-width: 600px;
-}
+    /* Wave separator */
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--bg);
+      clip-path: polygon(0 100%, 100% 100%, 100% 30%, 0 100%);
+    }
 
-.experience form input,
-.experience form textarea {
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border 0.2s;
-  width: 100%;
-}
+    /* ------------------------------ CONTACT METHODS --------------------------------*/
+    .contact-methods {
+      max-width: 1200px;
+      margin: -6rem auto 0;
+      padding: 0 1.5rem 4rem;
+      position: relative;
+      z-index: 10;
+    }
 
-.experience form input:focus,
-.experience form textarea:focus {
-  border-color: var(--primary);
-}
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
 
-/* SUBMIT BUTTON */
-.experience form .cta {
-  background: var(--accent);
-  color: #000;
-  padding: 14px 28px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-  align-self: flex-start;
-}
+    .method-card {
+      background: var(--card-bg);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
 
-.experience form .cta:hover {
-  transform: translateY(-2px);
-}
+    .method-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
 
-/* CONTACT INFO + MAP SECTION */
-.contact-section {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 60px 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-}
+    .method-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
 
-.contact-left {
-  background: #2a2a2a;
-  color: #fff;
-  flex: 1;
-  padding: 60px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-}
+    .method-card:hover::before {
+      transform: scaleX(1);
+    }
 
-.contact-left h2 {
-  font-size: 2.8rem;
-  margin-bottom: 30px;
-  color: #fff; /* pure white for the heading */
-  font-weight: 700; /* makes it bold */
-}
+    .method-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.75rem;
+      transition: all 0.3s ease;
+    }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+    .method-card:hover .method-icon {
+      background: var(--accent-gradient);
+      transform: scale(1.1) rotate(-5deg);
+    }
 
-.contact-item .icon {
-  background: var(--accent); /* use brand accent color */
-  color: #fff; /* icon stays white */
-  font-size: 1.8rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+    .method-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
 
-.contact-item .info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 6px;
-  color: #fff; /* brighter than before */
-  font-weight: 600; /* slightly bold for emphasis */
-}
+    .method-card p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
 
+    .method-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
 
-.contact-item .info p {
-  font-size: 1rem;
-  color: #e0e0e0; /* lighter gray for readability */
-  margin: 0;
-  line-height: 1.4;
-}
+    .method-link:hover {
+      gap: 0.75rem;
+      color: var(--primary);
+    }
 
-.contact-right {
-  flex: 1;
-  min-height: 400px;
-  display: flex;
-}
+    /* ------------------------------ CONTACT FORM SECTION --------------------------------*/
+    .contact-form-section {
+      padding: 4rem 1.5rem 6rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-.contact-right iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: 0 0 12px 12px;
-}
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero-small h1 { font-size: 2.4rem; }
-  .hero-small p { font-size: 1.1rem; }
+    .form-info h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
 
-  .contact-section {
-    flex-direction: column;
-  }
+    .form-info p {
+      color: var(--muted);
+      font-size: 1.125rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
 
-  .contact-left, .contact-right {
-    flex: unset;
-    width: 100%;
-    padding: 40px 20px;
-  }
+    .form-features {
+      list-style: none;
+      space-y: 1rem;
+    }
 
-  .contact-left h2 {
-    text-align: center;
-  }
+    .form-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
 
-  .contact-item {
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    gap: 10px;
-  }
+    .form-features svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
-  .contact-item .icon {
-    margin-bottom: 10px;
-  }
+    .form-container {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
 
-  .experience {
-    padding: 20px;
-  }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
 
-  .experience form .cta {
-    width: 100%;
-    text-align: center;
-  }
-}
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
 
-@media (max-width: 600px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
 
+    input, textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    input:hover, textarea:hover {
+      border-color: #cbd5e1;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ------------------------------ MAP & INFO SECTION --------------------------------*/
+    .map-section {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      min-height: 500px;
+      background: var(--primary);
+    }
+
+    .info-panel {
+      padding: 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .info-panel h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .info-panel > p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 158, 11, 0.2);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .info-content h3 {
+      color: white;
+      font-size: 1.125rem;
+      margin-bottom: 0.375rem;
+      font-weight: 600;
+    }
+
+    .info-content p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .map-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(20%) contrast(1.1);
+    }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 1024px) {
+      .form-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .map-section {
+        grid-template-columns: 1fr;
+      }
+
+      .info-panel {
+        padding: 3rem 2rem;
+      }
+
+      .map-container {
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero {
+        padding: 6rem 1.5rem 8rem;
+      }
+
+      .contact-methods {
+        margin-top: -4rem;
+        padding: 0 1rem 3rem;
+      }
+
+      .method-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .form-container {
+        padding: 1.75rem;
+      }
+
+      .info-panel h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .method-card, .form-container {
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .method-card:nth-child(2) { animation-delay: 0.1s; }
+    .method-card:nth-child(3) { animation-delay: 0.2s; }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      background: #d1fae5;
+      border: 1px solid var(--success);
+      color: #065f46;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideUp 0.3s ease;
+    }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <%- include('partials/header') %>
 
 <!-- HERO -->
-<section class="hero hero-small">
-  <div>
-    <h1>Contact Us</h1>
-    <p>We’d love to hear from you. Reach out for any queries, enrollment, or guidance.</p>
+<section class="contact-hero">
+  <div class="contact-hero-content">
+    <div class="section-label">Contact Us</div>
+    <h1>Let's Start a Conversation</h1>
+    <p>Ready to transform your communication skills? Get in touch with us for course inquiries, corporate training, or any questions.</p>
   </div>
+  <div class="hero-wave"></div>
 </section>
 
 <!-- CONTACT METHODS -->
-<section class="portfolio">
-  <h2>Get in Touch</h2>
-  <p>Have questions or want to enroll? Reach out to us through any of the following methods:</p>
-
-  <div class="portfolio-grid">
-    <div class="program">
-      <h3>Email</h3>
-      <p>contact@brighttalksacademy.com</p>
+<section class="contact-methods">
+  <div class="methods-grid">
+    <div class="method-card">
+      <div class="method-icon">✉️</div>
+      <h3>Email Us</h3>
+      <p>Send us an email and we'll respond within 24 hours.</p>
+      <a href="mailto:brighttalksacademy@gmail.com" class="method-link">
+        brighttalksacademy@gmail.com
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
     </div>
 
-    <div class="program">
-      <h3>Phone</h3>
-      <p>+91 98765 43210</p>
+    <div class="method-card">
+      <div class="method-icon">📞</div>
+      <h3>Call Us</h3>
+      <p>Mon-Sat from 9am to 6pm IST.</p>
+      <a href="tel:+919885514310" class="method-link">
+        +91 98855 14310
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
     </div>
 
-    <div class="program">
-      <h3>Location</h3>
-      <p>India</p>
+    <div class="method-card">
+      <div class="method-icon">📍</div>
+      <h3>Visit Us</h3>
+      <p>Come say hello at our academy.</p>
+      <span class="method-link" style="cursor: default;">
+        Guntur, Andhra Pradesh
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-form-section">
+  <div class="form-layout">
+    <div class="form-info">
+      <h2>Send us a Message</h2>
+      <p>Have a question or want to enroll? Fill out the form below and our team will get back to you as soon as possible.</p>
+
+      <ul class="form-features">
+        <li>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Free consultation for new students
+        </li>
+        <li>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Corporate training inquiries welcome
+        </li>
+        <li>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Response within 24 hours guaranteed
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-container">
+      <div class="success-message" id="successMsg">
+        ✅ Thank you! Your message has been sent successfully.
+      </div>
+
+      <form action="/contact/submit" method="POST" id="contactForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number (Optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your goals or ask us anything..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          </svg>
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MAP & LOCATION -->
+<section class="map-section">
+  <div class="info-panel">
+    <div>
+      <h2>Visit Our Academy</h2>
+      <p>Located in the heart of Guntur, our academy is easily accessible and provides a welcoming environment for learning and growth.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon">🏢</div>
+      <div class="info-content">
+        <h3>Address</h3>
+        <p>4/1, Arundelpet, Above Viceroy Biryani Point, Guntur, Andhra Pradesh 522002</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon">🕒</div>
+      <div class="info-content">
+        <h3>Working Hours</h3>
+        <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon">🚇</div>
+      <div class="info-content">
+        <h3>Nearest Landmark</h3>
+        <p>Above Viceroy Biryani Point, Arundelpet</p>
+      </div>
     </div>
   </div>
 
-  <p class="note">We usually respond within 24 hours.</p>
-</section>
-
-<!-- CONTACT FORM (Optional) -->
-<section class="experience">
-  <h2>Send Us a Message</h2>
-  <form action="/contact/submit" method="POST" style="max-width:600px;">
-    <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;">
-    <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;">
-    <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:1px solid #d1d5db;"></textarea>
-    <button type="submit" class="cta">Send Message</button>
-  </form>
-</section>
-
-<!-- CONTACT INFO + MAP SECTION -->
-<section class="contact-section">
-  <div class="contact-left">
-    <h2>Get In Touch</h2>
-    
-    <div class="contact-item">
-      <div class="icon">🏢</div>
-      <div class="info">
-        <h3>Meet Us</h3>
-        <p>4/1, Arundelpet, Guntur, Andhra Pradesh 522002</p>
-      </div>
-    </div>
-
-    <div class="contact-item">
-      <div class="icon">📞</div>
-      <div class="info">
-        <h3>Call Us</h3>
-        <p>+91 98855 14310</p>
-      </div>
-    </div>
-
-    <div class="contact-item">
-      <div class="icon">✉️</div>
-      <div class="info">
-        <h3>Email Us</h3>
-        <p>brighttalksacademy@gmail.com</p>
-      </div>
-    </div>
+  <div class="map-container">
+    <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15317.624404248265!2d80.42130402595704!3d16.302181399322457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a754442c37afd%3A0x7a236b555b64b521!2s4%2F1%2C%20above%20Viceroy%20Biryani%20Point%2C%20Arundelpet%2C%20Guntur%2C%20Andhra%20Pradesh%20522002!5e0!3m2!1sen!2sin!4v1768889474853!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
-
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15317.624404248265!2d80.42130402595704!3d16.302181399322457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a754442c37afd%3A0x7a236b555b64b521!2s4%2F1%2C%20above%20Viceroy%20Biryani%20Point%2C%20Arundelpet%2C%20Guntur%2C%20Andhra%20Pradesh%20522002!5e0!3m2!1sen!2sin!4v1768889474853!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
-<!-- FOOTER -->
 <%- include('partials/footer') %>
+
+<script>
+  // Form submission handling
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // You can add AJAX submission here
+    // For now, we'll show the success message
+    setTimeout(() => {
+      document.getElementById('successMsg').classList.add('show');
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('successMsg').classList.remove('show');
+      }, 5000);
+    }, 500);
+  });
+</script>
 
 </body>
 </html>
