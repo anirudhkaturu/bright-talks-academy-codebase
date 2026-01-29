@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Blog | Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    :root {
+      --primary: #0a2f5c;
+      --accent: #fbbf24;
+      --danger: #dc2626;
+      --text: #222;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f9fafb;
+      --card-bg: #fff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .form-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: 2px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      color: var(--primary);
+    }
+
+    .btn-danger {
+      background: var(--accent);
+      color: var(--text);
+      border: 2px solid var(--accent);
+      margin-left: 8px;
+    }
+
+    .btn-danger:hover {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+  </style>
+</head>
+
+<body>
+
+<%- include('partials/header') %>
+
+<div class="container">
+  <h1>➕ Add New Blog</h1>
+  <p>Create a new blog post below.</p>
+
+  <div class="form-card">
+    <form action="/courses/add" method="POST">
+      
+      <label>Title</label>
+      <input type="text" name="title" required />
+
+      <label>Description</label>
+      <textarea name="description" rows="5" required></textarea>
+
+      <label>Price (₹)</label>
+      <input type="number" name="price" step="0.01" required />
+
+      <button type="submit" class="btn btn-primary">💾 Save Blog</button>
+      <a href="/admin" class="btn btn-danger">Cancel</a>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
