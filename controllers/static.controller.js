@@ -1,4 +1,5 @@
 import Blog from "../models/Blog.js";
+import Course from "../models/Course.js";
 import { marked } from "marked";
 
 function getHome(req, res) {
@@ -49,6 +50,11 @@ function getProfile(req, res) {
     return res.render("profile", { user: req.user}); // pass the user to the render 
 }
 
+async function getCourses(req, res) {
+    const courses = await Course.find();
+    return res.render("courses", {courses: courses});
+}
+
 export {
     getHome,
     getAbout,
@@ -59,5 +65,6 @@ export {
     getSignup,
     getBlogs,
     getBlogById,
-    getProfile
+    getProfile,
+    getCourses
 }

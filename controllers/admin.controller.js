@@ -1,9 +1,11 @@
 import Blog from "../models/Blog.js";
+import Course from "../models/Course.js"
 
 // GET admin page
 async function getAdminPage(req, res) {
   const blogs = await Blog.find();
-  return res.render("admin", {blogs: blogs});
+  const courses = await Course.find();
+  return res.render("admin", {blogs: blogs, courses: courses});
 }
 
 // GET method to admin page to add new blog
@@ -50,11 +52,28 @@ async function deleteBlog(req, res) {
   return res.redirect("/admin");
 }
 
+async function getAddCourse(req, res) {
+  const courses = await Course.find();
+  return res.render("addCourse");
+}
+
+async function postAddCourse(req, res) {
+  const { title, description, price } = req.body;
+  if (!title || !description || !price) {
+    return res.stauts(401).json({message: "invalid input"});
+  }
+
+  const newCourse = await Course.create({title, description, price});
+  return res.redirect("/admin");
+}
+
 export {
   getAdminPage, 
   getAddBlog,
   getEditBlog,
   postAddBlog,
   putEditBlog,
-  deleteBlog
+  deleteBlog,
+  getAddCourse,
+  postAddCourse
 }

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Courses | The Bright Talks Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* ------------------------------
+       HERO SECTION
+    --------------------------------*/
+    .hero {
+      background: var(--primary);
+      color: var(--white);
+      padding: 100px 40px;
+      text-align: center;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto 40px auto;
+      max-width: 1200px;
+    }
+
+    .hero h1 {
+      color: #fbbf24;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 200px;
+      height: 200px;
+      top: -50px;
+      left: -50px;
+      opacity: 0.3;
+    }
+
+    .hero::after {
+      width: 300px;
+      height: 300px;
+      bottom: -100px;
+      right: -100px;
+      opacity: 0.2;
+    }
+
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ------------------------------
+       COURSE GRID
+    --------------------------------*/
+    .portfolio {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio h2 {
+      color: var(--primary);
+      font-size: 2.6rem;
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .portfolio h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 10px auto 0 auto;
+      border-radius: 2px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .program {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .program::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 6px;
+      width: 50px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .program:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .program h3 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .program p {
+      color: var(--dark);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .program .cta {
+      text-decoration: none;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.3s ease, color 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .program .cta:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .empty {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-top: 40px;
+    }
+
+    /* ------------------------------
+       RESPONSIVE
+    --------------------------------*/
+    @media (max-width: 900px) {
+      .hero { padding: 80px 30px; }
+      .portfolio { padding: 50px 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 15px; }
+      .portfolio-grid { gap: 20px; }
+      .program { padding: 20px 15px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<%- include('partials/header') %>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Our Courses</h1>
+    <p>Explore our programs designed to build skills, confidence, and real-world knowledge.</p>
+  </div>
+</section>
+
+<!-- COURSE CARDS -->
+<section class="portfolio">
+  <h2>All Courses</h2>
+
+  <% if (courses && courses.length > 0) { %>
+    <div class="portfolio-grid">
+      <% courses.forEach(course => { %>
+        <div class="program">
+          <h3><%= course.title %></h3>
+
+          <% if(course.description) { %>
+            <p><%= course.description.substring(0, 120) %>...</p>
+          <% } %>
+
+          <a href="/courses/<%= course._id %>" class="cta">View Course</a>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="empty">No courses available yet.</p>
+  <% } %>
+</section>
+
+<!-- FOOTER -->
+<%- include('partials/footer') %>
+
+</body>
+</html>
