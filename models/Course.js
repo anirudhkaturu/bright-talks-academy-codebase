@@ -17,7 +17,6 @@ const courseSchema = new mongoose.Schema({
   },
   enrollCount: {
     type: Number,
-    required: true,
     min: 0
   }
 }, { timestamps: true });

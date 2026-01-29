@@ -8,176 +8,150 @@
 
   <style>
     :root {
-  --primary: #0a2f5c;
-  --accent: #fbbf24;
-  --danger: #dc2626;
-  --text: #222;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --bg: #f9fafb;
-  --card-bg: #fff;
-}
+      --primary: #0a2f5c;
+      --accent: #fbbf24;
+      --danger: #dc2626;
+      --text: #222;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f9fafb;
+      --card-bg: #fff;
+    }
 
-/* ------------------------------
-   RESET & GLOBAL
---------------------------------*/
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  min-height: 100vh;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-/* ------------------------------
-   CONTAINER
---------------------------------*/
-.container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 24px;
-}
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 24px;
+    }
 
-/* ------------------------------
-   HEADINGS
---------------------------------*/
-h1 {
-  font-size: 2.2rem;
-  color: var(--primary);
-  margin-bottom: 8px;
-}
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
 
-p {
-  color: var(--muted);
-  margin-bottom: 24px;
-}
+    p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
 
-/* ------------------------------
-   BUTTONS
---------------------------------*/
-.btn {
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
 
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  border: 2px solid var(--primary);
-}
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: 2px solid var(--primary);
+    }
 
-.btn-primary:hover {
-  background: #fff;
-  color: #0a2f5c;
-}
+    .btn-primary:hover {
+      background: #fff;
+      color: #0a2f5c;
+    }
 
-.btn-danger {
-  background: var(--accent);
-  color: var(--text);
-  border: 2px solid var(--accent);
-}
+    .btn-danger {
+      background: var(--accent);
+      color: var(--text);
+      border: 2px solid var(--accent);
+    }
 
-.btn-danger:hover {
-  background: var(--danger);
-  color: #fff;
-  border-color: var(--danger);
-}
+    .btn-danger:hover {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
 
-/* ------------------------------
-   TABLE CARD
---------------------------------*/
-.table-wrapper {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow-x: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  padding: 16px;
-  margin-top: 24px;
-}
+    .table-wrapper {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow-x: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      padding: 16px;
+      margin-top: 24px;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 600px;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
 
-th, td {
-  padding: 14px 18px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
 
-th {
-  background: var(--bg);
-  font-weight: 600;
-  color: var(--primary);
-}
+    th {
+      background: var(--bg);
+      font-weight: 600;
+      color: var(--primary);
+    }
 
-tr:hover {
-  background: #f3f4f6;
-}
+    tr:hover {
+      background: #f3f4f6;
+    }
 
-/* Actions */
-.actions {
-  display: flex;
-  gap: 8px;
-}
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .actions {
-    flex-direction: column;
-    gap: 6px;
-  }
+    @media (max-width: 768px) {
+      .actions {
+        flex-direction: column;
+        gap: 6px;
+      }
 
-  th, td {
-    padding: 10px 12px;
-  }
-}
+      th, td {
+        padding: 10px 12px;
+      }
+    }
 
-/* ------------------------------
-   EMPTY STATE
---------------------------------*/
-.table-wrapper p {
-  padding: 24px;
-  color: var(--muted);
-  text-align: center;
-}
-
-/* ------------------------------
-   ADD BLOG BUTTON
---------------------------------*/
-a.btn-add {
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
+    .table-wrapper p {
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+    }
   </style>
 </head>
+
 <body>
 
   <%- include('partials/header') %>
+
   <div class="container">
     <h1>Admin Dashboard</h1>
     <p>Manage blogs efficiently: add, edit, or delete posts.</p>
 
+    <!-- BLOGS SECTION -->
     <a href="/admin/add" class="btn btn-primary">➕ Add New Blog</a>
 
-    <div class="table-wrapper" style="margin-top: 24px;">
+    <div class="table-wrapper">
       <% if (blogs && blogs.length > 0) { %>
         <table>
           <thead>
@@ -203,10 +177,48 @@ a.btn-add {
           </tbody>
         </table>
       <% } else { %>
-        <p style="padding: 24px; color: var(--muted);">No blogs found.</p>
+        <p>No blogs found.</p>
       <% } %>
     </div>
+
+    <!-- COURSES SECTION -->
+    <h1 style="margin-top:60px;">Courses Management</h1>
+    <p>Add, manage, and remove academy courses.</p>
+
+    <a href="/admin/courses/add" class="btn btn-primary">➕ Add New Course</a>
+
+    <div class="table-wrapper">
+      <% if (courses && courses.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Course Title</th>
+              <th>Created At</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% courses.forEach(course => { %>
+              <tr>
+                <td><%= course.title %></td>
+                <td><%= course.createdAt.toDateString() %></td>
+                <td class="actions">
+                  <form method="POST" action="/admin/courses/delete/<%= course._id %>?_method=DELETE" onsubmit="return confirm('Delete this course?');" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">🗑 Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No courses found.</p>
+      <% } %>
+    </div>
+
   </div>
+
   <%- include('partials/footer') %>
+
 </body>
 </html>
