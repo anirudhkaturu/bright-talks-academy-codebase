@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>About | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -61,48 +60,43 @@
       color: white;
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* ------------------------------ UTILITIES --------------------------------*/
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
     .section-header {
-      max-width: 640px;
-      margin-bottom: 4rem;
+      max-width: 700px;
+      margin: 0 auto 3.5rem;
       text-align: center;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-block;
       font-size: 0.875rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: var(--accent);
+      margin-bottom: 0.75rem;
     }
 
     h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(2rem, 4vw, 2.75rem);
       font-weight: 700;
       color: var(--primary);
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .subtitle {
@@ -114,7 +108,7 @@
     /* ------------------------------ HERO SECTION --------------------------------*/
     .about-hero {
       position: relative;
-      padding: 10rem 0 6rem;
+      padding: 8rem 0 6rem;
       background: linear-gradient(135deg, var(--cream) 0%, #fffbeb 50%, var(--cream) 100%);
       overflow: hidden;
       text-align: center;
@@ -123,11 +117,11 @@
     .about-hero::before {
       content: '';
       position: absolute;
-      top: -50%;
+      top: -30%;
       left: 50%;
       transform: translateX(-50%);
-      width: 1000px;
-      height: 1000px;
+      width: 800px;
+      height: 800px;
       background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
       pointer-events: none;
     }
@@ -137,13 +131,17 @@
       z-index: 1;
     }
 
+    .about-hero .section-label {
+      margin-bottom: 1.25rem;
+    }
+
     .about-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
       color: var(--primary);
       line-height: 1.1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       letter-spacing: -0.02em;
     }
 
@@ -156,10 +154,10 @@
     .about-hero h1 span::after {
       content: '';
       position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      height: 12px;
+      bottom: 2px;
+      left: -2px;
+      right: -2px;
+      height: 8px;
       background: rgba(245, 158, 11, 0.15);
       z-index: -1;
       border-radius: 4px;
@@ -168,15 +166,15 @@
     .about-hero p {
       font-size: 1.25rem;
       color: var(--muted);
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
       line-height: 1.7;
     }
 
     .cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       background: var(--accent-gradient);
       color: var(--primary);
       padding: 1rem 2rem;
@@ -185,21 +183,19 @@
       font-size: 1rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-      border: 2px solid transparent;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
     }
 
     .cta:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-colored);
-      gap: 1rem;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+      gap: 0.75rem;
     }
 
     /* ------------------------------ STORY SECTION --------------------------------*/
     .about-story {
-      padding: 8rem 0;
+      padding: 6rem 0;
       background: var(--white);
-      position: relative;
     }
 
     .story-content {
@@ -209,37 +205,37 @@
     }
 
     .story-content h2 {
-      margin-bottom: 2rem;
-    }
-
-    .story-content p {
-      font-size: 1.125rem;
-      color: var(--muted);
-      line-height: 1.9;
       margin-bottom: 1.5rem;
     }
 
+    .story-text {
+      font-size: 1.125rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
     .story-highlight {
-      background: linear-gradient(to right, rgba(245, 158, 11, 0.1), transparent);
-      border-left: 4px solid var(--accent);
-      padding: 1.5rem 2rem;
-      margin: 3rem 0;
-      text-align: left;
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.15);
+      padding: 2rem;
+      margin: 2.5rem 0 0;
+      text-align: center;
+      border-radius: var(--radius-lg);
     }
 
     .story-highlight p {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       color: var(--primary);
       font-style: italic;
       margin: 0;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     /* ------------------------------ STATS SECTION --------------------------------*/
     .about-stats {
-      padding: 4rem 0;
+      padding: 5rem 0;
       background: var(--primary);
       position: relative;
       overflow: hidden;
@@ -258,31 +254,19 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem;
+      gap: 2rem;
       position: relative;
       z-index: 1;
     }
 
     .stat {
       text-align: center;
-      padding: 2rem;
-      position: relative;
-    }
-
-    .stat:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: -1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
     }
 
     .stat-number {
       font-family: var(--font-display);
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--accent);
       line-height: 1;
@@ -291,29 +275,27 @@
     }
 
     .stat-label {
-      font-size: 1rem;
+      font-size: 0.9375rem;
       color: rgba(255, 255, 255, 0.8);
       font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
     /* ------------------------------ PHILOSOPHY SECTION --------------------------------*/
     .about-philosophy {
-      padding: 8rem 0;
+      padding: 6rem 0;
       background: var(--cream);
     }
 
     .philosophy-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
+      gap: 1.5rem;
     }
 
     .philosophy-card {
       background: var(--white);
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
       border-radius: var(--radius-xl);
       border: 1px solid var(--border);
       text-align: center;
@@ -328,7 +310,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 3px;
       background: var(--accent-gradient);
       transform: scaleX(0);
       transform-origin: center;
@@ -336,7 +318,7 @@
     }
 
     .philosophy-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-lg);
       border-color: transparent;
     }
@@ -346,28 +328,28 @@
     }
 
     .philosophy-icon {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       background: rgba(245, 158, 11, 0.1);
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-size: 2rem;
+      margin: 0 auto 1.25rem;
+      font-size: 1.75rem;
       transition: all 0.3s ease;
     }
 
     .philosophy-card:hover .philosophy-icon {
       background: var(--accent-gradient);
-      transform: scale(1.1) rotate(-5deg);
+      transform: scale(1.1);
     }
 
     .philosophy-card h3 {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .philosophy-card p {
@@ -379,21 +361,20 @@
 
     /* ------------------------------ PROGRAMS SECTION --------------------------------*/
     .about-programs {
-      padding: 8rem 0;
+      padding: 6rem 0;
       background: var(--white);
     }
 
     .programs-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
     }
 
     .program-card {
       background: var(--white);
       border: 2px solid var(--border);
-      padding: 2rem;
+      padding: 1.75rem;
       border-radius: var(--radius-lg);
       font-weight: 600;
       text-align: center;
@@ -406,8 +387,8 @@
     .program-card::after {
       content: '→';
       position: absolute;
-      bottom: 1.5rem;
-      right: 1.5rem;
+      bottom: 1.25rem;
+      right: 1.25rem;
       opacity: 0;
       transform: translateX(-10px);
       transition: all 0.3s ease;
@@ -417,7 +398,7 @@
 
     .program-card:hover {
       border-color: var(--accent);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
     }
 
@@ -427,35 +408,35 @@
     }
 
     .program-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
       display: block;
     }
 
     .program-card h4 {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: var(--primary);
       margin: 0;
+      line-height: 1.4;
     }
 
     /* ------------------------------ WHY US SECTION --------------------------------*/
     .about-why {
-      padding: 8rem 0;
+      padding: 6rem 0;
       background: linear-gradient(to bottom, var(--cream), var(--white));
     }
 
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
+      gap: 1.25rem;
     }
 
     .why-item {
       display: flex;
-      gap: 1.5rem;
-      padding: 2rem;
+      gap: 1.25rem;
+      padding: 1.75rem;
       background: var(--white);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
@@ -464,29 +445,29 @@
 
     .why-item:hover {
       box-shadow: var(--shadow-md);
-      transform: translateX(8px);
+      transform: translateX(4px);
       border-color: var(--accent);
     }
 
     .why-icon {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
       background: var(--accent-gradient);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
     }
 
     .why-content h3 {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: var(--primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .why-content p {
@@ -498,7 +479,7 @@
 
     /* ------------------------------ CTA SECTION --------------------------------*/
     .about-cta {
-      padding: 8rem 0;
+      padding: 6rem 0;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       text-align: center;
       position: relative;
@@ -524,20 +505,21 @@
 
     .about-cta h2 {
       color: var(--white);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .about-cta p {
       color: rgba(255, 255, 255, 0.8);
-      font-size: 1.25rem;
-      margin-bottom: 2.5rem;
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
     }
 
     .about-cta .cta {
       background: var(--white);
       color: var(--primary);
-      font-size: 1.125rem;
-      padding: 1.25rem 2.5rem;
+      font-size: 1.05rem;
+      padding: 1.1rem 2.25rem;
     }
 
     .about-cta .cta:hover {
@@ -549,7 +531,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -559,8 +541,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
 
     .reveal.active {
@@ -570,32 +552,70 @@
 
     /* ------------------------------ RESPONSIVE --------------------------------*/
     @media (max-width: 1024px) {
-      .stat:not(:last-child)::after {
-        display: none;
+      .stats-grid {
+        gap: 1.5rem;
       }
 
-      .stats-grid {
-        gap: 2rem;
+      .stat-number {
+        font-size: 2.5rem;
       }
     }
 
     @media (max-width: 768px) {
       .container {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
       }
 
       .about-hero {
-        padding: 8rem 0 4rem;
+        padding: 6rem 0 4rem;
+      }
+
+      .about-story,
+      .about-stats,
+      .about-philosophy,
+      .about-programs,
+      .about-why,
+      .about-cta {
+        padding: 4rem 0;
+      }
+
+      .section-header {
+        margin-bottom: 2.5rem;
       }
 
       .philosophy-grid,
       .programs-wrapper,
       .why-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
-      .stat-number {
-        font-size: 2.5rem;
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .stat {
+        padding: 1rem;
+      }
+
+      .story-highlight {
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .story-highlight p {
+        font-size: 1.15rem;
+      }
+
+      .about-hero p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -608,10 +628,10 @@
 <!-- HERO -->
 <section class="about-hero">
   <div class="container">
-    <div class="section-label" style="justify-content: center;">About Us</div>
+    <div class="section-label">About Us</div>
     <h1>We Create <span>Confident Speakers</span></h1>
     <p>At The Bright Talks Academy, we help individuals transform fear into confidence and ideas into powerful communication that inspires action.</p>
-    <a href="/contact" class="cta">Book a Free Discovery Call</a>
+    <a href="/contact" class="cta">Book a Free Discovery Call →</a>
   </div>
 </section>
 
@@ -619,10 +639,13 @@
 <section class="about-story">
   <div class="container">
     <div class="story-content reveal">
-      <div class="section-label">Our Story</div>
-      <h2>Bridging the Communication Gap</h2>
-      <p>Communication changes lives — yet most people are never taught how to express themselves confidently. The Bright Talks Academy was created to bridge this gap between potential and expression.</p>
-      <p>We work with students, professionals, and aspiring leaders who want to speak clearly, present confidently, and communicate with impact in real-world situations.</p>
+      <div class="section-header">
+        <div class="section-label">Our Story</div>
+        <h2>Bridging the Communication Gap</h2>
+      </div>
+
+      <p class="story-text">Communication changes lives — yet most people are never taught how to express themselves confidently. The Bright Talks Academy was created to bridge this gap between potential and expression.</p>
+      <p class="story-text">We work with students, professionals, and aspiring leaders who want to speak clearly, present confidently, and communicate with impact in real-world situations.</p>
 
       <div class="story-highlight">
         <p>"Every great speaker was once a beginner who refused to give up."</p>
@@ -745,13 +768,13 @@
           <p>Every learner receives a customized roadmap tailored to their specific goals and current skill level.</p>
         </div>
       </div>
-      <div class="why-item reveal" style="transition-delay: 400ms;">
-        <div class="why-icon">🎓</div>
-        <div class="why-content">
-          <h3>Designed for All Levels</h3>
-          <p>Whether you're a student or seasoned professional, our programs adapt to meet you where you are.</p>
-        </div>
-      </div>
+<!--      <div class="why-item reveal" style="transition-delay: 400ms;">-->
+<!--        <div class="why-icon">🎓</div>-->
+<!--        <div class="why-content">-->
+<!--          <h3>Designed for All Levels</h3>-->
+<!--          <p>Whether you're a student or seasoned professional, our programs adapt to meet you where you are.</p>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </section>
@@ -762,7 +785,7 @@
     <div class="cta-content reveal">
       <h2>Ready to Speak with Confidence?</h2>
       <p>Join The Bright Talks Academy and take the first step toward confident, impactful communication.</p>
-      <a href="/contact" class="cta">Start Your Journey Today</a>
+      <a href="/contact" class="cta">Start Your Journey Today →</a>
     </div>
   </div>
 </section>
@@ -773,7 +796,7 @@
   // Scroll reveal animation
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -30px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
