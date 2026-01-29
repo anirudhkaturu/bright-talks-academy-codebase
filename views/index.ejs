@@ -2,284 +2,722 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Bright Talks Academy</title>
+  <title>The Bright Talks Academy | Master Communication</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* ------------------------------
-       ROOT VARIABLES
-    --------------------------------*/
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
     :root {
-      --primary: #0a2f5c;
-      --accent: #fbbf24;
-      --dark: #1f2937;
-      --muted: #6b7280;
-      --light: #f9fafb;
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --dark: #0f172a;
+      --muted: #64748b;
+      --light: #f8fafc;
       --white: #ffffff;
+      --cream: #fefdfc;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --shadow-colored: 0 20px 40px -5px rgba(245, 158, 11, 0.15);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
     }
 
-    /* ------------------------------
-       RESET
-    --------------------------------*/
+    /* ------------------------------ RESET & BASE --------------------------------*/
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--white);
+      font-family: var(--font-sans);
+      background: var(--cream);
       color: var(--dark);
-      line-height: 1.7;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ------------------------------
-       GLOBAL
-    --------------------------------*/
-    section {
-      padding: 90px 60px;
+    ::selection {
+      background: var(--accent);
+      color: white;
     }
 
-    h1, h2, h3 {
-      color: var(--primary);
+    /* ------------------------------ UTILITIES --------------------------------*/
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      max-width: 640px;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
     }
 
     h2 {
-      font-size: 2.6rem;
-      margin-bottom: 25px;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 1rem;
     }
 
-    p {
+    .subtitle {
+      font-size: 1.125rem;
       color: var(--muted);
-      max-width: 900px;
+      line-height: 1.7;
     }
 
-    /* ------------------------------
-       HERO SECTION
-    --------------------------------*/
+    /* ------------------------------ HERO SECTION --------------------------------*/
     .hero {
+      position: relative;
+      min-height: 90vh;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 50px;
-      flex-wrap: wrap;
-      padding: 90px 60px;
-      background: var(--light);
+      background: linear-gradient(135deg, var(--cream) 0%, #fffbeb 50%, var(--cream) 100%);
+      overflow: hidden;
+      padding: 6rem 0;
     }
 
-    .hero .hero-text {
-      flex: 1;
-      min-width: 300px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--cream), transparent);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text {
+      animation: fadeInUp 1s ease-out;
     }
 
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      position: relative;
+    }
+
+    .hero h1 span::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: rgba(245, 158, 11, 0.2);
+      z-index: -1;
+      border-radius: 4px;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid transparent;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-colored);
+      gap: 1rem;
+    }
+
+    .hero-cta svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(226, 232, 240, 0.6);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-image {
+      position: relative;
+      animation: fadeInLeft 1s ease-out 0.2s both;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: var(--white);
+      padding: 1rem;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      display: block;
+      filter: contrast(1.05);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-badge-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .hero-badge-text {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .hero-badge-text strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    /* ------------------------------ PROGRAMS SECTION --------------------------------*/
+    .programs-section {
+      padding: 8rem 0;
+      background: var(--white);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .program-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .program-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .program-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .program-card:hover .program-icon {
+      background: var(--accent-gradient);
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .program-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .program-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
       line-height: 1.6;
     }
 
-    .hero .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #000;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.2s ease;
-    }
-
-    .hero .cta:hover {
-      transform: translateY(-2px);
-    }
-
-    .hero .hero-image {
-      flex: 1;
-      min-width: 300px;
-      text-align: center;
-    }
-
-    .hero .hero-image img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    /* ------------------------------
-       PROGRAMS
-    --------------------------------*/
-    .programs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .programs .program {
-      background: var(--light);
-      padding: 25px 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .programs .program:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .programs h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-
-    .programs p {
-      color: var(--muted);
-    }
-
-    /* ------------------------------
-       EXPERIENCE
-    --------------------------------*/
-    .experience ul {
-      list-style: disc;
-      padding-left: 25px;
-      margin-top: 25px;
-    }
-
-    .experience li {
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* ------------------------------
-       TESTIMONIALS
-    --------------------------------*/
-    .testimonials .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .testimonials .testimonial-card {
-      background: var(--light);
-      padding: 25px 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .testimonials .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .testimonials .testimonial-card .message {
-      font-style: italic;
-      margin-bottom: 15px;
-      color: var(--muted);
-    }
-
-    .testimonials .testimonial-card .speaker {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    /* ------------------------------
-       FOOTER
-    --------------------------------*/
-    .site-footer {
-      background: var(--primary);
-      color: var(--white);
-      text-align: center;
-      padding: 50px 20px 25px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      width: 100%;
-    }
-
-    .site-footer img {
-      display: block;
-      margin: 0 auto;
-    }
-
-    .site-footer .footer-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin: 10px 0;
-    }
-
-    .site-footer .footer-nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .site-footer .footer-nav a:hover {
+    .program-arrow {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
       color: var(--accent);
     }
 
-    .site-footer .footer-contact {
-      color: #e5e7eb;
-      margin-top: 5px;
+    .program-card:hover .program-arrow {
+      opacity: 1;
+      transform: translateX(0);
     }
 
-    .site-footer .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.3);
-      padding-top: 15px;
-      width: 100%;
-      max-width: 1200px;
+    /* ------------------------------ EXPERIENCE SECTION --------------------------------*/
+    .experience-section {
+      padding: 8rem 0;
+      background: var(--primary);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .experience-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .experience-item:hover {
+      background: rgba(255, 255, 255, 0.07);
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .experience-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      opacity: 0.8;
+    }
+
+    .experience-content h3 {
+      color: var(--white);
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .experience-content p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* ------------------------------ TESTIMONIALS SECTION --------------------------------*/
+    .testimonials-section {
+      padding: 8rem 0;
+      background: linear-gradient(to bottom, var(--cream), var(--white));
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.1;
+      line-height: 1;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .testimonial-message {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    .author-info strong {
+      display: block;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .author-info span {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    /* ------------------------------ CTA SECTION --------------------------------*/
+    .cta-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-content {
       text-align: center;
-      font-size: 0.85rem;
-      color: #e5e7eb;
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
       margin: 0 auto;
     }
 
-    /* ------------------------------
-       RESPONSIVE
-    --------------------------------*/
-    @media (max-width: 900px) {
-      section {
-        padding: 70px 30px;
-      }
+    .cta-content h2 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
 
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
+    .cta-content p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
 
-      .hero .hero-image {
-        margin-top: 30px;
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      padding: 1.25rem 2.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.4);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.5);
+      gap: 1rem;
+    }
+
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 600px) {
-      .programs {
-        gap: 20px;
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 1024px) {
+      .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
 
-      .testimonials .testimonial-grid {
-        gap: 20px;
+      .hero-text {
+        order: 1;
       }
 
-      .site-footer {
-        padding: 35px 15px 20px;
+      .hero-image {
+        order: 0;
+        max-width: 600px;
+        margin: 0 auto;
       }
 
-      .site-footer .footer-nav {
-        gap: 15px;
+      .hero-stats {
+        justify-content: center;
       }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-label {
+        justify-content: center;
+      }
+
+      .section-label::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .programs-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+      }
+    }
+
+    /* Scroll reveal classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -290,95 +728,202 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <h1>Transform Hesitation into Confident Communication</h1>
-    <p>
-      Unlock your potential with THE BRIGHT TALKS ACADEMY. Through expert coaching,
-      interactive workshops, and personalised feedback, we help you speak with clarity,
-      confidence, and impact.
-    </p>
-    <a href="/contact" class="cta">Learn More</a>
-  </div>
-  <div class="hero-image">
-    <img src="/imgs/public-speaking.webp" alt="Public Speaking">
+  <div class="container">
+    <div class="hero-text">
+      <div class="section-label">Welcome to The Bright Talks Academy</div>
+      <h1>Transform Hesitation into <span>Confident Communication</span></h1>
+      <p>
+        Unlock your potential with expert coaching, interactive workshops, and personalized
+        feedback. Master the art of speaking with clarity, confidence, and lasting impact.
+      </p>
+      <a href="/contact" class="hero-cta">
+        Start Your Journey
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">5000+</span>
+          <span class="stat-label">Students Trained</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Success Rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-image-wrapper">
+        <img src="/imgs/public-speaking.webp" alt="Public Speaking Training">
+        <div class="hero-badge">
+          <div class="hero-badge-icon">★</div>
+          <div class="hero-badge-text">
+            <strong>Top Rated</strong>
+            Communication Academy
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PROGRAMS -->
-<section>
-  <h2>Our Expert Training Programs</h2>
+<section class="programs-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Our Programs</div>
+      <h2>Expert Training Programs Designed for Impact</h2>
+      <p class="subtitle">Comprehensive courses tailored to elevate your communication skills across every aspect of your personal and professional life.</p>
+    </div>
 
-  <% 
+    <%
     const programs = [
-      { title: 'Advanced Public Speaking', description: 'Overcome stage fear, structure powerful speeches, and master audience engagement through interactive workshops.' },
-      { title: 'Personality Development', description: 'Build confidence, improve body language, and develop a professional presence to stand out in academic and corporate settings.' },
-      { title: 'Corporate Communication', description: 'Enhance your workplace communication skills including meetings, presentations, email etiquette, and leadership interactions.' },
-      { title: 'Interview & Resume Training', description: 'Prepare for interviews with mock sessions, resume building, and soft skill enhancement to land your dream opportunities.' },
-      { title: 'Storytelling & Persuasion', description: 'Learn the art of compelling storytelling, persuasive communication, and impactful messaging to influence and inspire your audience.' },
-      { title: 'Leadership Communication', description: 'Develop your leadership voice, inspire teams, and communicate effectively in management roles. Handle difficult conversations and influence with confidence.' },
-      { title: 'Presentation Mastery', description: 'Learn to design and deliver impactful presentations that capture attention. Focus on visual storytelling, audience engagement, pacing, and persuasive techniques.' },
-      { title: 'Confidence & Personal Branding', description: 'Enhance your personal image and communication style to leave a lasting impression. Master self-presentation, networking skills, and strategies for professional growth.' }
+      { icon: '🎤', title: 'Advanced Public Speaking', description: 'Overcome stage fear, structure powerful speeches, and master audience engagement through interactive workshops.' },
+      { icon: '✨', title: 'Personality Development', description: 'Build confidence, improve body language, and develop a professional presence to stand out in any setting.' },
+      { icon: '💼', title: 'Corporate Communication', description: 'Enhance workplace communication including meetings, presentations, email etiquette, and leadership interactions.' },
+      { icon: '📝', title: 'Interview & Resume Training', description: 'Prepare for interviews with mock sessions, resume building, and soft skill enhancement to land dream opportunities.' },
+      { icon: '📖', title: 'Storytelling & Persuasion', description: 'Learn the art of compelling storytelling and persuasive communication to influence and inspire your audience.' },
+      { icon: '👑', title: 'Leadership Communication', description: 'Develop your leadership voice, inspire teams, and handle difficult conversations with confidence.' },
+      { icon: '🎯', title: 'Presentation Mastery', description: 'Design and deliver impactful presentations with visual storytelling and persuasive techniques.' },
+      { icon: '🚀', title: 'Confidence & Personal Branding', description: 'Enhance your image and communication style to leave a lasting impression with networking skills.' }
     ];
-  %>
+    %>
 
-  <div class="programs">
-    <% programs.forEach(program => { %>
-      <div class="program">
-        <h3><%= program.title %></h3>
-        <p><%= program.description %></p>
-      </div>
-    <% }) %>
+    <div class="programs-grid">
+      <% programs.forEach((program, index) => { %>
+        <div class="program-card reveal" style="transition-delay: <%= index * 100 %>ms">
+          <div class="program-icon"><%= program.icon %></div>
+          <h3><%= program.title %></h3>
+          <p><%= program.description %></p>
+          <div class="program-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      <% }) %>
+    </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section class="experience">
-  <h2>Our Experience</h2>
+<section class="experience-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Our Expertise</div>
+      <h2 style="color: white;">Decades of Transformative Experience</h2>
+      <p class="subtitle" style="color: rgba(255,255,255,0.7);">Led by industry veterans committed to your communication excellence.</p>
+    </div>
 
-  <% 
+    <%
     const experience = [
-      'Public Speaking Trainer – Helping learners overcome stage fear',
-      'Corporate Communication Coach – Enhancing workplace communication',
-      'Personality Development Mentor – Building confidence and presence',
-      'Body Language Skills Trainer – Strengthening non-verbal communication',
-      'Interview & Resume Guidance – Preparing students and professionals for career success',
-      'Leadership Communication Coach – Guiding managers and team leads',
-      'Storytelling & Persuasion Mentor – Crafting compelling narratives for influence'
+      { num: '01', title: 'Public Speaking Trainer', desc: 'Helping learners overcome stage fear and command attention' },
+      { num: '02', title: 'Corporate Communication Coach', desc: 'Enhancing workplace communication and leadership presence' },
+      { num: '03', title: 'Personality Development Mentor', desc: 'Building confidence and professional presence' },
+      { num: '04', title: 'Body Language Skills Trainer', desc: 'Strengthening non-verbal communication mastery' },
+      { num: '05', title: 'Interview & Resume Guidance', desc: 'Preparing professionals for career success' },
+      { num: '06', title: 'Leadership Communication Coach', desc: 'Guiding managers and team leads to inspire' },
+      { num: '07', title: 'Storytelling & Persuasion Mentor', desc: 'Crafting compelling narratives for influence' }
     ];
-  %>
+    %>
 
-  <ul>
-    <% experience.forEach(item => { %>
-      <li><%= item %></li>
-    <% }) %>
-  </ul>
+    <div class="experience-grid">
+      <% experience.forEach((item, index) => { %>
+        <div class="experience-item reveal" style="transition-delay: <%= index * 100 %>ms">
+          <div class="experience-number"><%= item.num %></div>
+          <div class="experience-content">
+            <h3><%= item.title %></h3>
+            <p><%= item.desc %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials">
-  <h2>What Our Speakers Say</h2>
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Testimonials</div>
+      <h2>What Our Speakers Say</h2>
+      <p class="subtitle">Success stories from professionals who transformed their communication skills with us.</p>
+    </div>
 
-  <div class="testimonial-grid">
-    <% 
+    <div class="testimonials-grid">
+      <%
       const testimonials = [
-        { name: 'Shanthi Kiran, Guntur', message: 'The training truly transformed my communication skills.' },
-        { name: 'Hadassa', message: 'Now I speak confidently in meetings and interviews.' },
-        { name: 'Tagore Subhash', message: 'Highly recommended for students and professionals.' },
-        { name: 'Rohit Sharma', message: 'The personalized feedback helped me improve my presentation style immensely.' },
-        { name: 'Priya Nair', message: 'I gained the confidence to lead discussions at work after attending the sessions.' }
+        { name: 'Shanthi Kiran', location: 'Guntur', message: 'The training truly transformed my communication skills. I went from avoiding presentations to volunteering to speak at conferences.', initials: 'SK' },
+        { name: 'Hadassa', location: 'Hyderabad', message: 'Now I speak confidently in meetings and interviews. The personalized attention to my specific challenges made all the difference.', initials: 'HA' },
+        { name: 'Tagore Subhash', location: 'Bangalore', message: 'Highly recommended for students and professionals alike. The methodology is practical and immediately applicable.', initials: 'TS' },
+        { name: 'Rohit Sharma', location: 'Mumbai', message: 'The personalized feedback helped me improve my presentation style immensely. I landed my dream job thanks to the interview prep.', initials: 'RS' },
+        { name: 'Priya Nair', location: 'Chennai', message: 'I gained the confidence to lead discussions at work after attending the sessions. Truly life-changing experience.', initials: 'PN' }
       ];
-    %>
+      %>
 
-    <% testimonials.forEach(t => { %>
-      <div class="testimonial-card">
-        <p class="message">“<%= t.message %>”</p>
-        <p class="speaker">– <strong><%= t.name %></strong></p>
-      </div>
-    <% }) %>
+      <% testimonials.forEach((t, index) => { %>
+        <div class="testimonial-card reveal" style="transition-delay: <%= index * 100 %>ms">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-message">"<%= t.message %>"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><%= t.initials %></div>
+            <div class="author-info">
+              <strong><%= t.name %></strong>
+              <span><%= t.location %></span>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content reveal">
+      <h2>Ready to Find Your Voice?</h2>
+      <p>Join thousands of professionals who have transformed their communication skills. Your journey to confident speaking starts today.</p>
+      <a href="/contact" class="cta-btn">
+        Get Started Today
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <%- include('partials/footer') %>
+
+<script>
+  // Scroll reveal animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
