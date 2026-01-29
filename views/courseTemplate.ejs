@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= course.title %> | The Bright Talks Academy</title>
+
+  <style>
+    :root {
+      --primary: #0a2f5c;
+      --accent: #fbbf24;
+      --success: #16a34a;
+      --text: #222;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f9fafb;
+      --card-bg: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 32px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 28px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .price-tag {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--success);
+      margin-bottom: 24px;
+    }
+
+    .course-description {
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+    .enroll-box {
+      background: #f3f4f6;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .enroll-btn {
+      margin-top: 12px;
+      padding: 14px 26px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    .enroll-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="/courses" class="back-link">← Back to all courses</a>
+
+    <h1><%= course.title %></h1>
+
+    <div class="price-tag">Course Price: ₹<%= course.price %></div>
+
+    <div class="course-description">
+      <%= course.description %>
+    </div>
+
+    <div class="enroll-box">
+      <h2>Ready to join this course?</h2>
+      <p>Start learning today and level up your skills.</p>
+
+      <form action="/courses/enroll/<%= course._id %>" method="POST">
+        <button type="submit" class="enroll-btn">🎓 Enroll Now</button>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>

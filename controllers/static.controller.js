@@ -55,6 +55,20 @@ async function getCourses(req, res) {
     return res.render("courses", {courses: courses});
 }
 
+async function getCourseById(req, res) {
+    const courseId = req.params.id;
+    if (!courseId) {
+        return res.render("courses");
+    }
+
+    const course = await Course.findById(courseId);
+    if (!course) {
+        res.render("course");
+    }
+    
+    return res.render("courseTemplate", { course: course });
+}
+
 export {
     getHome,
     getAbout,
@@ -66,5 +80,6 @@ export {
     getBlogs,
     getBlogById,
     getProfile,
-    getCourses
+    getCourses,
+    getCourseById
 }
