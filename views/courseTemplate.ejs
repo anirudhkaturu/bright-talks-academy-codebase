@@ -5,143 +5,660 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= course.title %> | The Bright Talks Academy</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
     :root {
-      --primary: #0a2f5c;
-      --accent: #fbbf24;
-      --success: #16a34a;
-      --text: #222;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --bg: #f9fafb;
-      --card-bg: #fff;
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --success: #10b981;
+      --success-light: #d1fae5;
+      --text: #0f172a;
+      --text-light: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
     }
 
+    /* ------------------------------ RESET & BASE --------------------------------*/
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.8;
-      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 32px;
-      background: var(--card-bg);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    /* ------------------------------ HERO SECTION --------------------------------*/
+    .course-hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 6rem 2rem 8rem;
+      overflow: hidden;
     }
 
-    .back-link {
+    .course-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .course-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
       display: inline-flex;
       align-items: center;
-      margin-bottom: 28px;
-      padding: 10px 18px;
-      border-radius: 8px;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
       text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb:hover {
+      color: var(--accent);
+    }
+
+    .breadcrumb svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .course-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
       font-weight: 600;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(245, 158, 11, 0.3);
     }
 
-    .back-link:hover {
-      background: var(--primary);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-
-    .price-tag {
-      font-size: 1.4rem;
+    .course-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
-      color: var(--success);
-      margin-bottom: 24px;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      max-width: 800px;
+    }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+    }
+
+    .meta-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .meta-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .meta-value {
+      font-weight: 600;
+      color: white;
+      font-size: 1.125rem;
+    }
+
+    /* Wave separator */
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--bg);
+      clip-path: polygon(0 100%, 100% 100%, 100% 30%, 0 100%);
+    }
+
+    /* ------------------------------ MAIN LAYOUT --------------------------------*/
+    .course-layout {
+      max-width: 1200px;
+      margin: -4rem auto 0;
+      padding: 0 1.5rem 6rem;
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ------------------------------ CONTENT CARD --------------------------------*/
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .content-header {
+      padding: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to right, #fffbeb, #fef3c7);
+    }
+
+    .content-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .content-header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .content-body {
+      padding: 2.5rem;
     }
 
     .course-description {
-      font-size: 1.05rem;
-      margin-bottom: 32px;
-      color: var(--text);
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-light);
     }
 
-    .enroll-box {
-      background: #f3f4f6;
-      padding: 24px;
-      border-radius: 12px;
-      text-align: center;
+    .course-description p {
+      margin-bottom: 1.5rem;
+    }
+
+    .course-features {
+      margin: 2.5rem 0;
+    }
+
+    .course-features h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: var(--radius-md);
       border: 1px solid var(--border);
     }
 
+    .feature-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 0.875rem;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .feature-text {
+      font-size: 0.9375rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* ------------------------------ ENROLLMENT CARD --------------------------------*/
+    .enroll-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .enroll-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .price-tag {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .price-original {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: line-through;
+      margin-left: 0.5rem;
+    }
+
+    .price-note {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .enroll-body {
+      padding: 2rem;
+    }
+
+    .enroll-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      space-y: 0.75rem;
+    }
+
+    .enroll-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9375rem;
+      color: var(--text-light);
+    }
+
+    .enroll-features li:last-child {
+      border-bottom: none;
+    }
+
+    .enroll-features svg {
+      width: 20px;
+      height: 20px;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
     .enroll-btn {
-      margin-top: 12px;
-      padding: 14px 26px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 10px;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
       border: none;
+      border-radius: var(--radius-md);
+      font-size: 1.125rem;
+      font-weight: 700;
       cursor: pointer;
-      background: var(--accent);
-      color: var(--text);
       transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+      text-decoration: none;
     }
 
     .enroll-btn:hover {
-      background: var(--primary);
-      color: #fff;
       transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+    }
+
+    .enroll-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .guarantee {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* ------------------------------ INSTRUCTOR SECTION --------------------------------*/
+    .instructor-section {
+      margin-top: 3rem;
+      padding: 2.5rem;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+
+    .instructor-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .instructor-card {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .instructor-avatar {
+      width: 80px;
+      height: 80px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .instructor-info h4 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .instructor-info p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 1024px) {
+      .course-layout {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+      }
+
+      .enroll-card {
+        position: relative;
+        top: 0;
+        order: -1;
+      }
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 24px;
-        margin: 20px;
+      .course-hero {
+        padding: 4rem 1.5rem 6rem;
       }
 
-      h1 {
-        font-size: 1.8rem;
+      .course-meta {
+        gap: 1.5rem;
       }
+
+      .content-header,
+      .content-body {
+        padding: 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .instructor-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-card, .enroll-card {
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .enroll-card {
+      animation-delay: 0.2s;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <a href="/courses" class="back-link">← Back to all courses</a>
+<!-- HERO SECTION -->
+<section class="course-hero">
+  <div class="course-hero-content">
+    <a href="/courses" class="breadcrumb">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to all courses
+    </a>
+
+    <div class="course-badge">
+      <span>⭐</span>
+      Featured Course
+    </div>
 
     <h1><%= course.title %></h1>
 
-    <div class="price-tag">Course Price: ₹<%= course.price %></div>
+    <div class="course-meta">
+      <div class="meta-item">
+        <div class="meta-icon">⏱️</div>
+        <div>
+          <span class="meta-label">Duration</span>
+          <span class="meta-value"><%= course.duration || '4 Weeks' %></span>
+        </div>
+      </div>
 
-    <div class="course-description">
-      <%= course.description %>
+      <div class="meta-item">
+        <div class="meta-icon">👥</div>
+        <div>
+          <span class="meta-label">Students</span>
+          <span class="meta-value">100+ Enrolled</span>
+        </div>
+      </div>
+
+      <div class="meta-item">
+        <div class="meta-icon">🏆</div>
+        <div>
+          <span class="meta-label">Certificate</span>
+          <span class="meta-value">Yes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave"></div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="course-layout">
+  <!-- Left Column: Course Details -->
+  <div class="content-card">
+    <div class="content-header">
+      <h2>Course Overview</h2>
+      <p>Everything you need to master this skill</p>
     </div>
 
-    <div class="enroll-box">
-      <h2>Ready to join this course?</h2>
-      <p>Start learning today and level up your skills.</p>
+    <div class="content-body">
+      <div class="course-description">
+        <%= course.description %>
+      </div>
+
+      <div class="course-features">
+        <h3>What You'll Learn</h3>
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Practical, hands-on training</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Expert instructor guidance</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Real-world applications</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Certificate of completion</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Lifetime access to materials</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Personal feedback sessions</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructor-section">
+        <h3>Your Instructor</h3>
+        <div class="instructor-card">
+          <div class="instructor-avatar">👨‍🏫</div>
+          <div class="instructor-info">
+            <h4>Expert Trainer</h4>
+            <p>Industry professional with 10+ years of experience in communication training and public speaking coaching. Dedicated to helping you achieve your goals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Enrollment Card -->
+  <div class="enroll-card">
+    <% if (course.price) { %>
+      <div class="enroll-header">
+        <div class="price-tag">
+          ₹<%= course.price %>
+          <% if (course.originalPrice) { %>
+            <span class="price-original">₹<%= course.originalPrice %></span>
+          <% } %>
+        </div>
+        <div class="price-note">One-time payment • Full access</div>
+      </div>
+    <% } %>
+
+    <div class="enroll-body">
+      <ul class="enroll-features">
+        <li>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          Full course access
+        </li>
+<!--        <li>-->
+<!--          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />-->
+<!--          </svg>-->
+<!--          Downloadable resources-->
+<!--        </li>-->
+        <li>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          Certificate included
+        </li>
+        <li>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          24/7 support
+        </li>
+      </ul>
 
       <form action="/courses/enroll/<%= course._id %>" method="POST">
-        <button type="submit" class="enroll-btn">🎓 Enroll Now</button>
+        <button type="submit" class="enroll-btn">
+          <span>🎓</span>
+          Enroll Now
+        </button>
       </form>
-    </div>
 
+      <div class="guarantee">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        30-day money-back guarantee
+      </div>
+    </div>
   </div>
+</div>
 
 </body>
 </html>

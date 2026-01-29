@@ -2,136 +2,687 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Portfolio | The Bright Talks Academy</title>
+  <title>Mr. Kiran Karampudi | Lead Trainer | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------------
-       PORTFOLIO PAGE STYLES
-    --------------------------------*/
-    .hero-small {
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --text: #0f172a;
+      --text-light: #334155;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+
+    /* ------------------------------ RESET & BASE --------------------------------*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
       background: var(--light);
-      text-align: center;
-      padding: 80px 20px;
-    }
-    .hero-small h1 {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 12px;
-    }
-    .hero-small p {
-      font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto;
+      color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .container-narrow {
-      max-width: 1000px;
+
+    /* ------------------------------ HERO SECTION --------------------------------*/
+    .trainer-hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 6rem 2rem 10rem;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .trainer-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .trainer-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 0 20px;
     }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
+
+    .trainer-avatar {
+      width: 160px;
+      height: 160px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 4rem;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.3);
+      position: relative;
     }
-    .program-card {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      padding: 25px 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .trainer-avatar::after {
+      content: '👨‍🏫';
+      font-size: 5rem;
     }
-    .program-card h3 {
-      font-size: 1.4rem;
-      color: var(--primary);
-      margin-bottom: 12px;
+
+    .badge-affiliation {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(245, 158, 11, 0.3);
     }
-    .program-card p {
-      color: var(--muted);
-      margin-bottom: 8px;
+
+    .trainer-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .trainer-title {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
       line-height: 1.5;
     }
-    .program-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+    .trainer-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
-    .experience.impact {
-      background: var(--light);
-      padding: 60px 20px;
+
+    .stat-box {
       text-align: center;
     }
-    .experience.impact h2 {
-      font-size: 2.4rem;
-      color: var(--primary);
-      margin-bottom: 20px;
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
     }
-    .experience.impact ul {
-      list-style: none;
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--light);
+      clip-path: polygon(0 100%, 100% 100%, 100% 30%, 0 100%);
+    }
+
+    /* ------------------------------ CONTENT SECTIONS --------------------------------*/
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ------------------------------ ABOUT SECTION --------------------------------*/
+    .about-section {
+      background: var(--white);
+      margin-top: -4rem;
+      position: relative;
+      z-index: 10;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      padding: 4rem 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .lead-text {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--primary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .about-text {
+      font-size: 1.125rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .certification-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(to right, #fffbeb, #fef3c7);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-md);
+      margin-top: 1.5rem;
+      border: 1px solid var(--accent);
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ------------------------------ CERTIFICATIONS --------------------------------*/
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .cert-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .cert-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .cert-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .cert-card:hover .cert-icon {
+      background: var(--accent-gradient);
+      transform: scale(1.1);
+    }
+
+    .cert-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-card .org {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.9375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-card .detail {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .cert-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ------------------------------ EXPERTISE GRID --------------------------------*/
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .expertise-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .expertise-card::after {
+      content: '→';
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      opacity: 0;
+      color: var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .expertise-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .expertise-card:hover::after {
+      opacity: 1;
+      right: 1.5rem;
+    }
+
+    .expertise-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    .expertise-card p {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* ------------------------------ METHODOLOGY --------------------------------*/
+    .methodology-section {
+      background: var(--white);
+    }
+
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .method-step {
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .method-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .method-step p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ------------------------------ PROGRAMS --------------------------------*/
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .program-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateX(10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .program-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .program-card .duration {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--light);
+      padding: 0.375rem 0.875rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .program-card p {
+      color: var(--text-light);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+
+    .min-participants {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+    }
+
+    /* ------------------------------ INSTITUTIONS --------------------------------*/
+    .institutions-section {
+      background: linear-gradient(to right, #fffbeb, #fef3c7);
+      padding: 4rem 2rem;
+      margin: 0 1.5rem 4rem;
+      border-radius: var(--radius-xl);
+      border: 1px dashed var(--accent);
+    }
+
+    .institutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .institution-item {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .institution-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ------------------------------ CTA SECTION --------------------------------*/
+    .trainer-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trainer-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .trainer-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px 40px;
-      margin-bottom: 20px;
-      padding: 0;
+      gap: 2rem;
+      margin: 2rem 0;
     }
-    .experience.impact ul li {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 15px 20px;
-      color: var(--muted);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      min-width: 220px;
-      font-weight: 500;
+
+    .contact-item-large {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.125rem;
     }
-    .experience.impact a {
+
+    .contact-icon-large {
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 158, 11, 0.2);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .cta-btn-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-gradient);
       color: var(--primary);
-      text-decoration: underline;
-    }
-    .portfolio-cta {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
-      border-radius: 12px;
-      margin: 60px 20px 40px;
-    }
-    .portfolio-cta h2 {
-      font-size: 2.6rem;
-      margin-bottom: 16px;
-    }
-    .portfolio-cta p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 25px;
-      line-height: 1.6;
-      color: #f3f4f6;
-    }
-    .portfolio-cta .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #000;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 600;
+      padding: 1.25rem 2.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1.125rem;
       text-decoration: none;
-      transition: transform 0.2s ease;
+      transition: all 0.2s;
+      margin-top: 1rem;
+      box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.3);
     }
-    .portfolio-cta .cta:hover {
+
+    .cta-btn-large:hover {
       transform: translateY(-2px);
+      box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.4);
     }
-    @media (max-width: 900px) {
-      .hero-small h1 { font-size: 2.4rem; }
-      .hero-small p { font-size: 1.1rem; }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 768px) {
+      .trainer-hero {
+        padding: 4rem 1.5rem 8rem;
+      }
+
+      .trainer-stats {
+        gap: 2rem;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .certs-grid,
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .institutions-section {
+        margin: 0 1rem 3rem;
+      }
+
+      .contact-details {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
     }
-    @media (max-width: 600px) {
-      .portfolio-grid { gap: 20px; }
-      .experience.impact ul { flex-direction: column; gap: 15px; }
-      .portfolio-cta h2 { font-size: 2rem; }
-      .portfolio-cta p { font-size: 1rem; }
+
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cert-card,
+    .expertise-card,
+    .program-card,
+    .method-step {
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -140,132 +691,289 @@
 
 <%- include('partials/header') %>
 
-<!-- HERO -->
-<section class="hero hero-small">
-  <div class="hero-content">
-    <h1>Kiran Karampudi</h1>
-    <p>Lead Trainer – Communication, Public Speaking, Leadership Skills & Personality Development</p>
-    <p><strong>Affiliated Trainer – Chatterbox</strong></p>
+<!-- HERO SECTION -->
+<section class="trainer-hero">
+  <div class="trainer-hero-content">
+    <div class="badge-affiliation">
+      <span>🏆</span>
+      Affiliated Trainer – Chatterbox
+    </div>
+
+    <div class="trainer-avatar"></div>
+
+    <h1>Mr. Kiran Karampudi</h1>
+    <p class="trainer-title">
+      Lead Trainer – Communication, Public Speaking, Leadership Skills & Personality Development
+    </p>
+
+    <div class="trainer-stats">
+      <div class="stat-box">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Students Trained</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Programs Delivered</div>
+      </div>
+    </div>
   </div>
+  <div class="hero-wave"></div>
 </section>
 
-<!-- PROFILE SUMMARY -->
-<section class="portfolio">
-  <div class="container-narrow">
-    <h2>Profile Summary</h2>
-    <p>
-      Kiran Karampudi is a professional communication and leadership skills trainer, public speaking coach, and mentor with over 8 years of experience in training students, business owners, and working professionals.
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <div class="about-content reveal">
+    <div class="section-label">About Trainer</div>
+    <p class="lead-text">
+      "Empowering individuals to communicate with confidence and lead with purpose."
     </p>
-    <p>
-      He has extensively trained and mentored business owners for the past eight years, supporting them in strengthening leadership communication, presentation skills, confidence, and professional presence.
+    <p class="about-text">
+      Kiran Karampudi is a professional communication and leadership skills trainer with over 8 years of experience in training students, business owners, and working professionals. He has extensively trained and mentored business owners, supporting them in strengthening leadership communication, presentation skills, confidence, and professional presence.
     </p>
-    <p>
-      He is a <strong>Certified Train-the-Trainer</strong> and delivers highly interactive, practical, and real-world focused learning programs.
-    </p>
-  </div>
-</section>
-
-<!-- PROFESSIONAL RECOGNITION -->
-<section class="experience impact">
-  <div class="container-narrow">
-    <h2>Professional Recognition</h2>
-    <p>
-      Kiran has received numerous testimonials from business owners for his mentoring and leadership-focused training, particularly in communication clarity, confidence building, leadership presence, and professional growth.
-    </p>
-    <p><strong>Selected testimonials are available on request.</strong></p>
+    <div class="certification-highlight">
+      <span>✓</span>
+      Certified Train-the-Trainer | ISO 9001:2015 | Startup India Recognized
+    </div>
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
-<section class="portfolio">
-  <div class="container-narrow">
-    <h2>Certifications & Credentials</h2>
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications & Recognition</h2>
+    <p class="section-subtitle">Internationally recognized qualifications and institutional affiliations.</p>
+  </div>
 
-    <div class="portfolio-grid">
-      <div class="program-card">
-        <h3>Certified Train-the-Trainer – Public Speaking</h3>
-        <p>JD Speakers Institute</p>
-        <p>Startup India (DPIIT) Recognized</p>
-        <p>ISO 9001:2015 Certified</p>
-      </div>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">🎓</div>
+      <h3>Certified Train-the-Trainer</h3>
+      <p class="org">JD Speakers Institute</p>
+      <p class="detail">Public Speaking & Communication Excellence</p>
+      <span class="cert-badge">ISO 9001:2015 Certified</span>
+    </div>
 
-      <div class="program-card">
-        <h3>Certified Train-the-Trainer – Member Success Program</h3>
-        <p>BNI India</p>
-        <p>World’s Largest Business Networking Organization</p>
-      </div>
+    <div class="cert-card reveal" style="transition-delay: 100ms;">
+      <div class="cert-icon">🌐</div>
+      <h3>Member Success Program</h3>
+      <p class="org">BNI India</p>
+      <p class="detail">World's Largest Business Networking Organization</p>
+      <span class="cert-badge">Certified Trainer</span>
+    </div>
+
+    <div class="cert-card reveal" style="transition-delay: 200ms;">
+      <div class="cert-icon">🏛️</div>
+      <h3>Government Recognition</h3>
+      <p class="org">Startup India (DPIIT)</p>
+      <p class="detail">Department for Promotion of Industry and Internal Trade</p>
+      <span class="cert-badge">DPIIT Recognized</span>
     </div>
   </div>
 </section>
 
 <!-- CORE EXPERTISE -->
-<section class="portfolio">
-  <div class="container-narrow">
-    <h2>Core Training Expertise</h2>
-    <div class="portfolio-grid">
-      <div class="program-card"><p>Public Speaking & Stage Confidence</p></div>
-      <div class="program-card"><p>Effective Communication Skills</p></div>
-      <div class="program-card"><p>Leadership Skills & Executive Presence</p></div>
-      <div class="program-card"><p>Personality Development & Professional Etiquette</p></div>
-      <div class="program-card"><p>Interview Skills & Placement Readiness</p></div>
-      <div class="program-card"><p>Presentation Skills & Group Discussions</p></div>
-      <div class="program-card"><p>Body Language & Confidence Building</p></div>
+<section class="section" style="background: var(--light);">
+  <div class="section-header reveal">
+    <div class="section-label">Specializations</div>
+    <h2 class="section-title">Core Training Expertise</h2>
+    <p class="section-subtitle">Comprehensive skill development across multiple domains.</p>
+  </div>
+
+  <div class="expertise-grid">
+    <div class="expertise-card reveal">
+      <div class="expertise-icon">🎤</div>
+      <p>Public Speaking & Stage Confidence</p>
+    </div>
+    <div class="expertise-card reveal" style="transition-delay: 50ms;">
+      <div class="expertise-icon">💬</div>
+      <p>Effective Communication Skills</p>
+    </div>
+    <div class="expertise-card reveal" style="transition-delay: 100ms;">
+      <div class="expertise-icon">👑</div>
+      <p>Leadership & Executive Presence</p>
+    </div>
+    <div class="expertise-card reveal" style="transition-delay: 150ms;">
+      <div class="expertise-icon">✨</div>
+      <p>Personality Development & Etiquette</p>
+    </div>
+    <div class="expertise-card reveal" style="transition-delay: 200ms;">
+      <div class="expertise-icon">🎯</div>
+      <p>Interview Skills & Placement Readiness</p>
+    </div>
+    <div class="expertise-card reveal" style="transition-delay: 250ms;">
+      <div class="expertise-icon">📊</div>
+      <p>Presentation & Group Discussion Skills</p>
+    </div>
+    <div class="expertise-card reveal" style="transition-delay: 300ms;">
+      <div class="expertise-icon">🤝</div>
+      <p>Body Language & Confidence Building</p>
     </div>
   </div>
 </section>
 
-<!-- TRAINING METHODOLOGY -->
-<section class="experience impact">
-  <div class="container-narrow">
-    <h2>Training Methodology</h2>
-    <ul>
-      <li>Interactive, activity-based learning</li>
-      <li>Live speaking practice with structured feedback</li>
-      <li>Leadership simulations and role plays</li>
-      <li>Practical frameworks used by business leaders</li>
-      <li>Confidence-building techniques tailored to audience level</li>
-    </ul>
+<!-- METHODOLOGY -->
+<section class="section methodology-section">
+  <div class="section-header reveal">
+    <div class="section-label">Approach</div>
+    <h2 class="section-title">Training Methodology</h2>
+    <p class="section-subtitle">Practical, interactive, and results-driven learning experiences.</p>
+  </div>
+
+  <div class="method-steps">
+    <div class="method-step reveal">
+      <div class="step-number">1</div>
+      <h3>Interactive Learning</h3>
+      <p>Activity-based sessions that engage participants actively rather than passive listening.</p>
+    </div>
+    <div class="method-step reveal" style="transition-delay: 100ms;">
+      <div class="step-number">2</div>
+      <h3>Live Practice</h3>
+      <p>Real speaking opportunities with structured, constructive feedback for rapid improvement.</p>
+    </div>
+    <div class="method-step reveal" style="transition-delay: 200ms;">
+      <div class="step-number">3</div>
+      <h3>Leadership Sims</h3>
+      <p>Role-plays and simulations based on real business scenarios and leadership challenges.</p>
+    </div>
+    <div class="method-step reveal" style="transition-delay: 300ms;">
+      <div class="step-number">4</div>
+      <h3>Practical Frameworks</h3>
+      <p>Proven techniques used by successful business leaders and executives worldwide.</p>
+    </div>
+    <div class="method-step reveal" style="transition-delay: 400ms;">
+      <div class="step-number">5</div>
+      <h3>Tailored Approach</h3>
+      <p>Customized confidence-building techniques matched to each participant's level and goals.</p>
+    </div>
   </div>
 </section>
 
 <!-- PROGRAMS OFFERED -->
-<section class="portfolio">
-  <div class="container-narrow">
-    <h2>Programs Offered</h2>
-    <div class="portfolio-grid">
-      <div class="program-card"><p>One-Day Intensive Training (5–6 hours)</p></div>
-      <div class="program-card"><p>Leadership & Communication Development Workshops</p></div>
-      <div class="program-card"><p>Public Speaking & Executive Presence Programs</p></div>
-      <div class="program-card"><p>Mentorship-Oriented Training Modules</p></div>
+<section class="section" style="background: var(--light);">
+  <div class="section-header reveal">
+    <div class="section-label">Programs</div>
+    <h2 class="section-title">Training Programs Offered</h2>
+    <p class="section-subtitle">Flexible formats designed for maximum impact and learning retention.</p>
+  </div>
+
+  <div class="programs-grid">
+    <div class="program-card reveal">
+      <h3>One-Day Intensive</h3>
+      <div class="duration">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        5-6 Hours
+      </div>
+      <p>Intensive crash course covering fundamentals with immediate practical application.</p>
     </div>
-    <p style="margin-top:20px;"><strong>Minimum Participants:</strong> 100</p>
+    <div class="program-card reveal" style="transition-delay: 100ms;">
+      <h3>Leadership Development</h3>
+      <div class="duration">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Multi-Week
+      </div>
+      <p>Comprehensive workshops focusing on communication and executive presence.</p>
+    </div>
+    <div class="program-card reveal" style="transition-delay: 200ms;">
+      <h3>Executive Presence</h3>
+      <div class="duration">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Custom
+      </div>
+      <p>Advanced public speaking and leadership programs for senior professionals.</p>
+    </div>
+    <div class="program-card reveal" style="transition-delay: 300ms;">
+      <h3>Mentorship Modules</h3>
+      <div class="duration">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Ongoing
+      </div>
+      <p>Long-term mentorship-oriented training with personalized guidance and support.</p>
+    </div>
+  </div>
+
+  <div class="min-participants reveal">
+    👥 Minimum Batch Size: 100 Participants
   </div>
 </section>
 
 <!-- INSTITUTIONS SERVED -->
-<section class="experience impact">
-  <div class="container-narrow">
-    <h2>Institutions Served</h2>
-    <ul>
-      <li>Engineering & Degree Colleges</li>
-      <li>Management Institutes</li>
-      <li>Junior Colleges</li>
-      <li>CBSE / ICSE / State Board Schools</li>
-    </ul>
+<section class="institutions-section reveal">
+  <div class="section-header">
+    <div class="section-label">Clients</div>
+    <h2 class="section-title">Institutions Served</h2>
+    <p class="section-subtitle">Trusted by leading educational institutions across India.</p>
+  </div>
+
+  <div class="institutions-grid">
+    <div class="institution-item">🏛️ Engineering Colleges</div>
+    <div class="institution-item">📚 Degree Colleges</div>
+    <div class="institution-item">🎓 Management Institutes</div>
+    <div class="institution-item">🏫 Junior Colleges</div>
+    <div class="institution-item">📖 CBSE Schools</div>
+    <div class="institution-item">📝 ICSE Schools</div>
+    <div class="institution-item">🏫 State Board Schools</div>
   </div>
 </section>
 
-<!-- CONTACT CTA -->
-<section class="portfolio-cta">
-  <div class="container-narrow">
-    <h2>Contact for Training Programs</h2>
-    <p>Mobile: +91 98855 14310</p>
-    <p>Email: brighttalksacademy@gmail.com</p>
-    <a href="/contact" class="cta">Enquire Now</a>
+<!-- CTA SECTION -->
+<section class="trainer-cta">
+  <div class="cta-content reveal">
+    <h2>Book a Training Program</h2>
+    <p style="color: rgba(255,255,255,0.8); font-size: 1.125rem; margin-bottom: 2rem;">
+      Ready to transform your students or employees into confident communicators? Get in touch today.
+    </p>
+
+    <div class="contact-details">
+      <div class="contact-item-large">
+        <div class="contact-icon-large">📞</div>
+        <div>
+          <div style="font-size: 0.875rem; color: rgba(255,255,255,0.6);">Call Directly</div>
+          <div style="font-weight: 700;">+91 98855 14310</div>
+        </div>
+      </div>
+
+      <div class="contact-item-large">
+        <div class="contact-icon-large">✉️</div>
+        <div>
+          <div style="font-size: 0.875rem; color: rgba(255,255,255,0.6);">Email Us</div>
+          <div style="font-weight: 700;">brighttalksacademy@gmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/contact" class="cta-btn-large">
+      <span>Enquire Now</span>
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
   </div>
 </section>
 
 <%- include('partials/footer') %>
+
+<script>
+  // Scroll reveal animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

@@ -4,221 +4,700 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard | The Bright Talks Academy</title>
-  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
     :root {
-      --primary: #0a2f5c;
-      --accent: #fbbf24;
-      --danger: #dc2626;
-      --text: #222;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --bg: #f9fafb;
-      --card-bg: #fff;
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --success: #10b981;
+      --success-light: #d1fae5;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
     }
 
+    /* ------------------------------ RESET & BASE --------------------------------*/
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 24px;
+    /* ------------------------------ LAYOUT --------------------------------*/
+    .admin-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 8px;
+    /* ------------------------------ HEADER --------------------------------*/
+    .dashboard-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    p {
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 1rem;
     }
 
-    .btn {
-      padding: 10px 18px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
+    .breadcrumb a {
+      color: var(--muted);
       text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-title-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    /* ------------------------------ STATS CARDS --------------------------------*/
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .stat-icon.blue {
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+    }
+
+    .stat-icon.amber {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent);
+    }
+
+    .stat-icon.green {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+    }
+
+    .stat-info h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-info p {
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* ------------------------------ SECTION STYLING --------------------------------*/
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.125rem;
+    }
+
+    /* ------------------------------ BUTTONS --------------------------------*/
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      cursor: pointer;
       transition: all 0.2s ease;
+      border: 2px solid transparent;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border: 2px solid var(--primary);
+      background: var(--accent-gradient);
+      color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
     }
 
     .btn-primary:hover {
-      background: #fff;
-      color: #0a2f5c;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      background: var(--bg);
     }
 
     .btn-danger {
-      background: var(--accent);
-      color: var(--text);
-      border: 2px solid var(--accent);
+      background: white;
+      color: var(--danger);
+      border-color: var(--danger);
     }
 
     .btn-danger:hover {
       background: var(--danger);
-      color: #fff;
-      border-color: var(--danger);
+      color: white;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ------------------------------ TABLE STYLING --------------------------------*/
+    .table-container {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .table-header {
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      color: white;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .table-wrapper {
-      background: var(--card-bg);
-      border-radius: 12px;
       overflow-x: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      padding: 16px;
-      margin-top: 24px;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
+      border-collapse: separate;
+      border-spacing: 0;
     }
 
-    th, td {
-      padding: 14px 18px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
+    thead {
+      background: var(--bg);
     }
 
     th {
-      background: var(--bg);
+      padding: 1rem 1.5rem;
+      text-align: left;
       font-weight: 600;
-      color: var(--primary);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      border-bottom: 2px solid var(--border);
     }
 
-    tr:hover {
-      background: #f3f4f6;
+    td {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.9375rem;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(248, 250, 252, 0.5);
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .item-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+
+    .date-cell {
+      color: var(--muted);
+      font-size: 0.875rem;
+      white-space: nowrap;
     }
 
     .actions {
       display: flex;
-      gap: 8px;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
     }
 
+    /* ------------------------------ EMPTY STATE --------------------------------*/
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+    }
+
+    .empty-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      border: 2px dashed var(--border);
+    }
+
+    .empty-state h3 {
+      font-family: var(--font-display);
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .empty-state p {
+      margin-bottom: 1.5rem;
+      font-size: 0.9375rem;
+    }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
     @media (max-width: 768px) {
-      .actions {
+      .admin-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .page-title {
+        font-size: 1.875rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
         flex-direction: column;
-        gap: 6px;
+        align-items: flex-start;
       }
 
       th, td {
-        padding: 10px 12px;
+        padding: 1rem;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn-sm {
+        width: 100%;
       }
     }
 
-    .table-wrapper p {
-      padding: 24px;
-      color: var(--muted);
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat-card, .table-container {
+      animation: slideUp 0.5s ease-out;
+    }
+
+    /* Delete confirmation overlay */
+    .delete-confirm {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .delete-confirm.active {
+      display: flex;
+    }
+
+    .confirm-dialog {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      max-width: 400px;
+      width: 90%;
       text-align: center;
+      box-shadow: var(--shadow-lg);
     }
   </style>
 </head>
 
 <body>
 
-  <%- include('partials/header') %>
+<%- include('partials/header') %>
 
-  <div class="container">
-    <h1>Admin Dashboard</h1>
-    <p>Manage blogs efficiently: add, edit, or delete posts.</p>
+<div class="admin-container">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <nav class="breadcrumb">
+      <a href="/">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity: 0.5;">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg>
+        Home
+      </a>
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity: 0.5; margin: 0 0.25rem;">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span style="color: var(--muted);">Dashboard</span>
+    </nav>
 
-    <!-- BLOGS SECTION -->
-    <a href="/admin/add" class="btn btn-primary">➕ Add New Blog</a>
-
-    <div class="table-wrapper">
-      <% if (blogs && blogs.length > 0) { %>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Created At</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% blogs.forEach(blog => { %>
-              <tr>
-                <td><%= blog.title %></td>
-                <td><%= blog.createdAt.toDateString() %></td>
-                <td class="actions">
-                  <a href="/admin/edit/<%= blog._id %>" class="btn btn-primary">✏️ Edit</a>
-                  <form method="POST" action="/admin/delete/<%= blog._id %>?_method=DELETE" onsubmit="return confirm('Are you sure?');" style="display:inline;">
-                    <button type="submit" class="btn btn-danger">🗑 Delete</button>
-                  </form>
-                </td>
-              </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      <% } else { %>
-        <p>No blogs found.</p>
-      <% } %>
-    </div>
-
-    <!-- COURSES SECTION -->
-    <h1 style="margin-top:60px;">Courses Management</h1>
-    <p>Add, manage, and remove academy courses.</p>
-
-    <a href="/admin/courses/add" class="btn btn-primary">➕ Add New Course</a>
-
-    <div class="table-wrapper">
-      <% if (courses && courses.length > 0) { %>
-        <table>
-          <thead>
-            <tr>
-              <th>Course Title</th>
-              <th>Created At</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% courses.forEach(course => { %>
-              <tr>
-                <td><%= course.title %></td>
-                <td><%= course.createdAt.toDateString() %></td>
-                <td class="actions">
-                  <form method="POST" action="/admin/courses/delete/<%= course._id %>?_method=DELETE" onsubmit="return confirm('Delete this course?');" style="display:inline;">
-                    <button type="submit" class="btn btn-danger">🗑 Delete</button>
-                  </form>
-                </td>
-              </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      <% } else { %>
-        <p>No courses found.</p>
-      <% } %>
-    </div>
-
+    <h1 class="page-title">
+      <div class="page-title-icon">⚡</div>
+      Admin Dashboard
+    </h1>
+    <p class="page-subtitle">Manage your academy's content, courses, and blog posts from one place.</p>
   </div>
 
-  <%- include('partials/footer') %>
+  <!-- Stats Overview -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon blue">📝</div>
+      <div class="stat-info">
+        <h3><%= blogs ? blogs.length : 0 %></h3>
+        <p>Total Blog Posts</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon amber">🎓</div>
+      <div class="stat-info">
+        <h3><%= courses ? courses.length : 0 %></h3>
+        <p>Active Courses</p>
+      </div>
+    </div>
+
+<!--    <div class="stat-card">-->
+<!--      <div class="stat-icon green">👁️</div>-->
+<!--      <div class="stat-info">-->
+<!--        <h3>1.2k</h3>-->
+<!--        <p>Total Views</p>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+
+  <!-- BLOGS SECTION -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <div class="section-icon">📝</div>
+        Blog Management
+      </h2>
+      <a href="/admin/add" class="btn btn-primary">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Add New Blog
+      </a>
+    </div>
+
+    <div class="table-container">
+      <div class="table-header">
+        <span>📄</span>
+        All Blog Posts
+      </div>
+      <div class="table-wrapper">
+        <% if (blogs && blogs.length > 0) { %>
+          <table>
+            <thead>
+            <tr>
+              <th style="width: 50%;">Blog Title</th>
+              <th>Published Date</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% blogs.forEach(blog => { %>
+              <tr>
+                <td>
+                  <div class="item-title">
+                    <div class="item-icon">📝</div>
+                    <%= blog.title %>
+                  </div>
+                </td>
+                <td class="date-cell">
+                  <%= new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                </td>
+                <td>
+                  <div class="actions" style="justify-content: flex-end;">
+                    <a href="/admin/edit/<%= blog._id %>" class="btn btn-secondary btn-sm">
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                      Edit
+                    </a>
+                    <form method="POST" action="/admin/delete/<%= blog._id %>?_method=DELETE" style="display:inline;" onsubmit="return confirmAction('Are you sure you want to delete this blog post?');">
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        Delete
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <div class="empty-state">
+            <div class="empty-icon">📝</div>
+            <h3>No Blog Posts Yet</h3>
+            <p>Start creating engaging content for your audience.</p>
+            <a href="/admin/add" class="btn btn-primary">Create First Blog</a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSES SECTION -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <div class="section-icon">🎓</div>
+        Course Management
+      </h2>
+      <a href="/admin/courses/add" class="btn btn-primary">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Add New Course
+      </a>
+    </div>
+
+    <div class="table-container">
+      <div class="table-header" style="background: linear-gradient(to right, #1e293b, #334155);">
+        <span>🎓</span>
+        All Courses
+      </div>
+      <div class="table-wrapper">
+        <% if (courses && courses.length > 0) { %>
+          <table>
+            <thead>
+            <tr>
+              <th style="width: 50%;">Course Title</th>
+              <th>Created Date</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% courses.forEach(course => { %>
+              <tr>
+                <td>
+                  <div class="item-title">
+                    <div class="item-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">🎓</div>
+                    <%= course.title %>
+                  </div>
+                </td>
+                <td class="date-cell">
+                  <%= new Date(course.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                </td>
+                <td>
+                  <div class="actions" style="justify-content: flex-end;">
+                    <form method="POST" action="/admin/courses/delete/<%= course._id %>?_method=DELETE" style="display:inline;" onsubmit="return confirmAction('Are you sure you want to delete this course?');">
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        Delete
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <div class="empty-state">
+            <div class="empty-icon">🎓</div>
+            <h3>No Courses Available</h3>
+            <p>Add your first training program to get started.</p>
+            <a href="/admin/courses/add" class="btn btn-primary">Create First Course</a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+  // Confirmation dialog with custom styling could go here
+  function confirmAction(message) {
+    return confirm(message);
+  }
+
+  // Add hover effects to table rows
+  document.querySelectorAll('tr').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      row.style.transition = 'all 0.2s ease';
+    });
+  });
+</script>
 
 </body>
 </html>

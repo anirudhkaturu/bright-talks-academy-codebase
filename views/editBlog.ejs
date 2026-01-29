@@ -3,256 +3,816 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Blog | The Bright Talks Academy</title>
+  <title>Edit Blog | Admin Dashboard</title>
 
-  <!-- SimpleMDE CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css">
 
   <style>
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
     :root {
-      --primary: #0a2f5c;
-      --accent: #fbbf24;
-      --danger: #dc2626;
-      --text: #222;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --bg: #f9fafb;
-      --card-bg: #fff;
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --success: #10b981;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --input-bg: #f8fafc;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
     }
 
-    /* RESET */
+    /* ------------------------------ RESET & BASE --------------------------------*/
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* CONTAINER */
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 32px;
-      background: var(--card-bg);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    /* ------------------------------ ADMIN LAYOUT --------------------------------*/
+    .admin-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
     }
 
-    /* BACK LINK */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 28px;
-      padding: 10px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      transition: all 0.2s ease;
+    /* ------------------------------ HEADER SECTION --------------------------------*/
+    .admin-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    .back-link:hover {
-      background: var(--primary);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    /* HEADINGS */
-    h1 {
-      font-size: 2.1rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    /* FORM */
-    form {
+    .breadcrumb {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent);
+    }
+
+    .breadcrumb-separator {
+      width: 16px;
+      height: 16px;
+      opacity: 0.5;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-title-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 1.125rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ------------------------------ LAYOUT GRID --------------------------------*/
+    .edit-layout {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ------------------------------ MAIN EDITOR CARD --------------------------------*/
+    .editor-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .editor-header {
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .editor-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .editor-body {
+      padding: 2.5rem;
+    }
+
+    /* ------------------------------ FORM ELEMENTS --------------------------------*/
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
     }
 
     label {
       font-weight: 600;
-      margin-bottom: 6px;
+      font-size: 0.95rem;
+      color: var(--primary);
       display: block;
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 1rem;
-      outline: none;
-      transition: border 0.2s, box-shadow 0.2s;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(10, 47, 92, 0.2);
-    }
-
-    /* SIMPLEMDE */
-    .CodeMirror,
-    .editor-toolbar {
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      font-size: 1rem;
-    }
-
-    /* BUTTONS */
-    .actions {
+      margin-bottom: 0.625rem;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .label-hint {
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: var(--input-bg);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:hover {
+      border-color: #cbd5e1;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+    }
+
+    /* SimpleMDE Custom Styling */
+    .CodeMirror {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--input-bg);
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .CodeMirror-focused {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+    }
+
+    .CodeMirror-scroll {
+      min-height: 400px;
+    }
+
+    .editor-toolbar {
+      border: 2px solid var(--border);
+      border-bottom: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      background: white;
+      padding: 0.5rem;
+      opacity: 1;
+    }
+
+    .editor-toolbar a {
+      color: var(--muted) !important;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+    }
+
+    .editor-toolbar a:hover,
+    .editor-toolbar a.active {
+      background: var(--accent-gradient) !important;
+      color: var(--primary) !important;
+      border-color: transparent !important;
+    }
+
+    .editor-statusbar {
+      border: 2px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      background: white;
+      color: var(--muted);
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+    }
+
+    /* ------------------------------ SIDEBAR --------------------------------*/
+    .edit-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sidebar-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      background: var(--bg);
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-body {
+      padding: 1.5rem;
+    }
+
+    /* Preview Panel */
+    .preview-section {
+      background: linear-gradient(to right, #fffbeb, #fef3c7);
+      border: 1px dashed var(--accent);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    .preview-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .preview-title {
+      font-family: var(--font-display);
+      color: var(--primary);
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .preview-meta {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Info Box */
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    /* ------------------------------ BUTTONS --------------------------------*/
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--border);
     }
 
     .btn {
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
       transition: all 0.2s ease;
       border: 2px solid transparent;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
+      background: var(--accent-gradient);
+      color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
     }
 
     .btn-primary:hover {
-      background: #fff;
-      color: var(--primary);
       transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
     }
 
     .btn-secondary {
-      background: #f3f4f6;
-      color: var(--text);
-      border: 2px solid var(--border);
+      background: white;
+      color: var(--muted);
+      border-color: var(--border);
     }
 
     .btn-secondary:hover {
-      background: #e5e7eb;
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--bg);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ------------------------------ DANGER ZONE --------------------------------*/
+    .danger-zone {
+      background: var(--danger-light);
+      border: 1px solid #fecaca;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .danger-header {
+      background: #fee2e2;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #fecaca;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--danger);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .danger-body {
+      padding: 1.5rem;
+    }
+
+    .danger-text {
+      font-size: 0.9375rem;
+      color: #991b1b;
+      margin-bottom: 1rem;
+      line-height: 1.5;
     }
 
     .btn-danger {
-      background: var(--accent);
-      color: var(--text);
-      border: 2px solid var(--accent);
+      background: white;
+      color: var(--danger);
+      border-color: var(--danger);
+      width: 100%;
     }
 
     .btn-danger:hover {
       background: var(--danger);
-      color: #fff;
-      border-color: var(--danger);
-      transform: translateY(-1px);
+      color: white;
     }
 
-    /* DELETE SECTION */
-    .delete-form {
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 1px dashed var(--border);
+    /* Delete confirmation modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .container {
-        padding: 24px;
-        margin: 20px;
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      max-width: 400px;
+      width: 90%;
+      box-shadow: var(--shadow-xl);
+      text-align: center;
+      animation: slideUp 0.3s ease;
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--danger-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+
+    .modal-content h3 {
+      font-family: var(--font-display);
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .modal-content p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.9375rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+    }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 1024px) {
+      .edit-layout {
+        grid-template-columns: 1fr;
       }
 
-      .actions {
+      .edit-sidebar {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-wrapper {
+        padding: 1.5rem 1rem;
+      }
+
+      .page-title {
+        font-size: 1.75rem;
+      }
+
+      .editor-body {
+        padding: 1.5rem;
+      }
+
+      .form-actions {
         flex-direction: column;
       }
 
-      h1 {
-        font-size: 1.8rem;
+      .btn {
+        width: 100%;
       }
+
+      .modal-actions {
+        flex-direction: column;
+      }
+    }
+
+    /* ------------------------------ ANIMATIONS --------------------------------*/
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .editor-card, .sidebar-card {
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .sidebar-card:nth-child(2) {
+      animation-delay: 0.1s;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <a href="/admin" class="back-link">← Back to Dashboard</a>
+<div class="admin-wrapper">
+  <!-- Header -->
+  <div class="admin-header">
+    <nav class="breadcrumb">
+      <a href="/admin">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity: 0.5;">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg>
+        Dashboard
+      </a>
+      <svg class="breadcrumb-separator" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span style="color: var(--muted);">Edit Blog</span>
+    </nav>
 
-    <h1>Edit Blog</h1>
-    <p>Update the content of your blog or permanently delete it.</p>
-
-    <!-- DELETE -->
-    <form
-      method="POST"
-      action="/admin/delete/<%= blog._id %>?_method=DELETE"
-      onsubmit="return confirm('Are you sure you want to delete this blog?');"
-      class="delete-form"
-    >
-      <button type="submit" class="btn btn-danger">🗑 Delete Blog</button>
-    </form>
-
-    <!-- EDIT -->
-    <form method="POST" action="/admin/edit/<%= blog._id %>?_method=PUT">
-      <div>
-        <label for="title">Blog Title</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value="<%= blog.title %>"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="content">Blog Content</label>
-        <textarea id="content" name="content"><%= blog.content %></textarea>
-      </div>
-
-      <div class="actions">
-        <button type="submit" class="btn btn-primary">💾 Save Changes</button>
-        <a href="/admin" class="btn btn-secondary">Cancel</a>
-      </div>
-    </form>
+    <h1 class="page-title">
+      <div class="page-title-icon">✏️</div>
+      Edit Blog Post
+    </h1>
+    <p class="page-subtitle">Update your content or manage blog settings.</p>
   </div>
 
-  <!-- SimpleMDE JS -->
-  <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
-  <script>
-    const simplemde = new SimpleMDE({
-      element: document.getElementById("content"),
-      spellChecker: false,
-      placeholder: "Write your blog in Markdown...",
-      status: ["lines", "words"],
-    });
-  </script>
+  <!-- Edit Layout -->
+  <div class="edit-layout">
+    <!-- Main Editor -->
+    <div class="editor-card">
+      <div class="editor-header">
+        <h2>
+          <span style="font-size: 1.25rem;">📝</span>
+          Blog Editor
+        </h2>
+        <span style="font-size: 0.875rem; opacity: 0.8;">Markdown Supported</span>
+      </div>
+
+      <div class="editor-body">
+        <form method="POST" action="/admin/edit/<%= blog._id %>?_method=PUT" id="editForm">
+          <div class="form-group">
+            <label for="title">
+              Blog Title
+              <span class="label-hint">Keep it catchy and clear</span>
+            </label>
+            <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value="<%= blog.title %>"
+                    placeholder="Enter blog title"
+                    required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="content">
+              Blog Content
+              <span class="label-hint">Use Markdown for formatting</span>
+            </label>
+            <textarea id="content" name="content"><%= blog.content %></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+              </svg>
+              Save Changes
+            </button>
+
+            <a href="/admin" class="btn btn-secondary">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Cancel
+            </a>
+          </div>
+        </form>
+
+        <!-- Danger Zone -->
+        <div class="danger-zone">
+          <div class="danger-header">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Danger Zone
+          </div>
+          <div class="danger-body">
+            <p class="danger-text">
+              Once you delete this blog, it cannot be recovered. All associated data will be permanently removed.
+            </p>
+            <button type="button" class="btn btn-danger" onclick="showDeleteModal()">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              Delete Blog
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="edit-sidebar">
+      <!-- Preview Card -->
+      <div class="sidebar-card">
+        <div class="sidebar-header">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--accent);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          Live Preview
+        </div>
+        <div class="sidebar-body">
+          <div class="preview-section">
+            <div class="preview-label">Preview</div>
+            <div class="preview-title" id="previewTitle"><%= blog.title %></div>
+            <div class="preview-meta" id="previewMeta">
+              <%= Math.ceil(blog.content.split(/\s+/).length / 200) %> min read •
+              <%= blog.content.split(/\s+/).length %> words
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="sidebar-card">
+        <div class="sidebar-header">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--accent);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Blog Info
+        </div>
+        <div class="sidebar-body">
+          <div class="info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span>Created: <%= new Date(blog.createdAt).toLocaleDateString() %></span>
+          </div>
+          <div class="info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Last updated: Just now</span>
+          </div>
+          <div class="info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>ID: <%= blog._id.toString().slice(-6) %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-content">
+    <div class="modal-icon">🗑️</div>
+    <h3>Delete Blog Post?</h3>
+    <p>Are you sure you want to delete "<%= blog.title %>"? This action cannot be undone.</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-secondary" onclick="hideDeleteModal()">Cancel</button>
+      <form method="POST" action="/admin/delete/<%= blog._id %>?_method=DELETE" style="flex: 1;">
+        <button type="submit" class="btn btn-danger" style="width: 100%;">Yes, Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- SimpleMDE JS -->
+<script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
+<script>
+  // Initialize SimpleMDE
+  const simplemde = new SimpleMDE({
+    element: document.getElementById("content"),
+    spellChecker: false,
+    placeholder: "Write your blog in Markdown...",
+    status: ["lines", "words", "cursor"],
+    toolbar: [
+      "bold", "italic", "heading", "|",
+      "quote", "unordered-list", "ordered-list", "|",
+      "link", "image", "|",
+      "preview", "side-by-side", "fullscreen", "|",
+      "guide"
+    ],
+    autosave: {
+      enabled: true,
+      uniqueId: "blog-edit-<%= blog._id %>",
+      delay: 1000,
+    },
+  });
+
+  // Live preview update
+  const titleInput = document.getElementById('title');
+  const previewTitle = document.getElementById('previewTitle');
+
+  titleInput.addEventListener('input', (e) => {
+    previewTitle.textContent = e.target.value || 'Untitled Blog';
+  });
+
+  // Update word count in preview
+  simplemde.codemirror.on("change", () => {
+    const content = simplemde.value();
+    const words = content.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const minutes = Math.ceil(words / 200);
+    document.getElementById('previewMeta').textContent = `${minutes} min read • ${words} words`;
+  });
+
+  // Modal functions
+  function showDeleteModal() {
+    document.getElementById('deleteModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideDeleteModal() {
+    document.getElementById('deleteModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideDeleteModal();
+  });
+
+  // Close modal on overlay click
+  document.getElementById('deleteModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) hideDeleteModal();
+  });
+
+  // Focus title on load
+  window.addEventListener('DOMContentLoaded', () => {
+    titleInput.focus();
+    titleInput.select();
+  });
+</script>
 
 </body>
 </html>

@@ -2,243 +2,571 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Blogs | The Bright Talks Academy</title>
+  <title>Blog | The Bright Talks Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------------
-   HERO SECTION
---------------------------------*/
-.hero {
-  background: var(--primary);
-  color: var(--white);
-  padding: 100px 40px;
-  text-align: center;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  margin: 20px auto 40px auto;
-  max-width: 1200px;
-}
+    /* ------------------------------ ROOT VARIABLES --------------------------------*/
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #f59e0b;
+      --accent-light: #fbbf24;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --dark: #0f172a;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --cream: #fefdfc;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
 
-.hero h1 {
-  color: #fbbf24;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
 
-.hero p {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 700px;
-  margin: 0 auto;
-}
+    /* ------------------------------ RESET & BASE --------------------------------*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Decorative circles in hero */
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: var(--accent);
-  top: -50px;
-  left: -50px;
-  opacity: 0.3;
-  z-index: 0;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--accent);
-  bottom: -100px;
-  right: -100px;
-  opacity: 0.2;
-  z-index: 0;
-}
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-/* Make text above shapes */
-.hero h1, .hero p {
-  position: relative;
-  z-index: 1;
-}
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
 
-/* ------------------------------
-   BLOG GRID
---------------------------------*/
-.portfolio {
-  padding: 60px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    /* ------------------------------ HERO SECTION --------------------------------*/
+    .blog-hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 8rem 2rem 6rem;
+      overflow: hidden;
+      text-align: center;
+    }
 
-.portfolio h2 {
-  color: var(--primary);
-  font-size: 2.6rem;
-  margin-bottom: 50px;
-  text-align: center;
-  position: relative;
-}
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-/* Underline for heading */
-.portfolio h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--accent);
-  margin: 10px auto 0 auto;
-  border-radius: 2px;
-}
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
+    .blog-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-.program {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 25px 20px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
 
-/* Colored top accent bar */
-.program::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 6px;
-  width: 50px;
-  background: var(--accent);
-  border-radius: 3px;
-}
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
 
-/* Hover effect */
-.program:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
 
-.program h3 {
-  color: var(--primary);
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-}
+    .blog-hero h1 span {
+      color: var(--accent);
+    }
 
-.program p {
-  color: var(--dark);
-  font-size: 1rem;
-  margin-bottom: 20px;
-  flex-grow: 1;
-}
+    .blog-hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
 
-/* CTA button */
-.program .cta {
-  text-decoration: none;
-  background: var(--accent);
-  color: var(--dark);
-  padding: 10px 22px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
-  transition: background 0.3s ease, color 0.3s ease;
-  align-self: flex-start;
-}
+    /* Wave separator */
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: var(--cream);
+      clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%);
+    }
 
-.program .cta:hover {
-  background: var(--primary);
-  color: var(--white);
-}
+    /* ------------------------------ BLOG SECTION --------------------------------*/
+    .blog-section {
+      padding: 4rem 2rem 8rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
 
-/* Empty state */
-.empty {
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--muted);
-  margin-top: 40px;
-}
+    .blog-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
 
-/* ------------------------------
-   RESPONSIVE
---------------------------------*/
-@media (max-width: 900px) {
-  .hero {
-    padding: 80px 30px;
-  }
+    .blog-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-  .portfolio {
-    padding: 50px 20px;
-  }
-}
+    .blog-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      border-radius: 50%;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+    }
 
-@media (max-width: 600px) {
-  .hero {
-    padding: 60px 15px;
-  }
+    .blog-header p {
+      color: var(--muted);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-  .portfolio-grid {
-    gap: 20px;
-  }
+    /* ------------------------------ BLOG GRID --------------------------------*/
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
 
-  .program {
-    padding: 20px 15px;
-  }
-}
+    .blog-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+    }
 
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .blog-image img {
+      transform: scale(1.05);
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent-gradient);
+      color: var(--primary);
+      padding: 0.375rem 0.875rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-content {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-date svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .blog-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .blog-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .blog-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .read-time {
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .read-more:hover {
+      gap: 0.75rem;
+      color: var(--primary);
+    }
+
+    .read-more svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+
+    /* ------------------------------ EMPTY STATE --------------------------------*/
+    .empty-state {
+      text-align: center;
+      padding: 6rem 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .empty-icon {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 3rem;
+      box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .empty-state h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .empty-state p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ------------------------------ RESPONSIVE --------------------------------*/
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-hero {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .blog-section {
+        padding: 3rem 1rem 6rem;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .blog-card {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .blog-content {
+        padding: 1.25rem;
+      }
+    }
+
+    /* ------------------------------ SCROLL ANIMATIONS --------------------------------*/
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .blog-card {
+      opacity: 0;
+      animation: slideUp 0.6s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    <% if (blogs && blogs.length > 0) { %>
+    <% blogs.forEach((blog, index) => { %>
+    .blog-card:nth-child(<%= index + 1 %>) {
+      animation-delay: <%= index * 100 %>ms;
+    }
+    <% }) %>
+    <% } %>
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <%- include('partials/header') %>
 
 <!-- HERO -->
-<section class="hero hero-small">
-  <div>
-    <h1>Blogs</h1>
-    <p>Insights, tips, and learning resources from The Bright Talks Academy</p>
+<section class="blog-hero">
+  <div class="blog-hero-content">
+    <div class="section-label">Our Blog</div>
+    <h1>Insights & <span>Resources</span></h1>
+    <p>Discover expert tips, communication strategies, and stories to help you become a confident speaker and effective leader.</p>
   </div>
+  <div class="hero-wave"></div>
 </section>
 
-<!-- BLOG CARDS -->
-<section class="portfolio">
-  <h2>All Blogs</h2>
+<!-- BLOG SECTION -->
+<section class="blog-section">
+  <div class="blog-header reveal">
+    <h2>
+      Latest Articles
+      <% if (blogs && blogs.length > 0) { %>
+        <span class="blog-count"><%= blogs.length %></span>
+      <% } %>
+    </h2>
+    <p>Explore our collection of articles on public speaking, leadership, and personal development.</p>
+  </div>
 
   <% if (blogs && blogs.length > 0) { %>
-    <div class="portfolio-grid">
+    <div class="blog-grid">
       <% blogs.forEach(blog => { %>
-        <div class="program">
-          <h3><%= blog.title %></h3>
-          <% if(blog.snippet) { %>
-            <p><%= blog.snippet %></p>
-          <% } %>
-          <a href="/blogs/<%= blog._id %>" class="cta">Read More</a>
-        </div>
+        <article class="blog-card">
+          <div class="blog-image">
+            <% if (blog.image) { %>
+              <img src="<%= blog.image %>" alt="<%= blog.title %>">
+            <% } else { %>
+              <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+                <span style="font-size: 3rem;">📝</span>
+              </div>
+            <% } %>
+            <span class="blog-category">Article</span>
+          </div>
+
+          <div class="blog-content">
+            <div class="blog-date">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <%= new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+            </div>
+
+            <h3><%= blog.title %></h3>
+
+            <% if(blog.snippet || blog.description) { %>
+              <p><%= blog.snippet || blog.description.substring(0, 120) %>...</p>
+            <% } else { %>
+              <p>Click to read more about this topic and discover insights from our expert trainers...</p>
+            <% } %>
+
+            <div class="blog-footer">
+              <span class="read-time">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <%= Math.ceil((blog.content || blog.description || '').split(/\s+/).length / 200) || 3 %> min read
+              </span>
+
+              <a href="/blogs/<%= blog._id %>" class="read-more">
+                Read Article
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
       <% }) %>
     </div>
   <% } else { %>
-    <p class="empty">No blogs found.</p>
+    <div class="empty-state reveal">
+      <div class="empty-icon">📝</div>
+      <h3>No Articles Yet</h3>
+      <p>We're working on creating valuable content for you. Check back soon for insights on communication and leadership.</p>
+      <a href="/" class="read-more" style="font-size: 1.1rem; margin-top: 1rem;">
+        Return Home
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      </a>
+    </div>
   <% } %>
 </section>
 
-<!-- FOOTER -->
 <%- include('partials/footer') %>
+
+<script>
+  // Scroll reveal animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
