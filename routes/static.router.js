@@ -10,7 +10,8 @@ import {
     getBlogs, 
     getBlogById, 
     getProfile, 
-    getCourses
+    getCourses,
+    getCourseById
 } from "../controllers/static.controller.js"; 
 
 // authentication middleware
@@ -31,5 +32,6 @@ router.get("/blogs", restrictLogin("admin", "user"), getBlogs);
 router.get("/blogs/:id", restrictLogin("admin", "user"), getBlogById);
 router.get("/profile", restrictLogin("admin", "user"), getProfile);
 router.get("/courses", restrictLogin("admin", "user"), getCourses);
+router.get("/courses/:id", restrictLogin("admin", "user"), getCourseById);
 
 export default router;
