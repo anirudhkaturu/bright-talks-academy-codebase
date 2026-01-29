@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Bright Talks Academy | Master Communication</title>
+  <title>THE BRIGHT TALKS ACADEMY | Master Communication</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +71,8 @@
 
     .section-header {
       max-width: 640px;
-      margin-bottom: 4rem;
+      margin: 0 auto 4rem auto;
+      text-align: center;
     }
 
     .section-label {
@@ -84,13 +85,12 @@
       letter-spacing: 0.1em;
       color: var(--accent);
       margin-bottom: 1rem;
+      justify-content: center;
     }
 
+    /* Hide the decorative line for centered headings */
     .section-label::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: var(--accent);
+      display: none;
     }
 
     h2 {
@@ -152,6 +152,19 @@
 
     .hero-text {
       animation: fadeInUp 1s ease-out;
+    }
+
+    /* Keep hero label left-aligned on desktop */
+    .hero-text .section-label {
+      justify-content: flex-start;
+    }
+
+    .hero-text .section-label::before {
+      display: block;
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
     }
 
     .hero h1 {
@@ -405,7 +418,7 @@
     /* ------------------------------ EXPERIENCE SECTION --------------------------------*/
     .experience-section {
       padding: 8rem 0;
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       color: var(--white);
       position: relative;
       overflow: hidden;
@@ -672,17 +685,12 @@
         display: none;
       }
 
-      .section-header {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .section-label {
+      /* Center hero content on mobile */
+      .hero-text .section-label {
         justify-content: center;
       }
 
-      .section-label::before {
+      .hero-text .section-label::before {
         display: none;
       }
     }
@@ -730,7 +738,7 @@
 <section class="hero">
   <div class="container">
     <div class="hero-text">
-      <div class="section-label">Welcome to The Bright Talks Academy</div>
+      <div class="section-label">Welcome to THE BRIGHT TALKS ACADEMY</div>
       <h1>Transform Hesitation into <span>Confident Communication</span></h1>
       <p>
         Unlock your potential with expert coaching, interactive workshops, and personalized
@@ -792,7 +800,8 @@
       { icon: '📖', title: 'Storytelling & Persuasion', description: 'Learn the art of compelling storytelling and persuasive communication to influence and inspire your audience.' },
       { icon: '👑', title: 'Leadership Communication', description: 'Develop your leadership voice, inspire teams, and handle difficult conversations with confidence.' },
       { icon: '🎯', title: 'Presentation Mastery', description: 'Design and deliver impactful presentations with visual storytelling and persuasive techniques.' },
-      { icon: '🚀', title: 'Confidence & Personal Branding', description: 'Enhance your image and communication style to leave a lasting impression with networking skills.' }
+      { icon: '🚀', title: 'Confidence & Personal Branding', description: 'Enhance your image and communication style to leave a lasting impression with networking skills.' },
+      { icon: '🎯', title: 'Executive Presence & Influence', description: 'Develop authority, clarity, and poise to communicate your value and lead conversations with impact.' }
     ];
     %>
 
@@ -831,7 +840,8 @@
       { num: '04', title: 'Body Language Skills Trainer', desc: 'Strengthening non-verbal communication mastery' },
       { num: '05', title: 'Interview & Resume Guidance', desc: 'Preparing professionals for career success' },
       { num: '06', title: 'Leadership Communication Coach', desc: 'Guiding managers and team leads to inspire' },
-      { num: '07', title: 'Storytelling & Persuasion Mentor', desc: 'Crafting compelling narratives for influence' }
+      { num: '07', title: 'Storytelling & Persuasion Mentor', desc: 'Crafting compelling narratives for influence' },
+      { num: '08', title: 'Content Strategy & Messaging Mentor', desc: 'Shaping ideas into impactful, audience-focused content' }
     ];
     %>
 
@@ -865,7 +875,9 @@
         { name: 'Hadassa', location: 'Hyderabad', message: 'Now I speak confidently in meetings and interviews. The personalized attention to my specific challenges made all the difference.', initials: 'HA' },
         { name: 'Tagore Subhash', location: 'Bangalore', message: 'Highly recommended for students and professionals alike. The methodology is practical and immediately applicable.', initials: 'TS' },
         { name: 'Rohit Sharma', location: 'Mumbai', message: 'The personalized feedback helped me improve my presentation style immensely. I landed my dream job thanks to the interview prep.', initials: 'RS' },
-        { name: 'Priya Nair', location: 'Chennai', message: 'I gained the confidence to lead discussions at work after attending the sessions. Truly life-changing experience.', initials: 'PN' }
+        { name: 'Priya Nair', location: 'Chennai', message: 'I gained the confidence to lead discussions at work after attending the sessions. Truly life-changing experience.', initials: 'PN' },
+        { name: 'Murari Totha', location: 'Bengaluru', message: 'The program completely transformed how I present myself. I speak with so much more clarity and confidence now.', initials: 'AM' }
+
       ];
       %>
 
