@@ -76,7 +76,7 @@
 
     .section-header {
       max-width: 700px;
-      margin: 0 auto 3.5rem;
+      margin: 0 auto 2rem;
       text-align: center;
     }
 
@@ -87,28 +87,29 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--accent);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
       font-weight: 700;
       color: var(--primary);
       line-height: 1.2;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .subtitle {
-      font-size: 1.125rem;
+      font-size: 1rem;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.6;
+      margin-bottom: 0;
     }
 
     /* ------------------------------ HERO SECTION --------------------------------*/
     .about-hero {
       position: relative;
-      padding: 8rem 0 6rem;
+      padding: 6rem 0 3rem;
       background: linear-gradient(135deg, var(--cream) 0%, #fffbeb 50%, var(--cream) 100%);
       overflow: hidden;
       text-align: center;
@@ -132,16 +133,16 @@
     }
 
     .about-hero .section-label {
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.75rem;
     }
 
     .about-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       color: var(--primary);
       line-height: 1.1;
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.75rem;
       letter-spacing: -0.02em;
     }
 
@@ -157,18 +158,18 @@
       bottom: 2px;
       left: -2px;
       right: -2px;
-      height: 8px;
+      height: 6px;
       background: rgba(245, 158, 11, 0.15);
       z-index: -1;
       border-radius: 4px;
     }
 
     .about-hero p {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: var(--muted);
       max-width: 600px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
     }
 
     .cta {
@@ -177,10 +178,10 @@
       gap: 0.5rem;
       background: var(--accent-gradient);
       color: var(--primary);
-      padding: 1rem 2rem;
+      padding: 0.875rem 1.75rem;
       border-radius: var(--radius-md);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-decoration: none;
       transition: all 0.3s ease;
       box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
@@ -194,7 +195,7 @@
 
     /* ------------------------------ STORY SECTION --------------------------------*/
     .about-story {
-      padding: 6rem 0;
+      padding: 3rem 0;
       background: var(--white);
     }
 
@@ -205,28 +206,28 @@
     }
 
     .story-content h2 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .story-text {
-      font-size: 1.125rem;
+      font-size: 1rem;
       color: var(--muted);
-      line-height: 1.9;
-      margin-bottom: 1.25rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
     }
 
     .story-highlight {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
       border: 1px solid rgba(245, 158, 11, 0.15);
-      padding: 2rem;
-      margin: 2.5rem 0 0;
+      padding: 1.5rem;
+      margin: 1.5rem 0 0;
       text-align: center;
       border-radius: var(--radius-lg);
     }
 
     .story-highlight p {
       font-family: var(--font-display);
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       color: var(--primary);
       font-style: italic;
       margin: 0;
@@ -235,7 +236,7 @@
 
     /* ------------------------------ STATS SECTION --------------------------------*/
     .about-stats {
-      padding: 5rem 0;
+      padding: 2.5rem 0;
       background: var(--primary);
       position: relative;
       overflow: hidden;
@@ -254,28 +255,28 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
       position: relative;
       z-index: 1;
     }
 
     .stat {
       text-align: center;
-      padding: 1.5rem;
+      padding: 0.5rem;
     }
 
     .stat-number {
       font-family: var(--font-display);
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--accent);
       line-height: 1;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       display: block;
     }
 
     .stat-label {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       color: rgba(255, 255, 255, 0.8);
       font-weight: 500;
       letter-spacing: 0.02em;
@@ -283,19 +284,19 @@
 
     /* ------------------------------ PHILOSOPHY SECTION --------------------------------*/
     .about-philosophy {
-      padding: 6rem 0;
+      padding: 3rem 0;
       background: var(--cream);
     }
 
     .philosophy-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
     }
 
     .philosophy-card {
       background: var(--white);
-      padding: 2.5rem 2rem;
+      padding: 1.75rem 1.5rem;
       border-radius: var(--radius-xl);
       border: 1px solid var(--border);
       text-align: center;
@@ -318,8 +319,8 @@
     }
 
     .philosophy-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
       border-color: transparent;
     }
 
@@ -328,53 +329,53 @@
     }
 
     .philosophy-icon {
-      width: 60px;
-      height: 60px;
+      width: 48px;
+      height: 48px;
       background: rgba(245, 158, 11, 0.1);
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.25rem;
-      font-size: 1.75rem;
+      margin: 0 auto 0.75rem;
+      font-size: 1.5rem;
       transition: all 0.3s ease;
     }
 
     .philosophy-card:hover .philosophy-icon {
       background: var(--accent-gradient);
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .philosophy-card h3 {
       font-family: var(--font-display);
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       color: var(--primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .philosophy-card p {
       color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.6;
       margin: 0;
     }
 
     /* ------------------------------ PROGRAMS SECTION --------------------------------*/
     .about-programs {
-      padding: 6rem 0;
+      padding: 3rem 0;
       background: var(--white);
     }
 
     .programs-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
     }
 
     .program-card {
       background: var(--white);
       border: 2px solid var(--border);
-      padding: 1.75rem;
+      padding: 1.5rem 1.25rem;
       border-radius: var(--radius-lg);
       font-weight: 600;
       text-align: center;
@@ -387,8 +388,8 @@
     .program-card::after {
       content: '→';
       position: absolute;
-      bottom: 1.25rem;
-      right: 1.25rem;
+      bottom: 1rem;
+      right: 1rem;
       opacity: 0;
       transform: translateX(-10px);
       transition: all 0.3s ease;
@@ -399,7 +400,7 @@
     .program-card:hover {
       border-color: var(--accent);
       transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-sm);
     }
 
     .program-card:hover::after {
@@ -408,14 +409,14 @@
     }
 
     .program-icon {
-      font-size: 2.25rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
       display: block;
     }
 
     .program-card h4 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: var(--primary);
       margin: 0;
       line-height: 1.4;
@@ -423,20 +424,20 @@
 
     /* ------------------------------ WHY US SECTION --------------------------------*/
     .about-why {
-      padding: 6rem 0;
+      padding: 3rem 0;
       background: linear-gradient(to bottom, var(--cream), var(--white));
     }
 
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
     .why-item {
       display: flex;
-      gap: 1.25rem;
-      padding: 1.75rem;
+      gap: 1rem;
+      padding: 1.25rem;
       background: var(--white);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
@@ -444,42 +445,42 @@
     }
 
     .why-item:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(3px);
       border-color: var(--accent);
     }
 
     .why-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
       background: var(--accent-gradient);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
     }
 
     .why-content h3 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.25rem;
     }
 
     .why-content p {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.5;
       margin: 0;
     }
 
     /* ------------------------------ CTA SECTION --------------------------------*/
     .about-cta {
-      padding: 6rem 0;
+      padding: 3rem 0;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       text-align: center;
       position: relative;
@@ -499,27 +500,28 @@
     .cta-content {
       position: relative;
       z-index: 1;
-      max-width: 700px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
     .about-cta h2 {
       color: var(--white);
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
     }
 
     .about-cta p {
       color: rgba(255, 255, 255, 0.8);
-      font-size: 1.15rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
     }
 
     .about-cta .cta {
       background: var(--white);
       color: var(--primary);
-      font-size: 1.05rem;
-      padding: 1.1rem 2.25rem;
+      font-size: 0.95rem;
+      padding: 0.875rem 1.75rem;
     }
 
     .about-cta .cta:hover {
@@ -541,8 +543,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
+      transform: translateY(15px);
+      transition: all 0.5s ease;
     }
 
     .reveal.active {
@@ -553,11 +555,11 @@
     /* ------------------------------ RESPONSIVE --------------------------------*/
     @media (max-width: 1024px) {
       .stats-grid {
-        gap: 1.5rem;
+        gap: 1rem;
       }
 
       .stat-number {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
     }
 
@@ -567,7 +569,7 @@
       }
 
       .about-hero {
-        padding: 6rem 0 4rem;
+        padding: 4rem 0 2rem;
       }
 
       .about-story,
@@ -576,40 +578,40 @@
       .about-programs,
       .about-why,
       .about-cta {
-        padding: 4rem 0;
+        padding: 2rem 0;
       }
 
       .section-header {
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
       }
 
       .philosophy-grid,
       .programs-wrapper,
       .why-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.75rem;
       }
 
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 0.75rem;
       }
 
       .stat {
-        padding: 1rem;
+        padding: 0.5rem;
       }
 
       .story-highlight {
-        padding: 1.5rem;
-        margin-top: 2rem;
+        padding: 1.25rem;
+        margin-top: 1.25rem;
       }
 
       .story-highlight p {
-        font-size: 1.15rem;
+        font-size: 1.05rem;
       }
 
       .about-hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
 
@@ -768,13 +770,6 @@
           <p>Every learner receives a customized roadmap tailored to their specific goals and current skill level.</p>
         </div>
       </div>
-<!--      <div class="why-item reveal" style="transition-delay: 400ms;">-->
-<!--        <div class="why-icon">🎓</div>-->
-<!--        <div class="why-content">-->
-<!--          <h3>Designed for All Levels</h3>-->
-<!--          <p>Whether you're a student or seasoned professional, our programs adapt to meet you where you are.</p>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
   </div>
 </section>
@@ -796,7 +791,7 @@
   // Scroll reveal animation
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px'
+    rootMargin: '0px 0px -20px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
