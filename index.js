@@ -43,7 +43,7 @@ app.use("/admin", restrictLogin("admin"), adminRouter);
 
 connectDb(process.env.MONGO_DB).then(() => {
     console.log("Successfully Connected to MongoDB");
-    app.listen(PORT, () => {
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server has started on http://localhost:${PORT}`);
     });
 }).catch(err => {
