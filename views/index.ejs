@@ -88,7 +88,6 @@
       justify-content: center;
     }
 
-    /* Hide the decorative line for centered headings */
     .section-label::before {
       display: none;
     }
@@ -111,12 +110,12 @@
     /* ------------------------------ HERO SECTION --------------------------------*/
     .hero {
       position: relative;
-      min-height: 90vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       background: linear-gradient(135deg, var(--cream) 0%, #fffbeb 50%, var(--cream) 100%);
       overflow: hidden;
-      padding: 6rem 0;
+      padding: 6rem 0 2rem 0;
     }
 
     .hero::before {
@@ -154,7 +153,6 @@
       animation: fadeInUp 1s ease-out;
     }
 
-    /* Keep hero label left-aligned on desktop */
     .hero-text .section-label {
       justify-content: flex-start;
     }
@@ -261,6 +259,7 @@
       margin-top: 0.25rem;
     }
 
+    /* ------------------------------ HERO IMAGE SECTION (STATIC) --------------------------------*/
     .hero-image {
       position: relative;
       animation: fadeInLeft 1s ease-out 0.2s both;
@@ -269,49 +268,114 @@
     .hero-image-wrapper {
       position: relative;
       border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      background: var(--white);
-      padding: 1rem;
+      overflow: visible;
+      background: transparent;
+      padding: 0;
+    }
+
+    /* Subtle gradient backdrop - STATIC */
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(251, 191, 36, 0.05) 50%, rgba(245, 158, 11, 0.08) 100%);
+      border-radius: 40px;
+      z-index: -2;
+      filter: blur(20px);
+    }
+
+    /* Subtle blob background - STATIC */
+    .hero-image-wrapper::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(30, 41, 59, 0.08) 0%, transparent 50%);
+      z-index: -1;
     }
 
     .hero-image img {
       width: 100%;
       height: auto;
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-xl);
       display: block;
-      filter: contrast(1.05);
+      filter: contrast(1.05) saturate(1.1);
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
+    .hero-image:hover img {
+      transform: translateY(-4px);
+    }
+
+    /* Decorative corner accents - STATIC */
+    .corner-accent {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--accent);
+      z-index: 2;
+      opacity: 0.5;
+    }
+
+    .corner-accent.top-left {
+      top: -12px;
+      left: -12px;
+      border-right: none;
+      border-bottom: none;
+      border-top-left-radius: 16px;
+    }
+
+    .corner-accent.bottom-right {
+      bottom: -12px;
+      right: -12px;
+      border-left: none;
+      border-top: none;
+      border-bottom-right-radius: 16px;
+    }
+
+    /* Static Badge - No animations */
     .hero-badge {
       position: absolute;
-      bottom: -20px;
-      left: -20px;
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
+      bottom: 30px;
+      left: -30px;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: 
+        0 20px 40px -5px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
       display: flex;
       align-items: center;
       gap: 1rem;
-      animation: float 6s ease-in-out infinite;
+      z-index: 10;
+      border: 1px solid rgba(245, 158, 11, 0.15);
     }
 
     .hero-badge-icon {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       background: var(--accent-gradient);
-      border-radius: var(--radius-sm);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px -2px rgba(245, 158, 11, 0.3);
     }
 
     .hero-badge-text {
       font-size: 0.875rem;
       color: var(--muted);
+      line-height: 1.4;
     }
 
     .hero-badge-text strong {
@@ -319,11 +383,41 @@
       color: var(--primary);
       font-size: 1.125rem;
       font-weight: 700;
+      margin-bottom: 0.125rem;
+    }
+
+    /* Secondary stat card - STATIC */
+    .hero-stat-float {
+      position: absolute;
+      top: 30px;
+      right: -20px;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.3);
+      z-index: 10;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat-float .number {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-stat-float .label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     /* ------------------------------ PROGRAMS SECTION --------------------------------*/
     .programs-section {
-      padding: 8rem 0;
+      padding: 2rem 0 8rem 0;
       background: var(--white);
     }
 
@@ -651,15 +745,6 @@
       }
     }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
     /* ------------------------------ RESPONSIVE --------------------------------*/
     @media (max-width: 1024px) {
       .hero .container {
@@ -681,11 +766,27 @@
         justify-content: center;
       }
 
+      .hero-image-wrapper::before,
+      .hero-image-wrapper::after {
+        display: none;
+      }
+      
       .hero-badge {
+        left: 20px;
+        bottom: 20px;
+        padding: 1rem;
+      }
+      
+      .hero-stat-float {
+        right: 20px;
+        top: 20px;
+        padding: 0.75rem 1rem;
+      }
+      
+      .corner-accent {
         display: none;
       }
 
-      /* Center hero content on mobile */
       .hero-text .section-label {
         justify-content: center;
       }
@@ -713,6 +814,18 @@
         flex-direction: column;
         gap: 1.5rem;
         align-items: center;
+      }
+
+      .hero-badge {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        margin-top: 1.5rem;
+        width: fit-content;
+      }
+      
+      .hero-stat-float {
+        display: none;
       }
     }
 
@@ -769,13 +882,25 @@
 
     <div class="hero-image">
       <div class="hero-image-wrapper">
+        <!-- Corner accents -->
+        <div class="corner-accent top-left"></div>
+        <div class="corner-accent bottom-right"></div>
+        
         <img src="/imgs/public-speaking.webp" alt="Public Speaking Training">
+        
+        <!-- Main badge -->
         <div class="hero-badge">
           <div class="hero-badge-icon">★</div>
           <div class="hero-badge-text">
             <strong>Top Rated</strong>
             Communication Academy
           </div>
+        </div>
+        
+        <!-- Secondary floating stat -->
+        <div class="hero-stat-float">
+          <span class="number">4.9/5</span>
+          <span class="label">Student Rating</span>
         </div>
       </div>
     </div>
