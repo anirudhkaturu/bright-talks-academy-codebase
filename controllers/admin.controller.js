@@ -52,11 +52,13 @@ async function deleteBlog(req, res) {
   return res.redirect("/admin");
 }
 
+// GET method to get courses
 async function getAddCourse(req, res) {
   const courses = await Course.find();
   return res.render("addCourse");
 }
 
+// GET method to post new course
 async function postAddCourse(req, res) {
   const { title, description, price } = req.body;
   if (!title || !description || !price) {
@@ -64,6 +66,13 @@ async function postAddCourse(req, res) {
   }
 
   const newCourse = await Course.create({title, description, price});
+  return res.redirect("/admin");
+}
+
+// DELETE method to remove course
+async function deleteCourse(req, res) {
+  const { courseId } = req.params.id
+  await Course.findOneAndDelete({courseId});
   return res.redirect("/admin");
 }
 
@@ -75,5 +84,6 @@ export {
   putEditBlog,
   deleteBlog,
   getAddCourse,
-  postAddCourse
+  postAddCourse,
+  deleteCourse
 }

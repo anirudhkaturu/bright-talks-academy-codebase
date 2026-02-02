@@ -7,7 +7,8 @@ import {
     putEditBlog,
     deleteBlog,
     getAddCourse,
-    postAddCourse
+    postAddCourse,
+    deleteCourse
 } from "../controllers/admin.controller.js"
 
 const router = new Router();
@@ -25,5 +26,6 @@ router.delete("/delete/:id", deleteBlog);
 // courses feature
 router.get("/courses/add", getAddCourse);
 router.post("/courses/add", postAddCourse);
+router.delete("/courses/delete/:id", deleteCourse);
 
 export default router;
