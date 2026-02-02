@@ -88,10 +88,6 @@
       justify-content: center;
     }
 
-    .section-label::before {
-      display: none;
-    }
-
     h2 {
       font-family: var(--font-display);
       font-size: clamp(2rem, 5vw, 3rem);
@@ -115,34 +111,32 @@
       align-items: center;
       background: var(--cream);
       overflow: hidden;
-      padding: 6rem 0 2rem 0;
+      padding: 5rem 0 4rem 0;
     }
 
-    /* Modern geometric background pattern */
+    /* Subtle background accent */
     .hero::before {
       content: '';
       position: absolute;
       top: 0;
       right: 0;
-      width: 50%;
+      width: 40%;
       height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(245, 158, 11, 0.03) 100%);
-      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+      background: linear-gradient(135deg, transparent 0%, rgba(245, 158, 11, 0.02) 100%);
       pointer-events: none;
     }
 
     .hero .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: flex-start;
+      gap: 2.5rem;
+      align-items: center;
       position: relative;
       z-index: 1;
     }
 
     .hero-text {
       animation: fadeInUp 1s ease-out;
-      padding-top: 0;
     }
 
     .hero-text .section-label {
@@ -159,11 +153,11 @@
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.25rem, 4vw, 3.5rem);
       font-weight: 700;
       line-height: 1.1;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       letter-spacing: -0.02em;
     }
 
@@ -172,24 +166,12 @@
       position: relative;
     }
 
-    .hero h1 span::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background: rgba(245, 158, 11, 0.2);
-      z-index: -1;
-      border-radius: 4px;
-    }
-
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       line-height: 1.6;
-      max-width: 540px;
+      max-width: 480px;
     }
 
     .hero-cta {
@@ -204,13 +186,12 @@
       font-size: 1rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-      border: 2px solid transparent;
+      box-shadow: 0 4px 12px -2px rgba(245, 158, 11, 0.3);
     }
 
     .hero-cta:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-colored);
+      box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.4);
       gap: 1rem;
     }
 
@@ -226,10 +207,10 @@
 
     .hero-stats {
       display: flex;
-      gap: 3rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(226, 232, 240, 0.6);
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
     }
 
     .stat {
@@ -239,7 +220,7 @@
 
     .stat-number {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 1.75rem;
       font-weight: 700;
       color: var(--primary);
       line-height: 1;
@@ -251,49 +232,16 @@
       margin-top: 0.25rem;
     }
 
-    /* ------------------------------ HERO IMAGE SECTION (MODERN DESIGN) --------------------------------*/
+    /* ------------------------------ HERO IMAGE SECTION --------------------------------*/
     .hero-image {
       position: relative;
       animation: fadeInLeft 1s ease-out 0.2s both;
-      margin-top: -50px;
-      align-self: flex-start;
     }
 
     .hero-image-wrapper {
       position: relative;
       border-radius: var(--radius-xl);
       background: transparent;
-      padding: 0;
-    }
-
-    /* Modern offset card effect - solid color, no blur */
-    .hero-image-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      width: 100%;
-      height: 100%;
-      background: var(--accent);
-      border-radius: var(--radius-xl);
-      z-index: -1;
-      opacity: 0.1;
-      transition: all 0.3s ease;
-    }
-
-    /* Decorative grid pattern overlay */
-    .hero-image-wrapper::after {
-      content: '';
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      width: 100px;
-      height: 100px;
-      background-image: radial-gradient(var(--accent) 2px, transparent 2px);
-      background-size: 12px 12px;
-      opacity: 0.3;
-      z-index: -2;
-      border-radius: 50%;
     }
 
     .hero-image img {
@@ -301,134 +249,98 @@
       height: auto;
       border-radius: var(--radius-xl);
       display: block;
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.15),
-        0 0 0 1px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
       transition: all 0.4s ease;
       position: relative;
       z-index: 1;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .hero-image:hover img {
-      transform: translateY(-8px);
-      box-shadow: 
-        0 30px 60px -12px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(0, 0, 0, 0.05);
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
     }
 
-    .hero-image:hover .hero-image-wrapper::before {
-      transform: translate(10px, 10px);
-      opacity: 0.15;
-    }
-
-    /* Modern corner accents - thinner, more subtle */
+    /* Single corner accent */
     .corner-accent {
       position: absolute;
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       border: 2px solid var(--accent);
       z-index: 2;
-      opacity: 0.6;
-      transition: all 0.3s ease;
+      opacity: 0.4;
     }
 
     .corner-accent.top-left {
-      top: -10px;
-      left: -10px;
+      top: -8px;
+      left: -8px;
       border-right: none;
       border-bottom: none;
-      border-top-left-radius: 12px;
+      border-top-left-radius: 10px;
     }
 
-    .corner-accent.bottom-right {
-      bottom: -10px;
-      right: -10px;
-      border-left: none;
-      border-top: none;
-      border-bottom-right-radius: 12px;
-    }
-
-    .hero-image:hover .corner-accent {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    /* Modern badge design - flat, clean */
+    /* Clean minimal badge */
     .hero-badge {
       position: absolute;
-      bottom: 40px;
-      left: -25px;
+      bottom: 30px;
+      left: -20px;
       background: var(--white);
-      padding: 1rem 1.25rem;
+      padding: 0.875rem 1.25rem;
       border-radius: var(--radius-md);
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       gap: 0.75rem;
       z-index: 10;
       border: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-
-    .hero-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
     }
 
     .hero-badge-icon {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       background: var(--accent-gradient);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px -2px rgba(245, 158, 11, 0.3);
+      font-size: 0.875rem;
     }
 
     .hero-badge-text {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.3;
       font-weight: 500;
     }
 
     .hero-badge-text strong {
       display: block;
       color: var(--primary);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       margin-bottom: 0.125rem;
     }
 
-    /* Secondary stat card - modern flat design */
+    /* Clean stat card */
     .hero-stat-float {
       position: absolute;
-      top: 40px;
-      right: -25px;
+      top: 30px;
+      right: -20px;
       background: var(--white);
       color: var(--primary);
-      padding: 0.875rem 1.25rem;
+      padding: 0.75rem 1rem;
       border-radius: var(--radius-md);
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1);
       z-index: 10;
       border: 1px solid var(--border);
       text-align: center;
-      min-width: 100px;
-      transition: all 0.3s ease;
-    }
-
-    .hero-stat-float:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+      min-width: 80px;
     }
 
     .hero-stat-float .number {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--accent);
       display: block;
@@ -436,12 +348,12 @@
     }
 
     .hero-stat-float .label {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 600;
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
     }
 
     /* ------------------------------ PROGRAMS SECTION --------------------------------*/
@@ -780,6 +692,7 @@
         grid-template-columns: 1fr;
         text-align: center;
         align-items: center;
+        gap: 3rem;
       }
 
       .hero-text {
@@ -788,34 +701,29 @@
 
       .hero-image {
         order: 0;
-        max-width: 600px;
+        max-width: 500px;
         margin: 0 auto;
-        margin-top: 0;
       }
 
-      .hero-image-wrapper::before {
-        top: 20px;
-        left: 20px;
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .hero-stats {
         justify-content: center;
       }
-
-      .hero-image-wrapper::after {
-        display: none;
-      }
       
       .hero-badge {
         left: 10px;
         bottom: 20px;
-        padding: 0.875rem 1rem;
+        padding: 0.75rem 1rem;
       }
       
       .hero-stat-float {
         right: 10px;
         top: 20px;
-        padding: 0.75rem 1rem;
+        padding: 0.625rem 0.875rem;
       }
       
       .corner-accent {
@@ -892,7 +800,7 @@
       <h1>Transform Hesitation into <span>Confident Communication</span></h1>
       <p>
         Unlock your potential with expert coaching, interactive workshops, and personalized
-        feedback. Master the art of speaking with clarity, confidence, and lasting impact.
+        feedback.
       </p>
       <a href="/contact" class="hero-cta">
         Start Your Journey
@@ -919,9 +827,8 @@
 
     <div class="hero-image">
       <div class="hero-image-wrapper">
-        <!-- Corner accents -->
+        <!-- Single corner accent -->
         <div class="corner-accent top-left"></div>
-        <div class="corner-accent bottom-right"></div>
         
         <img src="/imgs/public-speaking.webp" alt="Public Speaking Training">
         
@@ -934,7 +841,7 @@
           </div>
         </div>
         
-        <!-- Secondary floating stat -->
+        <!-- Secondary stat -->
         <div class="hero-stat-float">
           <span class="number">4.9/5</span>
           <span class="label">Student Rating</span>
