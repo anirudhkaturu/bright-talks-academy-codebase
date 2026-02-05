@@ -781,6 +781,245 @@
       color: var(--primary);
       transform: translateY(-1px);
     }
+
+     /* Chatterbox Section - Compressed & Integrated */
+  .chatterbox-section {
+    padding: 5rem 1.5rem;
+    background: var(--light);
+  }
+
+  .chatterbox-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .chatterbox-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .chatterbox-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .chatterbox-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .chatterbox-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .chatterbox-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .chatterbox-content-main .lead-text {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--primary);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+  }
+
+  .chatterbox-content-main p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .chatterbox-content-main strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .insight-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: linear-gradient(to right, #fffbeb, #fef3c7);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--accent);
+  }
+
+  .insight-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .insight-box p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .age-range {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .chatterbox-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .chatterbox-quote {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--primary);
+    line-height: 1.5;
+    transition: all 0.3s ease;
+  }
+
+  .chatterbox-quote:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .quote-mark {
+    display: block;
+    font-size: 3rem;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+  }
+
+  .quote-mark:first-child {
+    margin-bottom: -1rem;
+  }
+
+  .quote-mark:last-child {
+    margin-top: -1.5rem;
+    margin-bottom: -0.5rem;
+  }
+
+  .skills-compact {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .skills-header {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skills-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.875rem;
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .skills-tags span::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .skills-tags span:hover {
+    background: var(--accent-gradient);
+    border-color: transparent;
+    transform: translateY(-1px);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .chatterbox-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .chatterbox-card {
+      padding: 2rem;
+    }
+
+    .chatterbox-sidebar {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .chatterbox-section {
+      padding: 3rem 1rem;
+    }
+
+    .chatterbox-card {
+      padding: 1.5rem;
+    }
+
+    .chatterbox-content-main .lead-text {
+      font-size: 1.15rem;
+    }
+
+    .insight-box {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .chatterbox-quote {
+      font-size: 1.1rem;
+      padding: 1.5rem;
+    }
+  }
   </style>
 </head>
 
@@ -874,48 +1113,48 @@
 </section>
 
 <!-- CHATTERBOX PORTFOLIO SECTION -->
-<section class="about-chatterbox">
+<section class="chatterbox-section">
   <div class="container">
-    <div class="chatterbox-content reveal">
-      <div class="chatterbox-header">
-        <div class="section-label">Our Work</div>
-        <h3>Chatterbox Speaking Institute – Guntur</h3>
-        <p class="subtitle">Showcasing voices shaped with confidence and stage power</p>
-      </div>
+    <div class="section-header reveal">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Chatterbox Speaking Institute – Guntur</h2>
+      <p class="section-subtitle">Where hesitant speakers become confident performers</p>
+    </div>
 
-      <div class="chatterbox-intro">
-        <p>At <strong>Chatterbox Guntur</strong>, every hesitant speaker has a story of transformation. What begins as stage fear grows into confidence, clarity, and commanding presence.</p>
-        
-        <p>Our portfolio reflects the journey of students who have trained, practiced, and performed on stage — learning not just to speak, but to engage, influence, and inspire.</p>
+    <div class="chatterbox-grid reveal">
+      <div class="chatterbox-card">
+        <div class="chatterbox-content-main">
+          <p class="lead-text">Every transformation begins with a single step onto the stage.</p>
+          <p>At <strong>Chatterbox Guntur</strong>, stage fear evolves into commanding presence. Students train, practice, and perform — learning to engage, influence, and inspire audiences with authenticity.</p>
+          
+          <div class="insight-box">
+            <span class="insight-icon">💡</span>
+            <p>Confidence builds one speech, one performance, one breakthrough at a time.</p>
+          </div>
 
-        <div class="highlight-box">
-          Confidence is not built in a day — it is built one speech, one performance, and one breakthrough at a time.
+          <p class="age-range"><strong>Ages 7 to 70</strong> — from young learners to seasoned professionals, everyone finds their voice here.</p>
         </div>
-
-        <p>From young learners to adults, <strong>ages 7 to 70</strong>, our speakers develop the skills to express ideas powerfully, think on their feet, and own the stage with authenticity.</p>
-
-        <p style="font-family: var(--font-display); font-size: 1.1rem; color: var(--primary); font-style: italic; text-align: center; margin: 1rem 0;">
-          "Great speakers are not born — they are trained, guided, and given the right stage."
-        </p>
-
-        <p style="text-align: center; margin-bottom: 0;">
-          This is where confidence turns into performance, and performance turns into presence.
-        </p>
       </div>
 
-      <div style="text-align: center;">
-        <div class="section-label" style="margin-bottom: 0.75rem;">Skills Our Students Showcase</div>
-        <div class="areas-tags">
-          <span class="area-tag">Stage Confidence</span>
-          <span class="area-tag">Expressive Delivery</span>
-          <span class="area-tag">Voice Modulation</span>
-          <span class="area-tag">Body Language</span>
-          <span class="area-tag">Eye Contact</span>
-          <span class="area-tag">Storytelling</span>
-          <span class="area-tag">Spontaneous Speaking</span>
-          <span class="area-tag">Audience Engagement</span>
-          <span class="area-tag">Personality Development</span>
-          <span class="area-tag">Final Stage Performances</span>
+      <div class="chatterbox-sidebar">
+        <blockquote class="chatterbox-quote">
+          <span class="quote-mark">"</span>
+          Great speakers are not born — they are trained, guided, and given the right stage.
+          <span class="quote-mark">"</span>
+        </blockquote>
+        
+        <div class="skills-compact">
+          <div class="skills-header">
+            <span>Skills Developed</span>
+          </div>
+          <div class="skills-tags">
+            <span>Stage Confidence</span>
+            <span>Expressive Delivery</span>
+            <span>Voice Modulation</span>
+            <span>Body Language</span>
+            <span>Storytelling</span>
+            <span>Audience Engagement</span>
+          </div>
         </div>
       </div>
     </div>
