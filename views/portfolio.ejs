@@ -684,6 +684,103 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .about-chatterbox {
+      padding: 2.5rem 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chatterbox-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .chatterbox-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .chatterbox-header h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .chatterbox-header .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .chatterbox-intro {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .chatterbox-intro p {
+      margin-bottom: 1rem;
+    }
+
+    .chatterbox-intro strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .areas-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+
+    .area-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.875rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .area-tag::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 0;
+    }
+
+    .area-tag:hover {
+      background: var(--accent-gradient);
+      border-color: transparent;
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 
@@ -772,6 +869,55 @@
       <p class="org">Startup India (DPIIT)</p>
       <p class="detail">Department for Promotion of Industry and Internal Trade</p>
       <span class="cert-badge">DPIIT Recognized</span>
+    </div>
+  </div>
+</section>
+
+<!-- CHATTERBOX PORTFOLIO SECTION -->
+<section class="about-chatterbox">
+  <div class="container">
+    <div class="chatterbox-content reveal">
+      <div class="chatterbox-header">
+        <div class="section-label">Our Work</div>
+        <h3>Chatterbox Speaking Institute – Guntur</h3>
+        <p class="subtitle">Showcasing voices shaped with confidence and stage power</p>
+      </div>
+
+      <div class="chatterbox-intro">
+        <p>At <strong>Chatterbox Guntur</strong>, every hesitant speaker has a story of transformation. What begins as stage fear grows into confidence, clarity, and commanding presence.</p>
+        
+        <p>Our portfolio reflects the journey of students who have trained, practiced, and performed on stage — learning not just to speak, but to engage, influence, and inspire.</p>
+
+        <div class="highlight-box">
+          Confidence is not built in a day — it is built one speech, one performance, and one breakthrough at a time.
+        </div>
+
+        <p>From young learners to adults, <strong>ages 7 to 70</strong>, our speakers develop the skills to express ideas powerfully, think on their feet, and own the stage with authenticity.</p>
+
+        <p style="font-family: var(--font-display); font-size: 1.1rem; color: var(--primary); font-style: italic; text-align: center; margin: 1rem 0;">
+          "Great speakers are not born — they are trained, guided, and given the right stage."
+        </p>
+
+        <p style="text-align: center; margin-bottom: 0;">
+          This is where confidence turns into performance, and performance turns into presence.
+        </p>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Skills Our Students Showcase</div>
+        <div class="areas-tags">
+          <span class="area-tag">Stage Confidence</span>
+          <span class="area-tag">Expressive Delivery</span>
+          <span class="area-tag">Voice Modulation</span>
+          <span class="area-tag">Body Language</span>
+          <span class="area-tag">Eye Contact</span>
+          <span class="area-tag">Storytelling</span>
+          <span class="area-tag">Spontaneous Speaking</span>
+          <span class="area-tag">Audience Engagement</span>
+          <span class="area-tag">Personality Development</span>
+          <span class="area-tag">Final Stage Performances</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,7 +1063,17 @@
     <div class="institution-item">💼 Sales</div>
     <div class="institution-item">📢 Marketing</div>
     <div class="institution-item">🏢 Corporate Offices</div>
-    <div class="institution-item">⚙️ Operations</div>    
+    <div class="institution-item">⚙️ Operations</div>
+    <div class="institution-item">🏛️ Engineering Colleges</div>
+    <div class="institution-item">📚 Degree Colleges</div>
+    <div class="institution-item">🎓 Management Institutes</div>
+    <div class="institution-item">🏫 Junior Colleges</div>
+    <div class="institution-item">📖 CBSE Schools</div>
+    <div class="institution-item">📝 ICSE Schools</div>
+    <div class="institution-item">🏫 State Board Schools</div>
+    <div class="institution-item">💻 Polytechnic Colleges</div>
+    <div class="institution-item">🧪 Science & Research Institutes</div>
+    <div class="institution-item">🎨 Arts & Commerce Colleges</div>    
   </div>
 </section>
 
