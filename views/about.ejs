@@ -360,10 +360,108 @@
       margin: 0;
     }
 
+    /* ------------------------------ CHATTERBOX SECTION --------------------------------*/
+    .about-chatterbox {
+      padding: 2.5rem 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chatterbox-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .chatterbox-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .chatterbox-header h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .chatterbox-header .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .chatterbox-intro {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .chatterbox-intro p {
+      margin-bottom: 1rem;
+    }
+
+    .chatterbox-intro strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .areas-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+
+    .area-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.875rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .area-tag::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 0;
+    }
+
+    .area-tag:hover {
+      background: var(--accent-gradient);
+      border-color: transparent;
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
     /* ------------------------------ PROGRAMS SECTION --------------------------------*/
     .about-programs {
       padding: 3rem 0;
-      background: var(--white);
+      background: var(--cream);
     }
 
     .programs-wrapper {
@@ -575,6 +673,7 @@
       .about-story,
       .about-stats,
       .about-philosophy,
+      .about-chatterbox,
       .about-programs,
       .about-why,
       .about-cta {
@@ -612,6 +711,15 @@
 
       .about-hero p {
         font-size: 1rem;
+      }
+
+      .areas-tags {
+        gap: 0.4rem;
+      }
+
+      .area-tag {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.75rem;
       }
     }
 
@@ -704,6 +812,55 @@
         <div class="philosophy-icon">🚀</div>
         <h3>Real-World Skills</h3>
         <p>From interviews to presentations, our training prepares learners for actual communication challenges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHATTERBOX SECTION - SMALL & COMPACT -->
+<section class="about-chatterbox">
+  <div class="container">
+    <div class="chatterbox-content reveal">
+      <div class="chatterbox-header">
+        <div class="section-label">Our Institute</div>
+        <h3>Welcome to Chatterbox – Guntur</h3>
+        <p class="subtitle">Where confidence is built, one speech at a time</p>
+      </div>
+
+      <div class="chatterbox-intro">
+        <p>Speaking to a friend feels easy — speaking on stage feels scary. <strong>The difference is the audience.</strong> How do you hold attention, stay confident, and truly connect?</p>
+        
+        <p><strong>Chatterbox Guntur</strong> gives you the platform, expert guidance, and real stage practice needed to grow into a confident speaker. We don’t just teach — we train through experience.</p>
+
+        <div class="highlight-box">
+          Glossophobia — the fear of public speaking — is ranked higher than the fear of death. You’re not alone, and you can overcome it.
+        </div>
+
+        <p>Everyone is born with talent; what’s needed is the right stage. <strong>Chatterbox supports ages 7 to 70</strong>, helping individuals overcome stage fear, hesitation, and self-doubt to become powerful communicators.</p>
+
+        <p style="font-family: var(--font-display); font-size: 1.1rem; color: var(--primary); font-style: italic; text-align: center; margin: 1rem 0;">
+          "It’s not what you speak, but how you speak that makes the difference."
+        </p>
+
+        <p style="text-align: center; margin-bottom: 0;">
+          An <strong>"out of the box"</strong> coaching center shaping confidence, personality, and stage presence step by step.
+        </p>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Areas of Concentration</div>
+        <div class="areas-tags">
+          <span class="area-tag">Stage Fright</span>
+          <span class="area-tag">Stage Presence</span>
+          <span class="area-tag">Stage Play</span>
+          <span class="area-tag">Eye Contact</span>
+          <span class="area-tag">Body Language</span>
+          <span class="area-tag">Speech Delivery</span>
+          <span class="area-tag">Voice & Vocals</span>
+          <span class="area-tag">Storytelling</span>
+          <span class="area-tag">NLP Techniques</span>
+          <span class="area-tag">Grande Finale</span>
+        </div>
       </div>
     </div>
   </div>
