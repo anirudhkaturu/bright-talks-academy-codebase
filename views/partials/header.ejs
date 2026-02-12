@@ -1,18 +1,32 @@
 <!-- 
   The Bright Talks Academy - Header Component (EJS)
   Usage: Include this file in your EJS templates using:
-    <%- include('partials/header') %>
   
   Required variables:
     - user: The current user object (optional, pass null/undefined if not logged in)
     - currentPath: The current page path for active link highlighting (optional)
+  
+  IMPORTANT: This component automatically adds spacing to prevent content overlap.
+  Do NOT add 'padding-top' to your body or main content container - it's handled internally.
 -->
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
+  /* 
+    Spacer element that lives in normal document flow.
+    This pushes content down without modifying body styles.
+  */
+  .bright-header-spacer {
+    display: block;
+    width: 100%;
+    height: 180px; /* Matches header height */
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
   /* Scoped CSS Variables - Prefix with bt- to avoid conflicts */
-  .bright-header-container {
+  .bright-header-wrapper {
     --bt-primary: #0f172a;
     --bt-primary-light: #1e293b;
     --bt-accent: #f59e0b;
@@ -26,7 +40,6 @@
     --bt-font-display: 'Space Grotesk', sans-serif;
     --bt-font-body: 'Inter', sans-serif;
     --bt-header-height: 180px;
-    --bt-body-offset: 144px;
   }
 
   /* Reset only within header scope */
@@ -39,12 +52,7 @@
     box-sizing: border-box;
   }
 
-  /* Body padding adjustment class - add to body tag in your layout */
-  body.has-bright-header {
-    padding-top: var(--bt-body-offset, 144px);
-  }
-
-  /* Header Base */
+  /* Header Base - Fixed position */
   .bright-header {
     position: fixed;
     top: 0;
@@ -472,9 +480,12 @@
 
   /* Responsive */
   @media (max-width: 1200px) {
-    .bright-header-container {
+    .bright-header-wrapper {
       --bt-header-height: 160px;
-      --bt-body-offset: 128px;
+    }
+    
+    .bright-header-spacer {
+      height: 160px;
     }
     
     .bright-header__center {
@@ -507,9 +518,12 @@
   }
 
   @media (max-width: 1024px) {
-    .bright-header-container {
+    .bright-header-wrapper {
       --bt-header-height: 100px;
-      --bt-body-offset: 80px;
+    }
+    
+    .bright-header-spacer {
+      height: 100px;
     }
     
     .bright-header__container {
@@ -552,9 +566,12 @@
   }
 
   @media (max-width: 768px) {
-    .bright-header-container {
+    .bright-header-wrapper {
       --bt-header-height: 90px;
-      --bt-body-offset: 72px;
+    }
+    
+    .bright-header-spacer {
+      height: 90px;
     }
     
     .bright-header__container {
@@ -575,9 +592,12 @@
   }
 
   @media (max-width: 480px) {
-    .bright-header-container {
+    .bright-header-wrapper {
       --bt-header-height: 80px;
-      --bt-body-offset: 64px;
+    }
+    
+    .bright-header-spacer {
+      height: 80px;
     }
     
     .bright-header__logo {
@@ -600,7 +620,10 @@
   }
 </style>
 
-<div class="bright-header-container">
+<!-- Spacer element that pushes content down - lives in normal document flow -->
+<div class="bright-header-spacer" aria-hidden="true"></div>
+
+<div class="bright-header-wrapper">
   <header class="bright-header" id="brightHeader">
     <div class="bright-header__container">
       <!-- Logo Section - Left aligned -->
