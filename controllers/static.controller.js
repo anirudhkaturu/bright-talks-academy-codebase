@@ -69,6 +69,12 @@ async function getCourseById(req, res) {
     return res.render("courseTemplate", { course: course });
 }
 
+async function enrollCourse(req, res) {
+    return res.redirect(
+      "https://docs.google.com/forms/d/e/1FAIpQLSebhBBSe7wBJETNZob3ZEYOdhZcpsB4LC_J5n7aibAB9HuIig/viewform",
+    );
+}
+
 export {
     getHome,
     getAbout,
@@ -81,5 +87,6 @@ export {
     getBlogById,
     getProfile,
     getCourses,
-    getCourseById
+    getCourseById,
+    enrollCourse
 }
